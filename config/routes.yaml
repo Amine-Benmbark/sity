@@ -1,0 +1,79 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+
+
+# Les ROUTES de notre application
+
+# -------------- MainController -------------------------
+
+app_main:
+    path: /main
+    controller: App\Controller\MainController::index
+
+app_get_route:
+    path: /getroute/{param1}/{param2}
+    controller: App\Controller\MainController::getRoute
+
+app_redirect_route:
+    path: /main/redirect
+    controller: App\Controller\MainController::redirectTirageAleatoire
+
+
+
+# -------------- TirageController -------------------------
+
+
+app_tirage_loto:
+    path: /tirage/loto
+    controller: App\Controller\TirageController::tirageLoto
+
+app_tirage_keno:
+    path: /tirage/keno
+    controller: App\Controller\TirageController::tirageKeno
+
+
+# -------------- TirageAleatoireController -------------------------
+
+app_tirage_aleatoire:
+    # alias: route_parametree # permet de creer un alias 
+    path: /tirage/{nom_du_jeu}/{num_boules_choisie}/{num_boules_totales}
+    controller: App\Controller\TirageAleatoireController::tirage
+    methods: GET|POST # On definit la ou les methode autorisés
+    requirements: # On definit les conditions pour les parametres
+        num_boules_choisie: '\d+' # ici on veut un chiffre
+        num_boules_totales: '\d+'
+    defaults: # On definit les parametres par default ou peut aussi le preciser directement sur la fonction -> tirage($nom_du_jeu = "keno")
+        nom_du_jeu: "keno"
+        num_boules_choisie: "10"
+        num_boules_totales: "70"
+
+# ---------------- Route fictive pour test et exemple --------------
+
+# app_route_fictive:
+#     path: /share/{token}
+#     controller: App\Controller\TokenController::share
+#     requirements:
+#         token: .+ # autorisation du token
+
+# app_route_fictive:
+#     path: /(_local)/search.(_format)
+#     controller: App\Controller\ArticleController::search
+#     locale: en
+#     format: html
+#     requirements:
+#         _locale: en | fr
+#         _format: html | xml
+
+# app_route_fictive:
+#     path: /ma/route
+#     controller: App\Controller\MonController::maMethode
+#     host: 'mobile.mon-domaine.com/ma/route' # host permet de declarer un sous domaine
+#     schemes: [https] # donne les scheme autorisé, ici fonctionne uniquement en https
+#     defaults:
+#         subdomain: 'm'
+#     requirements:
+#         subdomain: m | mobile
+

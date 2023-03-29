@@ -1,0 +1,69 @@
+# Au lancement de symfony :
+
+Configurer le fichier .env afin de relier la base de donnée à notre projet (voir ligne 27 de .env)
+
+Ici: DATABASE_URL="mysql://root:@127.0.0.1:3306/symfony_1?serverVersion=mariadb-10.4.27&charset=utf8mb4"
+
+                                                nomDeLaBDD              versionDuServeur
+
+
+## Commande pour creer la BDD en ligne de commande:
+
+symfony console doctrine:database:create
+
+## Creer un controller
+
+symfony console make:controller
+
+## Recuper tout les attribut
+
+$req->attributes->all();
+Si on veut que l'atibut route par xemple: $req->attributes->all();
+
+## Injection de dependance
+
+symfony permet l'injection de dépendance: lorsque l'on met une classe + variable en parametre d'une methode, il se chargera de creer l'objet lui meme afin d'avoir acces aux propriete et mehode:
+
+ex: Request $req en parametre
+
+    public function getRoute( Request $req, int $param1, string $param2) : response {
+        
+
+
+        $routeName = $req->attributes->get('_route');
+        $allAttributes = $req->attributes->all();
+
+        dump($allAttributes); 
+        exit(); -> lorsque l'on fait un dump il faut un exit
+        
+        return new Response ('');
+    }
+
+
+
+### EXO
+
+Exercice 1 (15 minutes):
+
+Créer un nouveau Controller nommé TirageController.
+
+Ecrire une méthode privée dans ce controller perettant de retourner une chaine de charactère à partir d’un tirage aleatoire de [n_num] numéros sur un total de [n_total_num].
+
+Créez deux routes: ‘/tirage/loto’ & ‘/tirage/keno’.
+
+Utiliser deux méthodes différentes pour créer ces deux routes.
+
+Règles de tirage:
+
+Le loto est un tirage de 6 numéros sur 50 numéros au total ($n_num = 6, $ n_total_num = 50)
+
+Le keno est un tirage de 10 numéros sur 70 numéros au total ($n_num = 10, $ n_total_num = 70)
+
+Ex :
+
+creer une nouvelle route dans le MainController appelée redirect_route.
+Cette route aura pour path /main/redirect
+elle foit rediriger vers la page de tirageAleatoire /keno/56/208
+
+
+
