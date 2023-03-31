@@ -4,12 +4,20 @@ controllers:
         namespace: App\Controller
     type: attribute
 
-# Les routes de l'application
 
-# ----------------- HomeController ----------------------
-
-# Appelle la page d'accueil
 app_home:
     path: /
-    controllers: App\Controller\HomeController # par default : index
+    controller: App\Controller\HomeController::index
     methods: GET|POST
+
+#Page statiques
+
+app_legale:
+    path: /mentions
+    controller: App\Controller\StaticController::mentionsLegales
+    methods: GET
+
+app_cookies:
+    path: /cookies
+    controller: App\Controller\StaticController::politiqueCookies
+    methods: GET
