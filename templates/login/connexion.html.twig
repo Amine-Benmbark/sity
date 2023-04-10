@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Connexion{% endblock %}
+
+{% block header %}{% endblock %}
+
+{% block body %}
+    <h1>Connecte toi !! </h1>
+    <section class="container mt-5">
+    <div class="col-md-6 col-12">
+        <label for="validationServer04" class="form-label ms-5">Email:</label>
+        <input type="email" class="form-control input-color w-50 mb-3 ms-5" id="validationServer04" aria-describedby="validationServer04Feedback" required>
+        <div id="validationServer04Feedback" class="invalid-feedback">
+        Please provide a valid city.
+        </div>
+    </div>
+     <div class="col-md-6 col-12">
+        <label for="validationServer04" class="form-label ms-5">Mot de passe</label>
+        <input type="password" class="form-control input-color w-50 mb-3 ms-5" id="validationServer04" aria-describedby="validationServer04Feedback" required>
+        <div id="validationServer04Feedback" class="invalid-feedback">
+        Please provide a valid city.
+        </div>
+    </div>
+     <div class="col-12 m-auto">
+        <button id="submit-button" class="btn btn-order fw-bold" type="submit">Me connecter</button>
+    </div>
+    </section>
+{% endblock %}

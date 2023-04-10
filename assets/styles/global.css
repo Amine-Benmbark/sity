@@ -1,3 +1,81 @@
-body {
-    background-color: lightgray;
+.redressed{
+    font-family: 'Redressed', cursive;
 }
+.merriweather{
+    font-family: 'Merriweather', serif;
+}
+
+:root{
+ --bg :  linear-gradient(180deg, #023459 0%, #1e646e 100%);
+ --beige: #B2A59F;
+}
+
+body {
+    background: var(--bg);
+    height: auto;
+    padding-top: 10rem;
+}
+
+.cc-navbar{
+    top: 0;
+    background-color: transparent;
+    font-family: "Merriweather" serif;
+    box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.54);
+    z-index: 99;
+}
+.cc-navbar, .nav-link.active{
+    color: #B2A59F !important;
+}
+
+.cc-navbar, .nav-link{
+    border-bottom: 1px solid transparent;
+    color: #B2A59F;
+    transition: padding-bottom .4s ease-in-out, border-color .3s ease;
+}
+.cc-navbar .nav-link:hover{
+    padding-bottom: 20px;
+    color: #B2A59F;
+    border-bottom-color: var(--bs-beige) ;
+}
+
+.banner, .order-form{
+    background-size: cover;
+    height: 800px;
+}
+.order-form{
+    height: 500px;
+}
+.banner .banner-desc{
+    font-size: 48px;
+    font-weight: 400;
+    color: white;
+}
+
+.cc-menu{
+    background-size: cover;
+    height: 1500px;
+}
+
+.nav-footer{
+    color: gray;
+}
+
+
+h1{
+    text-align: center;
+    color:#E5D0C6;
+    font-weight: 100;
+    font-size: 4rem;
+}
+
+  
+  p#NomSite{
+    border: #B2A59F solid 0.1rem;
+    border-radius: 10px;
+    color: #B2A59F;
+    width: 18rem;
+    font-size: 22px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }

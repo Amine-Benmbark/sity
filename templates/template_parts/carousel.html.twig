@@ -1,0 +1,34 @@
+<div class="caroussel mb-5">
+    <div class="caroussel-cards mb-5">
+        {% for img in img_carousel %}
+             <div class="cards">
+                 <img class="img mb-3" src="{{ asset(img) }}" alt="">
+                 <p class="m-auto" id="NomSite">Site e-commerce</p>
+             </div>
+             {# <div class="cards">
+                 <img class="img  mb-3" src="{{ asset(img) }}" alt="">
+                 <p class="m-auto"  id="NomSite">Site vitrine</p>
+             </div>
+             <div class="cards">
+                 <img class="img mb-3" src="{{ asset(img) }}" alt="">
+                 <p class="m-auto" id="NomSite">Site e-commerce</p>
+             </div>
+             <div class="cards">
+                 <img class="img mb-3" src="{{ asset(img) }}" alt="">
+                 <p class="m-auto" id="NomSite">Site e-commerce</p>
+             </div>
+             <div class="cards">
+                 <img class="img mb-3" src="{{ asset(img) }}" alt="">
+                 <p class="m-auto" id="NomSite">Site e-commerce</p>
+             </div>
+             <div class="cards">
+                 <img class="img mb-3" src="{{ asset(img) }}" alt="">
+                 <p class="m-auto floatingTextarea2 center" id="NomSite">Site e-commerce</p>
+             </div> #}
+    {% endfor %}
+    </div>
+    <div class="control_caroussel mt-4">
+             <button class="btn btn-order fw-bold previous">previous</button>
+             <button class="btn btn-order fw-bold ms-5 next">next</button>
+    </div>
+</div>

@@ -10,7 +10,48 @@ app_home:
     controller: App\Controller\HomeController::index
     methods: GET|POST
 
+app_login:
+    path: /
+    controller: App\Controller\LoginController::connexion
+    methods: GET|POST
+
 #Page statiques
+
+# app_inscription:
+#     path: /inscription
+#     controller: App\Controller\SController::inscription
+#     methods: GET
+
+app_connexion:
+    path: /connexion
+    controller: App\Controller\LoginController::connexion
+    methods: GET
+
+
+app_ecommerce:
+    path: /ecommerce
+    controller: App\Controller\ECommerceController::ecommerce
+    methods: GET
+
+app_vitrine:
+    path: /vitrine
+    controller: App\Controller\VitrineController::vitrine
+    methods: GET
+
+app_sur_mesure:
+    path: /sur_mesure
+    controller: App\Controller\SurMesureController::sur_mesure
+    methods: GET
+
+app_logo:
+    path: /logo
+    controller: App\Controller\LogoController::logo
+    methods: GET
+
+app_panier:
+    path: /panier
+    controller: App\Controller\PanierController::panier
+    methods: GET
 
 app_legale:
     path: /mentions

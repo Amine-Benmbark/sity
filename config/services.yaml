@@ -10,8 +10,15 @@ parameters:
 
     #Id de la balise body pour chaque page du site
     HOME_PAGE: "home"
+    ECOMMERCE_PAGE: "ecommerce"
+    VITRINE_PAGE: "vitrine"
+    SUR_MESURE_PAGE: "sur_mesure"
+    LOGO_PAGE: "logo"
+    PANIER_PAGE: "panier"
     LEGAL_PAGE: "mentions"
     COOKIE_PAGE: "cookies"
+    INSCRIPTION_PAGE: "inscription"
+    CONNEXION_PAGE: "connexion"
 
 services:
     # default configuration for services in *this* file

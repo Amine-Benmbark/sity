@@ -26,16 +26,66 @@
 
     </head>
     <body id=" {{ bodyId }}" >
+
+        {% block nav %}
+        {% include './template_parts/navbar.html.twig' %}
+        {% endblock %}
+        
         <header>
-            {% block header%}{% endblock %}
+            {% block header%}
+    <h1>Sity vous accompagne dans l'apogée de votre projet !!</h1>
+    {% include './template_parts/carousel.html.twig' %}
+    {# <div class="caroussel mb-5">
+         <div class="caroussel-cards mb-5">
+             <div class="cards">
+                 <img class="img mb-3" src="./asset/img/vitrine.jfif" alt="">
+                 <p class="m-auto" id="NomSite">Site e-commerce</p>
+             </div>
+             <div class="cards">
+                 <img class="img  mb-3" src="./asset/img/2338290.jpg" alt="">
+                 <p class="m-auto"  id="NomSite">Site vitrine</p>
+             </div>
+             <div class="cards">
+                 <img class="img mb-3" src="./asset/img/2593044.jpg" alt="">
+                 <p class="m-auto" id="NomSite">Site e-commerce</p>
+             </div>
+             <div class="cards">
+                 <img class="img mb-3" src="./asset/img/img4.jfif" alt="">
+                 <p class="m-auto" id="NomSite">Site e-commerce</p>
+             </div>
+             <div class="cards">
+                 <img class="img mb-3" src="./asset/img/Image e-commerce mobile.jfif" alt="">
+                 <p class="m-auto" id="NomSite">Site e-commerce</p>
+             </div>
+             <div class="cards">
+                 <img class="img mb-3" src="./asset/img/img6.jfif" alt="">
+                 <p class="m-auto floatingTextarea2 center" id="NomSite">Site e-commerce</p>
+             </div>
+         </div>
+         <div class="control_caroussel mt-4">
+             <button class="btn btn-order fw-bold previous">previous</button>
+             <button class="btn btn-order fw-bold ms-5 next">next</button>
+         </div>
+    </div> #}
+
+             {% endblock %}
         </header>
 
         <main>
-            {% block body %}{% endblock %}
+            {% block body %}
+                {% include './template_parts/chiffre_affaire.html.twig' %}
+                {% include './template_parts/nous.html.twig' %}
+                {% include './template_parts/services.html.twig' %}
+                <p class="lorem">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, iure autem doloribus ipsam aliquam tenetur perspiciatis cupiditate provident distinctio illo quisquam voluptatum sint fugiat doloremque itaque pariatur vitae. Omnis minus necessitatibus a fuga incidunt maxime, nulla recusandae ad dolorum odio voluptatem. Sint placeat, ipsa inventore iure aut in ea libero. Rem, sequi aspernatur nesciunt ipsa, velit similique cumque ad error id, pariatur qui deserunt perferendis eveniet. Explicabo tenetur fuga facere, perspiciatis esse quaerat fugiat eos veritatis quidem velit minus. Rem voluptates dignissimos accusantium quod? Accusamus unde ipsum, aperiam voluptate rem laudantium magnam nesciunt, totam soluta esse exercitationem, harum earum eius!
+                </p>
+            {% endblock %}
         </main>
 
         <footer>
-            {% block footer %}{% endblock %}
+            {% block footer %}
+                {% include './template_parts/footer.html.twig' %}
+            {% endblock %}
         </footer>
 
 

@@ -1,0 +1,8 @@
+.chiffre_affaire{
+    border: #B2A59F 0.2rem solid;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 25px;
+    color: #B2A59F;
+    /* background-image : url('../img/chiffre_affaire.jpg'); */
+}

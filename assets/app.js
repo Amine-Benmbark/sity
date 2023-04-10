@@ -6,9 +6,16 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/global.css';
-
+import './styles/connexion.css';
+import './styles/inscription.css';
+import './styles/carousel.css';
 import './js/carousel.js';
+import './styles/chiffre_affaire.css';
+import './styles/nous.css';
+import './styles/services.css';
+import './styles/footer.css';
+import './styles/global.css';
+// import './controllers/say-hello_controller.js';
 
 // start the Stimulus application
 import './bootstrap';

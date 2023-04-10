@@ -1,0 +1,100 @@
+.caroussel{
+  margin-top: 5rem;
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  perspective: 100rem;
+}
+
+.caroussel-cards{
+  position: relative;
+  width: 28rem;
+  height: 20rem;
+  transform-style: preserve-3d;
+  transform: translateZ(-25rem);
+  transition: transform 0.3s ease-in;
+}
+
+.img{
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+
+.cards{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 2px solid #B2A59F;
+    border-radius: 0.2rem;
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+.cards:nth-child(1){
+    transform: rotateY(0deg) translateZ(25rem);
+  }
+  
+  .cards:nth-child(2){
+    transform: rotateY(60deg) translateZ(25rem);
+  }
+  
+  .cards:nth-child(3){
+    transform: rotateY(120deg) translateZ(25rem);
+  }
+  
+  .cards:nth-child(4){
+    transform: rotateY(180deg) translateZ(25rem);
+  }
+  
+  .cards:nth-child(5){
+    transform: rotateY(240deg) translateZ(25rem);
+  }
+  
+.cards:nth-child(6){
+    transform: rotateY(300deg) translateZ(25rem);
+}
+
+#NomSite{
+  color: #B2A59F;
+  background: #023459;
+  border-color: var(--beige);
+  transition: 0.5s;
+}
+
+.btn-order{
+  color: #B2A59F;
+  background: #023459;
+  border-color: var(--beige);
+  transition: 0.5s;
+}
+
+.btn-order:hover,
+.btn-order:active{
+  color: #023459;
+  font-weight:600;
+  background-color: #B2A59F;
+  transition: 0.5s;
+}
+
+.btn-order #Devis{
+color: #B2A59F;
+border-color: var(--bs-beige);
+transition: 0.5s;
+}
+
+@media screen and (max-width: 600px) {
+  .caroussel{
+  margin-top: 5rem;
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  perspective: 100rem;
+  }
+}
