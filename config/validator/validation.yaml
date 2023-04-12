@@ -1,63 +1,63 @@
-App\Entity\User:
-        properties:
-                password:
-                        - NotNull: ~
-                        - NotBlank: ~
-                        - Type:
-                                  type: string
-                                  message: The value {{ value }} is not a valid {{ type }}.
-                        - Length:
-                                  max: 255
-                                  maxMessage: "field: password  cannot be longer than {{ limit }} characters"
+# App\Entity\User:
+#         properties:
+#                 password:
+#                         - NotNull: ~
+#                         - NotBlank: ~
+#                         - Type:
+#                                   type: string
+#                                   message: The value {{ value }} is not a valid {{ type }}.
+#                         - Length:
+#                                   max: 255
+#                                   maxMessage: "field: password  cannot be longer than {{ limit }} characters"
 
-                name:
-                        - NotNull: ~
-                        - NotBlank: ~
-                        - Type:
-                                  type: string
-                                  message: The value {{ value }} is not a valid {{ type }}.
-                        - Length:
-                                  min: 2
-                                  max: 20
-                                  minMessage: "field: nom must be at least {{ limit }} characters long"
-                                  maxMessage: "field: nom  cannot be longer than {{ limit }} characters"
+#                 name:
+#                         - NotNull: ~
+#                         - NotBlank: ~
+#                         - Type:
+#                                   type: string
+#                                   message: The value {{ value }} is not a valid {{ type }}.
+#                         - Length:
+#                                   min: 2
+#                                   max: 20
+#                                   minMessage: "field: nom must be at least {{ limit }} characters long"
+#                                   maxMessage: "field: nom  cannot be longer than {{ limit }} characters"
 
-                first_name:
-                        - NotNull: ~
-                        - NotBlank: ~
-                        - Type:
-                                  type: string
-                                  message: The value {{ value }} is not a valid {{ type }}.
-                        - Length:
-                                  min: 2
-                                  max: 20
-                                  minMessage: "field: prenom must be at least {{ limit }} characters long"
-                                  maxMessage: "field: prenom  cannot be longer than {{ limit }} characters"
+#                 first_name:
+#                         - NotNull: ~
+#                         - NotBlank: ~
+#                         - Type:
+#                                   type: string
+#                                   message: The value {{ value }} is not a valid {{ type }}.
+#                         - Length:
+#                                   min: 2
+#                                   max: 20
+#                                   minMessage: "field: prenom must be at least {{ limit }} characters long"
+#                                   maxMessage: "field: prenom  cannot be longer than {{ limit }} characters"
 
-                email:
-                        - NotNull: ~
-                        - NotBlank: ~
-                        - Type:
-                                  type: string
-                                  message: The value {{ value }} is not a valid {{ type }}.
-                        - Length:
-                                  max: 180
-                                  maxMessage: "field: email  cannot be longer than {{ limit }} characters"
-                ville:
-                        - NotNull: ~
-                        - NotBlank: ~
-                        - Type:
-                                  type: string
-                                  message: The value {{ value }} is not a valid {{ type }}.
-                        - Length:
-                                  max: 20
-                                  maxMessage: "field: ville  cannot be longer than {{ limit }} characters"
-                roles:
-                        - NotNull: ~
-                        - NotBlank: ~
-                        - Type:
-                                  type: string
-                                  message: The value {{ value }} is not a valid {{ type }}.
+#                 email:
+#                         - NotNull: ~
+#                         - NotBlank: ~
+#                         - Type:
+#                                   type: string
+#                                   message: The value {{ value }} is not a valid {{ type }}.
+#                         - Length:
+#                                   max: 180
+#                                   maxMessage: "field: email  cannot be longer than {{ limit }} characters"
+#                 ville:
+#                         - NotNull: ~
+#                         - NotBlank: ~
+#                         - Type:
+#                                   type: string
+#                                   message: The value {{ value }} is not a valid {{ type }}.
+#                         - Length:
+#                                   max: 20
+#                                   maxMessage: "field: ville  cannot be longer than {{ limit }} characters"
+#                 roles:
+#                         - NotNull: ~
+#                         - NotBlank: ~
+#                         - Type:
+#                                   type: string
+#                                   message: The value {{ value }} is not a valid {{ type }}.
 
 App\Entity\Categorie:
         properties:

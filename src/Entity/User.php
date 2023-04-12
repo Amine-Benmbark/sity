@@ -4,10 +4,12 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -27,20 +29,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(length: 30)]
-    private ?string $name = null;
-
-    #[ORM\Column(length: 30)]
-    private ?string $first_name = null;
-
-    #[ORM\Column(length: 15)]
-    private ?string $ville = null;
-
-    #[ORM\Column(length: 20)]
-    private ?string $tel = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $besoin = null;
+    #[ORM\Column(type: 'boolean')]
+    private $isVerified = false;
 
     public function getId(): ?int
     {
@@ -112,62 +102,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // $this->plainPassword = null;
     }
 
-    public function getName(): ?string
+    public function isVerified(): bool
     {
-        return $this->name;
+        return $this->isVerified;
     }
 
-    public function setName(string $name): self
+    public function setIsVerified(bool $isVerified): self
     {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getFirstName(): ?string
-    {
-        return $this->first_name;
-    }
-
-    public function setFirstName(string $first_name): self
-    {
-        $this->first_name = $first_name;
-
-        return $this;
-    }
-
-    public function getVille(): ?string
-    {
-        return $this->ville;
-    }
-
-    public function setVille(string $ville): self
-    {
-        $this->ville = $ville;
-
-        return $this;
-    }
-
-    public function getTel(): ?string
-    {
-        return $this->tel;
-    }
-
-    public function setTel(string $tel): self
-    {
-        $this->tel = $tel;
-
-        return $this;
-    }
-
-    public function getBesoin(): ?string
-    {
-        return $this->besoin;
-    }
-
-    public function setBesoin(string $besoin): self
-    {
-        $this->besoin = $besoin;
+        $this->isVerified = $isVerified;
 
         return $this;
     }

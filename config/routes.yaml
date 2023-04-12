@@ -11,16 +11,16 @@ app_home:
     methods: GET|POST
 
 app_login:
-    path: /
+    path: /login
     controller: App\Controller\LoginController::connexion
     methods: GET|POST
 
 #Page statiques
 
-# app_inscription:
-#     path: /inscription
-#     controller: App\Controller\SController::inscription
-#     methods: GET
+app_inscription:
+    path: /inscription
+    controller: App\Controller\SController::inscription
+    methods: GET
 
 app_connexion:
     path: /connexion
@@ -61,4 +61,7 @@ app_legale:
 app_cookies:
     path: /cookies
     controller: App\Controller\StaticController::politiqueCookies
+    methods: GET
+app_logout:
+    path: /logout
     methods: GET
