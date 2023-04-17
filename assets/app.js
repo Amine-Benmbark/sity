@@ -10,6 +10,7 @@ import './styles/connexion.css';
 import './styles/inscription.css';
 import './styles/carousel.css';
 import './js/carousel.js';
+import './js/cards.js';
 import './styles/chiffre_affaire.css';
 import './styles/nous.css';
 import './styles/services.css';

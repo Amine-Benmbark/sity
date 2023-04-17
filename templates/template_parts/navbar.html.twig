@@ -16,7 +16,7 @@
                         <a class="nav-link" href="#section_list">Services</a>
                     </li>
                     <li class="nav-item pe-4">
-                        <a class="nav-link" href="#">Nos réalisations</a>
+                        <a class="nav-link" href="{{ path('app_nos_realisations') }}">Nos réalisations</a>
                     </li>
                     <li class="nav-item pe-4">
                         <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
@@ -25,7 +25,7 @@
                         <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
                     </li>
                     <li class="nav-item pe-4">
-                        <a class="btn btn-order rounded-0 --bs-beige" href="#">Panier</a>
+                        <a class="btn btn-order rounded-0 --bs-beige" href=" {{ path('app_panier') }} ">Panier</a>
                     </li>
                 </ul>
             </div>

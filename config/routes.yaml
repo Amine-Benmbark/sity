@@ -10,23 +10,42 @@ app_home:
     controller: App\Controller\HomeController::index
     methods: GET|POST
 
-app_login:
-    path: /login
-    controller: App\Controller\LoginController::connexion
-    methods: GET|POST
+# app_login:
+#     path: /login
+#     controller: App\Controller\LoginController::connexion
+#     methods: GET|POST
 
 #Page statiques
 
-app_inscription:
-    path: /inscription
-    controller: App\Controller\SController::inscription
-    methods: GET
+# app_inscription:
+#     path: /inscription
+#     controller: App\Controller\SController::inscription
+#     methods: GET
 
-app_connexion:
-    path: /connexion
-    controller: App\Controller\LoginController::connexion
-    methods: GET
+app_register:
+    path: /register
+    controller: App\Controller\RegistrationController::register
 
+app_verify_email:
+    path: /verify/email
+    controller: App\Controller\RegistrationController::verifyUserEmail
+
+app_admin:
+    path: /admin
+    controller: App\Controller\AdminController::dashboard
+
+app_admin_user_management:
+    path: /admin/user
+    controller: App\Controller\AdminController::userManagement
+
+app_user:
+    path: user/profile
+    controller: App\Controller\UserController::dashboard
+
+app_nos_realisations:
+    path: /realisations
+    controller: App\Controller\NosRealisationsController::realisation
+    methods: GET
 
 app_ecommerce:
     path: /ecommerce
@@ -62,6 +81,7 @@ app_cookies:
     path: /cookies
     controller: App\Controller\StaticController::politiqueCookies
     methods: GET
+
 app_logout:
     path: /logout
     methods: GET

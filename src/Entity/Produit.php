@@ -37,10 +37,14 @@ class Produit
     #[ORM\ManyToMany(targetEntity: Commande::class, inversedBy: 'produits')]
     private Collection $commande;
 
+    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: PanierProduit::class, orphanRemoval: true)]
+    private Collection $panierProduits;
+
     public function __construct()
     {
         $this->panier = new ArrayCollection();
         $this->commande = new ArrayCollection();
+        $this->panierProduits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -152,6 +156,36 @@ class Produit
     public function removeCommande(Commande $commande): self
     {
         $this->commande->removeElement($commande);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PanierProduit>
+     */
+    public function getPanierProduits(): Collection
+    {
+        return $this->panierProduits;
+    }
+
+    public function addPanierProduit(PanierProduit $panierProduit): self
+    {
+        if (!$this->panierProduits->contains($panierProduit)) {
+            $this->panierProduits->add($panierProduit);
+            $panierProduit->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removePanierProduit(PanierProduit $panierProduit): self
+    {
+        if ($this->panierProduits->removeElement($panierProduit)) {
+            // set the owning side to null (unless already changed)
+            if ($panierProduit->getProduit() === $this) {
+                $panierProduit->setProduit(null);
+            }
+        }
 
         return $this;
     }

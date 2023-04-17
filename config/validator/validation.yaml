@@ -85,16 +85,6 @@ App\Entity\Panier:
 App\Entity\Produit:
         App\Entity\Produit:
         properties:
-                reference:
-                        - NotNull: ~
-                        - NotBlank: ~
-                        - Type:
-                                  type: string
-                                  message: The value {{ value }} is not a valid {{ type }}.
-                        - Length:
-                                  max: 20
-                                  maxMessage: "field: reference  cannot be longer than {{ limit }} characters"
-
                 name:
                         - NotNull: ~
                         - NotBlank: ~

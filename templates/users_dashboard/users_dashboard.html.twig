@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UsersDashboardController!{% endblock %}
+
+{% block body %}
+
+    {% block header %} {% endblock %}
+    {% if is_granted('ROLE_SUPER_ADMIN') %}
+        <p>ON EST DANS SUPER ADMIN</p>
+    {% endif %}
+
+    {% if is_granted('ROLE_USER') %}
+        <p>ON EST DANS USER</p>
+    {% endif %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+        <p>ON EST DANS ADMIN</p>
+    {% endif %}
+
+{% endblock %}
