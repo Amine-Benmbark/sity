@@ -17,15 +17,32 @@ security:
         main:
             lazy: true
             provider: app_user_provider
+            custom_authenticator: App\Security\UserAuthenticator
+            logout:
+                path: app_logout
+                #  where to redirect after logout
+                # target: app_any_route
+        secured_area:
+            pattern: ^/admin, ^/user
             form_login:
                 # "app_login" is the name of the route created previously
                 login_path: app_login
                 check_path: app_login
+            # app/config/security.yml
+
+                default_target_path: app_users_dashboard
             # custom_authenticator: App\Security\LoginAuthenticator
             logout:
                 path: app_logout
                 # where to redirect after logout
-                # target: app_any_route
+                target: app_home
+            login_throttling:
+                max_attempts: 5
+            remember_me:
+                secret: '%kernel.secret%'
+                lifetime: 604800
+                token_provider:
+                    doctrine: true
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -35,9 +52,16 @@ security:
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH_ADMIN]
+
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        # matches /admin/users/*
+        - { path: '^/admin/user', roles: ROLE_SUPER_ADMIN}
+        # # matches /admin/* except for anything matching the above rule
+        - { path: '^/admin', roles: [ROLE_ADMIN, ROLE_SUPER_ADMIN]}
+        - { path: '^/user', roles: ROLE_USER}
 
 when@test:
     security:
