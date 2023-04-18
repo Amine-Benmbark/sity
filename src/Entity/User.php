@@ -36,6 +36,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(mappedBy: 'User')]
     private Panier $panier;
 
+    public function __toString(): string
+    {
+        return $this->id.' '.$this->email;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
