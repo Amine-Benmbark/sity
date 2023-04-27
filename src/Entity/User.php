@@ -18,8 +18,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 180, unique: true)]
-    private ?string $email = null;
+    #[ORM\Column(type: 'string', length: 180, unique: true)]
+    private  $email = null;
 
     #[ORM\Column]
     private array $roles = [];
@@ -38,12 +38,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __toString(): string
     {
-        return $this->id.' '.$this->email;
+        return $this->email;
     }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+    
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getEmail(): ?string

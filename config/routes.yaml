@@ -31,11 +31,11 @@ app_verify_email:
     controller: App\Controller\RegistrationController::verifyUserEmail
 
 app_admin:
-    path: /admin
+    path: /easyadmin
     controller: App\Controller\Admin\Dashboard::index
 
 app_admin_user_management:
-    path: /admin/user
+    path: /easyadmin/user
     controller: App\Controller\AdminController::userManagement
 
 app_user:
@@ -45,6 +45,11 @@ app_user:
 app_nos_realisations:
     path: /realisations
     controller: App\Controller\NosRealisationsController::realisation
+    methods: GET
+
+app_profil:
+    path: /profil
+    controller: App\Controller\ProfilController::profil
     methods: GET
 
 app_ecommerce:
@@ -85,3 +90,22 @@ app_cookies:
 app_logout:
     path: /logout
     methods: GET
+
+
+
+app_stripe:
+  path: /stripe
+  controller: App\Controller\StripeController::index
+
+app_stripe_charge:
+  path: /stripe/create-charge
+  controller: App\Controller\StripeController::createCharge
+  methods: POST
+
+app_stripe_success:
+  path: /order/confirmation
+  controller: App\Controller\StripeController::orderConfirmation
+
+app_stripe_fail:
+  path: /payment/failure
+  controller: App\Controller\StripeController::paymentFailure
