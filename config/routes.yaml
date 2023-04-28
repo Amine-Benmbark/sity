@@ -39,7 +39,7 @@ app_admin_user_management:
     controller: App\Controller\AdminController::userManagement
 
 app_user:
-    path: user/profile
+    path: user/profil
     controller: App\Controller\UserController::dashboard
 
 app_nos_realisations:

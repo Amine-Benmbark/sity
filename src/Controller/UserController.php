@@ -44,39 +44,41 @@ class UserController extends AbstractController
     //     ]);
     // }
 
-    #[Route('/profil/editprofil', name:'users_profil_modifier')]
-    public function editProfil(HttpFoundationRequest $request,  UserPasswordHasherInterface $userPasswordHasher, ManagerRegistry $doctrine)
-    {
-        $user = $this->getUser();
-        $form = $this->createForm(EditProfilType::class, $user);
+    
+#[Route('/profil/editprofil', name: 'users_profil_modifier')]
+public function editProfil(HttpFoundationRequest $request,  UserPasswordHasherInterface $userPasswordHasher, ManagerRegistry $doctrine)
+{
+    $user = $this->getUser();
+    $form = $this->createForm(EditProfilType::class, $user);
 
-        $form->handleRequest($request);
-        $updatedUser = new User();
+    $form->handleRequest($request);
+// on cree un objet App\entity user pour la
+// méthode hashPassword ci dessous uniquement
+    $usr = new User;
 
 
-        if($form->isSubmitted() && $form->isValid()){
-            $updatedUser->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $updatedUser,
-                    $form->get('password')->getData()
-                )
-            );
-            $updatedUser->setEmail($form->get('email')->getData());
-            $updatedUser->setId($form->get('id')->getData());
+    if ($form->isSubmitted() && $form->isValid()) {
+        $doctrine->getManager()->getRepository(User::class)->upgradePassword(
+            $user,
+            $userPasswordHasher->hashPassword(
+                $usr,
+                $form->get('password')->getData()
+            )
+        );
 
-            $em = $doctrine->getManager();
-            // foreach ($form['email']->getData() as $utilisateur) {
-            //     $user->$this->getUser()->add($utilisateur);
-            // }
-            $em->persist($updatedUser);
-            $em->flush();
+        $em = $doctrine->getManager();
+        // foreach ($form['email']->getData() as $utilisateur) {
+        //     $user->$this->getUser()->add($utilisateur);
+        // }
+        $em->persist($user);
+        $em->flush();
 
-            $this->addFlash('message', 'Profil mis à jour');
-            return $this->redirectToRoute('app_profil');
-        }
-        $user = $this->getUser();
-        return $this->render('profil/editprofil.html.twig', [
-            'form' => $form->createView(),
-        ]);
+        $this->addFlash('message', 'Profil mis à jour');
+        return $this->redirectToRoute('app_profil');
+    }
+    $user = $this->getUser();
+    return $this->render('profil/editprofil.html.twig', [
+        'form' => $form->createView(),
+    ]);
     }
 }

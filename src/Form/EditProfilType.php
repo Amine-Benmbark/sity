@@ -19,10 +19,8 @@ class EditProfilType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('id')
             ->add('password', PasswordType::class)
-            ->add('Valider', SubmitType::class)
-        ;
+            ->add('Valider', SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
