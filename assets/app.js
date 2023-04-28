@@ -16,6 +16,7 @@ import './styles/nous.css';
 import './styles/services.css';
 import './styles/footer.css';
 import './styles/global.css';
+import './styles/tableau.css';
 // import './controllers/say-hello_controller.js';
 
 // start the Stimulus application

@@ -47,6 +47,11 @@ class Produit
         $this->panierProduits = new ArrayCollection();
     }
 
+    public function __toString(): string
+    {
+        return $this->name.' '.$this->categorie;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

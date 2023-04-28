@@ -5,6 +5,7 @@ twig:
 
     globals:
         # ga_tracking: 'UA-XXXX'
+        ORDER_CONFIRMATION: 'ORDER_CONFIRMATION'
 
 when@test:
     twig:
