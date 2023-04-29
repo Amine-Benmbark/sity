@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}  Modifier produit{% endblock %}
+
+{% block body %}
+
+    {% block header %} {% endblock %}
+    <h1>Modifier produit</h1>
+    {% include "admin/produit/_formproduit.html.twig" with {{ 'button_label':'Modifier' }} %}
+{% endblock %}
