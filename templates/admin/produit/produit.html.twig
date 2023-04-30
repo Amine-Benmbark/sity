@@ -6,4 +6,26 @@
 
     {% block header %} {% endblock %}
     <h1>Admin produit</h1>
+    {% for produit in produit %}
+     <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">name</th>
+                <th scope="col">prix</th>
+                <th scope="col">image</th>
+                <th scope="col">description</th>
+                <th scope="col">categorie</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                    <td>{{ produit.name }}</td>
+                    <td>{{ produit.prix }}€</td>
+                    <td class="ml-5" ><img class="w-25 h-25" src="{{ asset( 'assets/img/' ~ produit.img) }}"></td>
+                    <td>{{ produit.description }}</td>
+                    {# <td>{{ produit.categorie }}</td> #}
+            </tr>
+        </tbody>
+    </table>
+    {% endfor%}
 {% endblock %}

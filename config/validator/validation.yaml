@@ -105,15 +105,15 @@ App\Entity\Produit:
                                   min: 2
                                   minMessage: "field: description must be at least {{ limit }} characters long"
 
-                img:
-                        - NotNull: ~
-                        - NotBlank: ~
-                        - Type:
-                                  type: string
-                                  message: The value {{ value }} is not a valid {{ type }}.
-                        - Length:
-                                  max: 300
-                                  maxMessage: "field: photo must be at most {{ limit }} characters long"
+                # img:
+                #         - NotNull: ~
+                #         - NotBlank: ~
+                #         - Type:
+                #                   type: string
+                #                   message: The value {{ value }} is not a valid {{ type }}.
+                #         - Length:
+                #                   max: 300
+                #                   maxMessage: "field: photo must be at most {{ limit }} characters long"
 
                 prix:
                         - NotNull: ~
