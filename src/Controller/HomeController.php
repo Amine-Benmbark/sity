@@ -3,7 +3,11 @@
 namespace App\Controller;
 
 use App\Service\AppHelpers;
+use App\Controller\Produit;
+use App\Entity\Produit as EntityProduit;
 use App\Service\Helpers;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -11,15 +15,18 @@ class HomeController extends AbstractController
 {
     private $app;
     private $userinfo;
+    private $manager;
 
-    public function __construct(AppHelpers $app){
+    public function __construct(AppHelpers $apps, Helpers $app, ManagerRegistry $doctrine, EntityManagerInterface $entityManager){
         $this->app = $app;
-        $this->userinfo = $app->getUser();
+        $this->userinfo = $apps->getUser();
+        $this->manager = $doctrine->getManager();
     }
     // #[Route('/home', name: 'app_home')]
     public function index(Helpers $app): Response
     {
         // dump($this->app->getUser()); exit();
+        $produit = $this->manager->getRepository(EntityProduit::class)->findAll();
         return $this->render('home/index.html.twig', [
            'bodyId' => $app->getBodyId('HOME_PAGE'),
            'userinfo' => $this->userinfo,
@@ -31,6 +38,7 @@ class HomeController extends AbstractController
             '5' => 'assets/img_carousel/Image e-commerce mobile.jfif',
             '6' => 'assets/img_carousel/img6.jfif',
             ],
+            'produit' => $produit,
         ]);
     }
 }

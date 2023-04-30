@@ -19,6 +19,11 @@ class AppHelpers{
         $this->security = $security;
     }
 
+    public function getProduit()
+    {
+      $produit = $this->security->getProduit();
+    }
+
     public function getUser()
   {
     $user = $this->security->getUser();
