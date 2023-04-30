@@ -23,7 +23,7 @@
                     <td>{{ produit.prix }}€</td>
                     <td class="ml-5" ><img class="w-25 h-25" src="{{ asset( 'assets/img/' ~ produit.img) }}"></td>
                     <td>{{ produit.description }}</td>
-                    {# <td>{{ produit.categorie }}</td> #}
+                    <td>{{ produit.categorie.name }}</td>
             </tr>
         </tbody>
     </table>

@@ -3,6 +3,7 @@
 
 namespace App\Controller\admin;
 
+use App\Entity\Categorie;
 use App\Entity\Produit;
 use App\Form\ProduitFormType;
 use App\Service\FileUploader;
@@ -32,9 +33,11 @@ class ProduitController extends ControllerAbstractController
     {
 
         $produit = $this->manager->getRepository(Produit::class)->findAll();
+        $categorie = $this->manager->getRepository(Categorie::class)->findAll();
 
         return $this->render('admin/produit/produit.html.twig', [
             'produit' => $produit,
+            'categorie' => $categorie,
         ]);
     }
 

@@ -6,6 +6,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
                     <li class="nav-item pe-4">
                         <a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
                     </li>
@@ -22,14 +23,60 @@
                         <a class="nav-link" href="{{ path('app_profil') }}">Profil</a>
                     </li>
                     <li class="nav-item pe-4">
+                        <a class="nav-link" href="{{ path('app_register') }}">Produit</a>
+                    </li>
+                    <li class="nav-item pe-4">
+                        <a class="nav-link" href="{{ path('app_login') }}">Users</a>
+                    </li>
+                    <li class="nav-item pe-4">
+                        <a class="btn btn-order rounded-0 --bs-beige" href=" {{ path('app_panier') }} ">Panier</a>
+                    </li>
+
+
+                {% elseif is_granted("ROLE_USER") %}
+                     <li class="nav-item pe-4">
+                        <a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
+                    </li>
+                    <li class="nav-item pe-4">
+                        <a class="nav-link" href="#nous">L'agence</a>
+                    </li>
+                    <li class="nav-item pe-4">
+                        <a class="nav-link" href="#section_list">Services</a>
+                    </li>
+                    <li class="nav-item pe-4">
+                        <a class="nav-link" href="{{ path('app_nos_realisations') }}">Nos réalisations</a>
+                    </li>
+                    <li class="nav-item pe-4">
+                        <a class="nav-link" href="{{ path('app_profil') }}">Profil</a>
+                    </li>
+                    <li class="nav-item pe-4">
+                        <a class="nav-link" href="{{ path('app_register') }}">Se déconnecter</a>
+                    </li>
+                    <li class="nav-item pe-4">
+                        <a class="btn btn-order rounded-0 --bs-beige" href=" {{ path('app_panier') }} ">Panier</a>
+                    </li>
+                
+                
+                {% else %}
+                    <li class="nav-item pe-4">
+                        <a class="nav-link active" aria-current="page" href="{{ path('app_home') }}">Accueil</a>
+                    </li>
+                    <li class="nav-item pe-4">
+                        <a class="nav-link" href="#nous">L'agence</a>
+                    </li>
+                    <li class="nav-item pe-4">
+                        <a class="nav-link" href="#section_list">Services</a>
+                    </li>
+                    <li class="nav-item pe-4">
+                        <a class="nav-link" href="{{ path('app_nos_realisations') }}">Nos réalisations</a>
+                    </li>
+                    <li class="nav-item pe-4">
                         <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
                     </li>
                     <li class="nav-item pe-4">
                         <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
                     </li>
-                    <li class="nav-item pe-4">
-                        <a class="btn btn-order rounded-0 --bs-beige" href=" {{ path('app_panier') }} ">Panier</a>
-                    </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
