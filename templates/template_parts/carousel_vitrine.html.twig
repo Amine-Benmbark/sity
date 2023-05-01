@@ -5,7 +5,7 @@
                  {% if i >= 3 %}
              <div class="cards">
                  <img class="img mb-3" src="{{ asset( 'assets/img/' ~ produit.img) }}" alt="">
-                 <a href="{{ path('app_panier') }}" class="btn-color">
+                 <a href="{{ path('app_add_panier', {id: produit.id}) }}" class="btn-color">
                     <p class="m-auto" id="NomSite">Ajouter au panier</p>
                  </a>
              </div>

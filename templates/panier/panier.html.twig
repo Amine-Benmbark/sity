@@ -6,18 +6,62 @@
 
 
 {% block header %}  {% endblock %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Ben-m/OneDrive/Bureau/sity/src/Controller/PanierController.php'|file_link(0) }}">src/Controller/PanierController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Ben-m/OneDrive/Bureau/sity/templates/panier/index.html.twig'|file_link(0) }}">templates/panier/index.html.twig</a></code></li>
-    </ul>
-</div>
+        <tbody>
+        <pre>
+            {# {{ dump() }} #}
+            {% for element in dataPanier %}
+                <tr>
+                    <td>{{ element.produit.name}}</td>
+                    <td>{{ element.produit.prix}}€</td>
+                    <td>{{ element.quantite}}</td>
+                    <td class="text-end">{{ element.quantite * element.produit.prix}}€</td>
+                    <td>
+                        <a href="{{ path("app_add_panier", {id: element.produit.id})}}" 
+                            class="btn btn-success">
+                            <i class="bi bi-cart-plus"></i>
+                        </a>
+                        <a href="{{ path("app_remove_panier", {id: element.produit.id})}}" 
+                            class="btn btn-warning">
+                            <i class="bi bi-cart-dash"></i>
+                        </a>
+                        <a href="{{ path("app_delete_panier", {id: element.produit.id})}}" 
+                            class="btn btn-danger">
+                            <i class="bi bi-cart-x"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5" class="text-center">
+                        Votre panier est vide!
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td collspan="3">Total</td>
+                <td class="text-end">{{total}}€</td>
+                <td></td>
+                <td></td>
+                <td>
+                    <a href="{{ path("app_delete_all_panier") }}" 
+                            class="btn btn-danger">
+                            <i class="bi bi-cart-x"></i>
+                    </a>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
 {% endblock %}

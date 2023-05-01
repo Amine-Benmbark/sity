@@ -9,7 +9,7 @@
 
     <div>
         <a class="btn" href="{{ path('app_add_produit') }}"><p class="p_produit"> Ajouter un produit </p></a>
-        <button class="btn"><p class="p_produit"> Modifier un produit </p></button>
+        <a class="btn" href="{{ path('app_edit_produit') }}"><p class="p_produit"> Modifier un produit </p></a>
         <button class="btn"><p class="p_produit"> Supprimer un produit </p></button>
     </div>
     {% for produit in produit %}
