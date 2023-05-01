@@ -1,0 +1,8 @@
+{{ form_start(formuser) }}
+    {{ form_row(formuser.email) }}
+    {{ form_row(formuser.password) }}
+    {# {{ form_row(formuser.description) }} #}
+    {# {{ form_row(formuser.img) }} #}
+    {# {{ form_row(formuser.categorie) }} #}
+    <button type="submit">{{ button_label|default('Ajouter') }}</button>
+{{ form_end(formuser) }}

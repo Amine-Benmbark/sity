@@ -30,7 +30,7 @@ security:
                 check_path: app_login
             # app/config/security.yml
 
-                default_target_path: app_users_dashboard
+                # default_target_path: app_users_dashboard
             # custom_authenticator: App\Security\LoginAuthenticator
             logout:
                 path: app_logout

@@ -77,8 +77,6 @@ class PanierController extends AbstractController
         }
         $session->set('panier', $panier);
         return $this->redirectToRoute('app_panier');
-
-        // dd($session);
     }
 
     #[Route('/delete/panier/{id}', name: 'app_delete_panier')]
@@ -92,8 +90,6 @@ class PanierController extends AbstractController
         }
         $session->set('panier', $panier);
         return $this->redirectToRoute('app_panier');
-
-        // dd($session);
     }
 
     #[Route('/delete_all', name: 'app_delete_all_panier')]
