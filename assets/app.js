@@ -13,6 +13,7 @@ import './styles/carousel/vitrine_carousel.css';
 import './js/carousel.js';
 import './js/cards.js';
 import './styles/chiffre_affaire.css';
+import './styles/produit.css';
 import './styles/nous.css';
 import './styles/services.css';
 import './styles/footer.css';

@@ -31,7 +31,7 @@ app_verify_email:
     controller: App\Controller\RegistrationController::verifyUserEmail
 
 app_admin:
-    path: /easyadmin
+    path: /admin
     controller: App\Controller\Admin\Dashboard::index
 
 app_admin_user_management:
@@ -50,6 +50,16 @@ app_nos_realisations:
 app_profil:
     path: /profil
     controller: App\Controller\ProfilController::profil
+    methods: GET
+
+app_produit:
+    path: /admin/produit
+    controller: App\Controller\ProduitController::index
+    methods: GET
+
+app_add_produit:
+    path: /admin/produit/ajout
+    controller: App\Controller\ProduitController::add
     methods: GET
 
 app_ecommerce:

@@ -6,6 +6,12 @@
 
     {% block header %} {% endblock %}
     <h1>Admin produit</h1>
+
+    <div>
+        <a class="btn" href="{{ path('app_add_produit') }}"><p class="p_produit"> Ajouter un produit </p></a>
+        <button class="btn"><p class="p_produit"> Modifier un produit </p></button>
+        <button class="btn"><p class="p_produit"> Supprimer un produit </p></button>
+    </div>
     {% for produit in produit %}
      <table class="table table-striped">
         <thead>

@@ -1,0 +1,18 @@
+.p_produit{
+    color: #B2A59F;
+    border: #B2A59F solid 0.5px;
+}
+
+.btn-order{
+    color: #B2A59F;
+    border-color: var(--bs-beige);
+    transition: 0.5s;
+}
+
+.btn-order:hover,
+.btn-order:active{
+    color: #023459;
+    font-weight:600;
+    background-color: #B2A59F;
+    transition: 0.5s;
+}
