@@ -1,0 +1,16 @@
+<div class="caroussel mb-5">
+    <div class="caroussel-cards mb-5">
+        {% for img in vitrine_carousel%}
+             <div class="cards">
+                 <img class="img mb-3" src="{{ asset(img) }}" alt="">
+                 <a href="{{ path('app_panier') }}" class="btn-color">
+                    <p class="m-auto" id="NomSite">Ajouter au panier</p>
+                 </a>
+             </div>
+    {% endfor %}
+    </div>
+    <div class="control_caroussel mt-4">
+             <button class="btn btn-order fw-bold previous">previous</button>
+             <button class="btn btn-order fw-bold ms-5 next">next</button>
+    </div>
+</div>
