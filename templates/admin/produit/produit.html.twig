@@ -6,6 +6,7 @@
 
     {% block header %} {% endblock %}
     <h1>Admin produit</h1>
+
     {% for produit in produit %}
      <table class="table table-striped">
         <thead>
@@ -24,7 +25,13 @@
                     <td class="ml-5" ><img class="w-25 h-25" src="{{ asset( 'assets/img/' ~ produit.img) }}"></td>
                     <td>{{ produit.description }}</td>
                     <td>{{ produit.categorie.name }}</td>
+                    <td>
+                         <a class="btn" href="{{ path('app_add_produit') }}"><p class="p_produit"> Ajouter un produit </p></a>
+        <a class="btn" href="{{ path('app_edit_produit', {'id': produit.id}) }}"><p class="p_produit"> Modifier un produit </p></a>
+        <button class="btn"><p class="p_produit"> Supprimer un produit </p></button>
+                    </td>
             </tr>
+            
         </tbody>
     </table>
     {% endfor%}

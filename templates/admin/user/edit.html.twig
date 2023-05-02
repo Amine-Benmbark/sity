@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}  Modifier User{% endblock %}
+
+{% block body %}
+
+    {% block header %} {% endblock %}
+    <h1>Modifier User</h1>
+    {% include "admin/user/_formuser.html.twig"  with { 'button_label':'Modifier' } %}
+{% endblock %}

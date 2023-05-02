@@ -7,7 +7,9 @@
 <section id="cards" class="col-12 row-2">
 
     <div class="row">
+     {% set i = 0 %}
          {% for produit in produit %}
+            {% if i < 3 %}
         <div class="card col-4 m-5" id="card_service" style="width: 18rem;">
             <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top mt-3" alt="...">
             <div class="card-body" id="card_service">
@@ -15,14 +17,16 @@
             <p class="card-text" id="p_cards">{{ produit.description}}</p>
             <p id="service_price">{{ produit.prix }}€</p>
             {% if produit.categorie.name == 'Vitrine' %}
-                <a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ produit.categorie.name }}</a>
+                <a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
             {% elseif produit.categorie.name == 'Sur Mesure' %}
-                <a href="{{ path('app_sur_mesure') }}" class="btn btn-color">{{ produit.categorie.name }}</a>
+                <a href="{{ path('app_sur_mesure') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
              {% else %}
-                <a href="{{ path('app_ecommerce') }}" class="btn btn-color">{{ produit.categorie.name }}</a>
+                <a href="{{ path('app_ecommerce') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
             {% endif %}
             </div>
         </div>
+         {% set i = i + 1 %}
+        {% endif %}
         {# <div class="card col-4 m-5" id="card_service"  style="width: 18rem;">
             <img src=" {{asset('assets/img/chiffre_affaire.jpeg')}}" class="card-img-top  mt-3" alt="...">
             <div class="card-body" id="card_service">

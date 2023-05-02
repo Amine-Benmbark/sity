@@ -11,7 +11,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Email</th>
-                <th scope="col">...</th>
+                <th scope="col">mot de passe</th>
                 {# <th scope="col">Handle</th> #}
             </tr>
         </thead>
@@ -19,6 +19,7 @@
             <tr>
                 <th scope="row">1</th>
                     <td>{{ app.user.email }}</td>
+                    <td>{{ app.user.password }}</td>
                     <td>
                         <a href="{{ path('users_profil_modifier') }}" type="button" class="btn btn-success">Edit</a>
                         <button type="button" class="btn btn-danger">Delete</button>

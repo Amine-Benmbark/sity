@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}  Admin user list{% endblock %}
+
+{% block body %}
+
+    {% block header %} {% endblock %}
+    <h1>Adminuser list</h1>
+
+    <div>
+        <a class="btn" href="{{ path('app_add_users') }}"><p class="p_produit"> Ajouter un user </p></a>
+        {# <a class="btn" href="{{ path('app_edit_users') }}"><p class="p_produit"> Modifier un user </p></a> #}
+        <button class="btn"><p class="p_produit"> Supprimer un user </p></button>
+    </div>
+    {% for user in user %}
+     <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">email</th>
+                <th scope="col">password</th>
+                <th scope="col">Actions</th>
+                {# <th scope="col">image</th> #}
+                {# <th scope="col">description</th> #}
+                {# <th scope="col">categorie</th> #}
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.password }}</td>
+                    <td> 
+                    <a href="{{ path('app_edit_users', {'id': user.id}) }}"  type="button" class="btn btn-success">Edit</a>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    {# <a class="btn" href="{{ path('app_edit_users') }}"><p class="p_produit"> Modifier un user </p></a></td> #}
+                    {# <td>
+                        <a href="{{ path('users_profil_modifier') }}" type="button" class="btn btn-success">Edit</a>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </td> #}
+                    {# <td class="ml-5" ><img class="w-25 h-25" src="{{ asset( 'assets/img/' ~ produit.img) }}"></td> #}
+                    {# <td>{{ produit.description }}</td> #}
+                    {# <td>{{ produit.categorie.name }}</td> #}
+            </tr>
+        </tbody>
+    </table>
+    {% endfor%}
+{% endblock %}
