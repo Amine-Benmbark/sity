@@ -40,7 +40,20 @@
         </tbody>
     </table>
 
+
+    <h2>Mon panier</h2>
+    <a href="{{ path("app_delete_all_panier") }}" 
+                            class="btn btn-danger">
+                            <i class="bi bi-cart-x"></i>
+                    </a>
+                    <a href="{{ path("app_stripe") }}" 
+                            class="btn btn-success">
+                            <i class="bi bi-cart-plus"></i>
+                    </a>
+
     <h2>Mes commandes</h2>
+
+
    
     {# {% for commande in app.user.commandes %}
 
