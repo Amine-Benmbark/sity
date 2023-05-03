@@ -34,7 +34,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $isVerified = false;
 
     #[ORM\OneToOne(mappedBy: 'User')]
-    private Panier $panier;
+    private ?Panier $panier = null;
 
     public function __toString(): string
     {

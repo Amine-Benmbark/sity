@@ -16,8 +16,8 @@ class Panier
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'integer')]
-    private $quantite = null;
+    // #[ORM\Column(type: 'integer')]
+    // private $quantite = null;
 
     #[ORM\ManyToMany(targetEntity: Produit::class, mappedBy: 'panier')]
     private Collection $produits;
@@ -46,17 +46,17 @@ class Panier
         return $this->id;
     }
 
-    public function getQuantite(): ?int
-    {
-        return $this->quantite;
-    }
+    // public function getQuantite(): ?int
+    // {
+    //     return $this->quantite;
+    // }
 
-    public function setQuantite(int $quantite): self
-    {
-        $this->quantite = $quantite;
+    // public function setQuantite(int $quantite): self
+    // {
+    //     $this->quantite = $quantite;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     /**
      * @return Collection<int, Produit>
