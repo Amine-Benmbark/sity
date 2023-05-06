@@ -56,6 +56,8 @@ div{
 }
 
 form{
+    padding: 2em;
+    margin-bottom: 2em;
     border: #B2A59F solid 1rem;
     border-radius: 50px;
     padding-bottom: 5px;
