@@ -21,8 +21,8 @@ class PanierProduit
     private ?Produit $produit = null;
 
     #[ORM\ManyToOne(inversedBy: 'article')]
-    #[ORM\JoinColumn(nullable: false)]
-    private Panier $panier;
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Panier $panier;
 
     public function getId(): ?int
     {

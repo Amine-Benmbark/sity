@@ -31,13 +31,7 @@ class PanierController extends AbstractController
         //     $produit = $produitRepository->find($id);
         //     $total += $produit->getPrix() * $quantite;
         // }
-    //     $liste = $panier->getArticle();
-    //     foreach ($liste as $articles){
-    //     {
-    //         $total += $panier * $articles ;
-    //     }
-    //     // return $total;
-    // }
+    
 
         return $this->render(
             'panier/panier.html.twig',
@@ -97,44 +91,79 @@ class PanierController extends AbstractController
     }
 
     #[Route('/remove/panier/{id}', name: 'app_remove_panier')]
-    public function remove(Produit $produit, SessionInterface $session){
-        // $session->set("panier", 8);
-        // dd($session->get('panier'));
-        //recuperer le panier actuel
+    public function remmove(Produit $produit, EntityManagerInterface $em, int $id)
+{
+    $produit = $em->getRepository(Produit::class)->find($id);
+    $user = $this->getUser();
 
-        $panier = $session->get('panier', []);
-        $id = $produit->getId();
+    if (null !== $user->getPanier()) {
+        $panier = $user->getPanier();
+        $articles = $panier->getArticle();
 
-        if(!empty($panier[$id])){
-            if($panier[$id] > 1){
-                $panier[$id] --;
-            }
-            else{
-                unset($panier[$id]);
+        foreach ($articles as $article) {
+            if ($article->getProduit()->getId() === $id) {
+                $quantite = $article->getQuantity() - 1;
+                if ($quantite > 0) {
+                    $article->setQuantity($quantite);
+                } else {
+                    $panier->removeArticle($article);
+                    $em->remove($article);
+                }
+                break;
             }
         }
-        $session->set('panier', $panier);
-        return $this->redirectToRoute('app_panier');
+
+        $em->flush();
     }
+
+    return $this->redirectToRoute('app_panier');
+}
 
     #[Route('/delete/panier/{id}', name: 'app_delete_panier')]
-    public function delete(Produit $produit, SessionInterface $session){
+    public function delete(Produit $produit, EntityManagerInterface $em, int $id)
+{
+    $produit = $em->getRepository(Produit::class)->find($id);
+    $user = $this->getUser();
 
-        $panier = $session->get('panier', []);
-        $id = $produit->getId();
+    if (null !== $user->getPanier()) {
+        $panier = $user->getPanier();
+        $articles = $panier->getArticle();
 
-        if(!empty($panier[$id])){
-                unset($panier[$id]);
+        foreach ($articles as $article) {
+            if ($article->getProduit()->getId() === $id) {
+                $panier->removeArticle($article);
+                $article->setPanier(null); // Réinitialise la relation avec le panier
+                $em->remove($article);
+                break;
+            }
         }
-        $session->set('panier', $panier);
-        return $this->redirectToRoute('app_panier');
+
+        $em->flush();
     }
+
+    return $this->redirectToRoute('app_panier');
+}
+
 
     #[Route('/delete_all', name: 'app_delete_all_panier')]
-    public function deleteAll(SessionInterface $session){
+public function deleteall(EntityManagerInterface $em) {
 
-       $session->set('panier', []);
+    $user = $this->getUser();
 
-        return $this->redirectToRoute('app_panier');
+if (null !== $user->getPanier()) {
+    $panier = $user->getPanier();
+    $articles = $panier->getArticle();
+
+    foreach ($articles as $article) {
+        $panier->removeArticle($article);
+        $em->remove($article);
     }
+
+    $em->flush();
+}
+
+return $this->redirectToRoute('app_panier');
+
+}
+    
 }
