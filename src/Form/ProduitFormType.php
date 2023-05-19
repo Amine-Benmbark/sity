@@ -18,6 +18,7 @@ class ProduitFormType extends AbstractType
         $builder
             ->add('name')
             ->add('prix')
+            // ->add('date')
             ->add('description')
             ->add('img', FileType::class, [
                 'mapped' => false,
