@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CommandeController!{% endblock %}
+
+{% block body %}
+    {% block header %}{% endblock %}
+
+    {# {{commande.id}} #}
+    {# {{ dump(commande.getProduits()) }} #}
+    {# {{ dump(commande.getPanier) }} #}
+    {# {{dump(panier)}} #}
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prix</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for produit in produitsId %}
+     <img  src="{{ asset('assets/img/' ~ produits[produit.produit.id].img)}}" alt="ffff"/>
+                <tr>
+                    {# <td>{{ produit.getName() }}</td>
+                    <td>{{ produit.getPrix() }}</td> #}
+                    <td>
+                    {{produit.produit.name}}
+                    {{produit.produit.prix}}
+                    {{produit.produit.description}}
+                    <td>
+                    </td>
+                    {# {{produit.produit.name}} #}
+                    {# <pre>
+                        {{ dump( produit.produit.name  ) }}
+                    </pre>
+                    #}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="2">Aucun produit trouvé.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

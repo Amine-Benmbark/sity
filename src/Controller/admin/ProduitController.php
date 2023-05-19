@@ -81,7 +81,7 @@ class ProduitController extends ControllerAbstractController
                     // }
                 // updates the 'brochureFilename' property to store the PDF file name
                 // instead of its contents
-                $produit->setimg($newFilename);
+                $produit->setImg($newFilename);
             }
 
             $em->persist($produit);
@@ -101,7 +101,7 @@ class ProduitController extends ControllerAbstractController
 
     
     #[Route('/edition/{id}', name:'edit')]
-    public function edit(Produit $produit, Request $request, EntityManagerInterface $em): Response
+    public function edit(Produit $produit, Request $request, SluggerInterface $slugger, EntityManagerInterface $em): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
@@ -115,6 +115,23 @@ class ProduitController extends ControllerAbstractController
         if($formproduit->isSubmitted() && $formproduit->isValid()){
             $prix = $produit->getPrix() * 100;
             $produit->setPrix($prix);
+            $imgFile = $formproduit->get('img')->getData();
+            if ($imgFile) {
+                $originalFilename = pathinfo($imgFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imgFile->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $imgFile->move(
+                        $this->getParameter('img_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+                $produit->setImg($newFilename);
+                    }
 
             $em->persist($produit);
             $em->flush();

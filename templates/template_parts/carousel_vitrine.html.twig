@@ -2,7 +2,7 @@
     <div class="caroussel-cards mb-5">
             {% set i = 0 %}
              {% for produit in produit %}
-                 {% if i >= 3 %}
+                 {% if i >= 0 %}
              <div class="cards">
                  <img class="img mb-3" src="{{ asset( 'assets/img/' ~ produit.img) }}" alt="">
                  <a href="{{ path('app_add_panier', {id: produit.id}) }}" class="btn-color">

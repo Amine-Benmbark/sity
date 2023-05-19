@@ -47,6 +47,7 @@ class PanierController extends AbstractController
     {
         $produit = $em->getRepository(Produit::class)->find($id);
         $quantite = $request->request->get('quantite');
+        // $date = $request->request->get('date');
 
         if (null == $quantite) {
             $quantite = 1;
