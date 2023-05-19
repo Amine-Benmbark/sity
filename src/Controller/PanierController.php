@@ -9,6 +9,7 @@ use App\Entity\Produit;
 use App\Repository\ProduitRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -27,12 +28,12 @@ class PanierController extends AbstractController
             $articles = $panier->getArticle();
         }
         $total = 0;
-        // foreach($panier as $id => $quantite){
-        //     $produit = $produitRepository->find($id);
-        //     $total += $produit->getPrix() * $quantite;
-        // }
-    
+        foreach ($articles as $article) {
+            $total += $article->getProduit()->getPrix() * $article->getQuantity();
+        }
+        $session->set('total', $total);
 
+        // return new RedirectResponse($this->generateUrl('app_commande', ['total' => $total]));
         return $this->render(
             'panier/panier.html.twig',
             [
@@ -64,7 +65,6 @@ class PanierController extends AbstractController
         $found = false;
         if (!empty($panier->getArticle())) {
             $articles = $panier->getArticle();
-          //  $prix = $panier->getPrix();
             $total = 0;
             foreach ($articles as $article) {
                 if ($article->getProduit()->getId() === $id) {

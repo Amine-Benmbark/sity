@@ -4,35 +4,22 @@
 
 {% block body %}
     {% block header %}{% endblock %}
-
-    {# {{commande.id}} #}
-    {# {{ dump(commande.getProduits()) }} #}
-    {# {{ dump(commande.getPanier) }} #}
-    {# {{dump(panier)}} #}
-    <table>
-        <thead>
+    <table class="container mb-5">
+        <thead class="mb-5">
             <tr>
-                <th>Nom</th>
-                <th>Prix</th>
+                <th class="m-5">Nom</th>
+                <th class="m-5">Prix</th>
+                <th class="m-5">Description</th>
+                <th class="m-5">Image</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="mt-5">
             {% for produit in produitsId %}
-     <img  src="{{ asset('assets/img/' ~ produits[produit.produit.id].img)}}" alt="ffff"/>
                 <tr>
-                    {# <td>{{ produit.getName() }}</td>
-                    <td>{{ produit.getPrix() }}</td> #}
-                    <td>
-                    {{produit.produit.name}}
-                    {{produit.produit.prix}}
-                    {{produit.produit.description}}
-                    <td>
-                    </td>
-                    {# {{produit.produit.name}} #}
-                    {# <pre>
-                        {{ dump( produit.produit.name  ) }}
-                    </pre>
-                    #}
+                    <td>{{produit.produit.name}}</td>
+                    <td>{{produit.produit.prix}}€</td>
+                    <td>{{produit.produit.description}}</td>
+                    <td> <img  src="{{ asset('assets/img/' ~ produits[produit.produit.id].img)}}" alt="ffff"/></td>
                     </td>
                 </tr>
             {% else %}
@@ -41,6 +28,17 @@
                 </tr>
             {% endfor %}
         </tbody>
+        {# <td>Total: {{produit.produit.total}}</td> #}
+        <td>Total: {{total}}€ </td>
+        <td>
+            <button class="btn m-auto" href=" {{ path('app_stripe') }} ">
+                <a class="btn btn-order --beige" href=" {{ path('app_stripe') }} ">Passer au paiement</a>
+            </button>
+        </td>
+        <td>
+            <button class="btn m-auto" href=" {{ path('app_panier') }} ">
+                <a class="btn btn-order --beige" href=" {{ path('app_panier') }} ">Changer votre commandes</a>
+            </button>
+        </td>
     </table>
-
 {% endblock %}

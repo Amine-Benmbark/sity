@@ -67,6 +67,11 @@ app_edit_produit:
     controller: App\Controller\ProduitController::edit
     methods: GET
 
+app_supp_produit:
+    path: /admin/produit/supp/{id}
+    controller: App\Controller\ProduitController::delete
+    methods: GET
+
 app_users:
     path: /admin/user
     controller: App\Controller\admin\UserController::index

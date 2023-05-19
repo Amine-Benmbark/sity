@@ -55,7 +55,7 @@ class ProduitController extends ControllerAbstractController
         $formproduit->handleRequest($request);
         // dd($formproduit);
         if($formproduit->isSubmitted() && $formproduit->isValid()){
-            $prix = $produit->getPrix() * 100;
+            $prix = $produit->getPrix() * 2;
             $produit->setPrix($prix);
 
             $imgFile = $formproduit->get('img')->getData();
@@ -73,14 +73,6 @@ class ProduitController extends ControllerAbstractController
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
                 }
-
-                    // $imgFile = $formproduit->get('img')->getData();
-                    // if ($imgFile) {
-                    //     $imgFileName = $fileUploader->upload($imgFile);
-                    //     $produit->setimg($imgFileName);
-                    // }
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
                 $produit->setImg($newFilename);
             }
 
@@ -147,9 +139,15 @@ class ProduitController extends ControllerAbstractController
     }
 
     #[Route('/supp/{id}', name:'delete')]
-    public function delete(Produit $produit): Response
+    public function delete(Produit $produit, EntityManagerInterface $em): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        return $this->render('admin/produit/produit.html.twig');
+        
+         $em->remove($produit);
+         $em->flush();
+
+        $this->addFlash('success', 'Produit supprimé');
+
+        return $this->redirectToRoute('admin_produitadd');
     }
 }

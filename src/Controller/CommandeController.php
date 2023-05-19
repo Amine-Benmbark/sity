@@ -10,12 +10,13 @@ use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CommandeController extends AbstractController
 {
     #[Route('/commande', name: 'app_commande')]
-    public function index(EntityManagerInterface $em): Response
+    public function index(EntityManagerInterface $em,SessionInterface $session): Response
     {
         $user = $this->getUser();
         $commande = new Commande();
@@ -34,14 +35,14 @@ class CommandeController extends AbstractController
         }
         $em->persist($commande);
         $em->flush();
-        // dd($commande);
-        // dd($commande->getProduits());
+        $total = $session->get('total');
+
         return $this->render('commande/index.html.twig', [
             'commande' => $commande,
             'panier' => $panier,
             'produitsId'=>$produitsId,
             'produits' => $produits,
-            // 'produits' => $commande->getProduit(),
+            'total' => $total,
         ]);
     }
 }
