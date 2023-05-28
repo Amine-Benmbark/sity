@@ -108,7 +108,7 @@ app_vitrine:
 
 app_sur_mesure:
     path: /sur_mesure
-    controller: App\Controller\SurMesureController::sur_mesure
+    controller: App\Controller\SurMesureController::surMesure
     methods: GET
 
 app_logo:

@@ -2,26 +2,36 @@
 
 namespace App\Controller;
 
+use App\Entity\Categorie;
+use App\Entity\Produit;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\Helpers;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
 
 class ECommerceController extends AbstractController
 {
-    public function ecommerce(Helpers $app): Response
+    private $manager;
+    public function __construct(Helpers $app, ManagerRegistry $doctrine, EntityManagerInterface $entityManager)
     {
-        return $this->render('home/ecommerce.html.twig', [
-            // 'controller_name' => 'ECommerceController',
-            'bodyId' => $app->getBodyId('ECOMMERCE_PAGE'),
-            'img_carousel' => [
-                '1' => 'assets/img_carousel/2338290.jpg',
-                '2' => 'assets/img_carousel/2593044.jpg',
-                '3' => 'assets/img_carousel/vitrine.jfif',
-                '4' => 'assets/img_carousel/img4.jfif',
-                '5' => 'assets/img_carousel/Image e-commerce mobile.jfif',
-                '6' => 'assets/img_carousel/img6.jfif',
-                ],
+        $this->manager = $doctrine->getManager();
+
+    }
+
+    #[Route('/ecommerce', name: 'app_ecommerce')]
+    public function ecommerce(): Response
+    {
+        $categorieId = 9;
+        $produit = $this->manager->getRepository(Produit::class)->findBy([
+            'categorie' => $categorieId,
+        ]);
+        $categorie = $this->manager->getRepository(Categorie::class)->findAll();
+
+        return $this->render('e-commerce/ecommerce.html.twig', [
+            'produit' => $produit,
+            'categorie' => $categorie,
         ]);
     }
 }
