@@ -24,7 +24,7 @@
             <p id="service_price">{{ produit.prix }}€</p>
             {% if produit.categorie.name == 'Vitrine' %}
                 <a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
-            {% elseif produit.categorie.name == 'Sur Mesure' %}
+            {% elseif produit.categorie.name == 'Sur-mesure' %}
                 <a href="{{ path('app_sur_mesure') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
              {% else %}
                 <a href="{{ path('app_ecommerce') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>

@@ -14,8 +14,16 @@ class ProfilController extends AbstractController
     #[Route('/profil', name: 'app_profil')]
     public function profil(): Response
     {
+        $panier = $this->getUser()->getPanier();
+        if (null === $panier) {
+            $articles = [];
+        } else {
+            $articles = $panier->getArticle();
+        }
+
         return $this->render('profil/profil.html.twig', [
             'controller_name' => 'ProfilController',
+            'articles' => $articles,
         ]);
     }
 

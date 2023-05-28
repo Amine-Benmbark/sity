@@ -55,7 +55,7 @@ class ProduitController extends ControllerAbstractController
         $formproduit->handleRequest($request);
         // dd($formproduit);
         if($formproduit->isSubmitted() && $formproduit->isValid()){
-            $prix = $produit->getPrix() * 100;
+            $prix = $produit->getPrix() * 2;
             $produit->setPrix($prix);
 
             $imgFile = $formproduit->get('img')->getData();
@@ -73,15 +73,7 @@ class ProduitController extends ControllerAbstractController
                 } catch (FileException $e) {
                     // ... handle exception if something happens during file upload
                 }
-
-                    // $imgFile = $formproduit->get('img')->getData();
-                    // if ($imgFile) {
-                    //     $imgFileName = $fileUploader->upload($imgFile);
-                    //     $produit->setimg($imgFileName);
-                    // }
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
-                $produit->setimg($newFilename);
+                $produit->setImg($newFilename);
             }
 
             $em->persist($produit);
@@ -101,7 +93,7 @@ class ProduitController extends ControllerAbstractController
 
     
     #[Route('/edition/{id}', name:'edit')]
-    public function edit(Produit $produit, Request $request, EntityManagerInterface $em): Response
+    public function edit(Produit $produit, Request $request, SluggerInterface $slugger, EntityManagerInterface $em): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
@@ -115,6 +107,23 @@ class ProduitController extends ControllerAbstractController
         if($formproduit->isSubmitted() && $formproduit->isValid()){
             $prix = $produit->getPrix() * 100;
             $produit->setPrix($prix);
+            $imgFile = $formproduit->get('img')->getData();
+            if ($imgFile) {
+                $originalFilename = pathinfo($imgFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$imgFile->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $imgFile->move(
+                        $this->getParameter('img_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+                $produit->setImg($newFilename);
+                    }
 
             $em->persist($produit);
             $em->flush();
@@ -130,9 +139,15 @@ class ProduitController extends ControllerAbstractController
     }
 
     #[Route('/supp/{id}', name:'delete')]
-    public function delete(Produit $produit): Response
+    public function delete(Produit $produit, EntityManagerInterface $em): Response
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
-        return $this->render('admin/produit/produit.html.twig');
+        
+         $em->remove($produit);
+         $em->flush();
+
+        $this->addFlash('success', 'Produit supprimé');
+
+        return $this->redirectToRoute('admin_produitadd');
     }
 }
