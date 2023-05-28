@@ -6,78 +6,68 @@
 
 <section id="cards" class="col-12 row">
 
-    <div class="row">
-     {# {% set i = 0 %} #}
-         {% for produit in produit %}
-            {# {% if i < 3 %} #}
-        <div class="card col-4 m-5" id="card_service" style="width: 18rem;">
-            {% if produit.categorie.id == 9 %} 
-            <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top mt-3" alt="...">
-            {% elseif produit.categorie.id == 6 %} 
-            <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top mt-3" alt="...">
-            {% else %} 
-            <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top mt-3" alt="...">
-            {% endif %}
-            <div class="card-body" id="card_service">
-            <h5 class="card-title" id="p_cards">{{ produit.name }}</h5>
-            <p class="card-text" id="p_cards">{{ produit.description}}</p>
-            <p id="service_price">{{ produit.prix }}€</p>
-            {% if produit.categorie.name == 'Vitrine' %}
-                <a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
-            {% elseif produit.categorie.name == 'Sur Mesure' %}
-                <a href="{{ path('app_sur_mesure') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
-             {% else %}
-                <a href="{{ path('app_ecommerce') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
-            {% endif %}
-            </div>
-        </div>
-         {# {% set i = i + 1 %} #}
-        {# {% endif %} #}
-        {# <div class="card col-4 m-5" id="card_service"  style="width: 18rem;">
-            <img src=" {{asset('assets/img/chiffre_affaire.jpeg')}}" class="card-img-top  mt-3" alt="...">
-            <div class="card-body" id="card_service">
-            <h5 class="card-title" id="p_cards">{{ produit.name }}</h5>
-            <p class="card-text " id="p_cards">Sity est plutôt pointé vers les créations de site e-commerce</p>
-            <p id="service_price">{{ produit.prix }}€</p>
-            <a href="{{ path('app_vitrine') }}" class="btn btn-color">Site Vitrine</a>
-            </div>
-        </div>
-        <div class="card col-4 m-5" id="card_service" style="width: 18rem;">
-            <img src=" {{asset('assets/img/chiffre_affaire.jpeg')}}" class="card-img-top mt-3" alt="...">
-            <div class="card-body" id="card_service">
-            <h5 class="card-title" id="p_cards">{{ produit.name }}</h5>
-            <p class="card-text" id="p_cards">Sity est plutôt pointé vers les créations de site e-commerce</p>
-            <p id="service_price">Devis par mail ou tél</p>
-            <a href="{{ path('app_sur_mesure') }}" class="btn btn-color">Site sur mesure</a>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="card col-4 m-5" id="card_service" style="width: 18rem;">
-        <img src=" {{asset('assets/img/chiffre_affaire.jpeg')}}" class="card-img-top  mt-3" alt="...">
-        <div class="card-body" id="card_service">
-            <h5 class="card-title" id="p_cards">Site e-commerce</h5>
-            <p class="card-text" id="p_cards">Sity est plutôt pointé vers les créations de site e-commerce</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-        </div>
-        <div class="card col-4 m-5" id="card_service" style="width: 18rem;">
-        <img src=" {{asset('assets/img/chiffre_affaire.jpeg')}}" class="card-img-top  mt-3" alt="...">
-        <div class="card-body" id="card_service">
-            <h5 class="card-title" id="p_cards">Site e-commerce</h5>
-            <p class="card-text" id="p_cards">Sity est plutôt pointé vers les créations de site e-commerce</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-        </div>
-        <div class="card col-4 m-5" id="card_service" style="width: 18rem;">
-        <img src=" {{asset('assets/img/chiffre_affaire.jpeg')}}" class="card-img-top  mt-3" alt="...">
-        <div class="card-body" id="card_service">
-            <h5 class="card-title" id="p_cards">Site e-commerce</h5>
-            <p class="card-text" id="p_cards">Sity est plutôt pointé vers les créations de site e-commerce</p>
-            <p id="service_price"></p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div> #}
-        {# </div> #}
-         {% endfor %}
-    </div>
+
+	<div class="row">
+		{% set i = 0 %}
+		{% set s = 0 %}
+		{% set e = 0 %}
+		{% for produit in produit %}
+			{# {% if i < 3 %} #}
+			{% if produit.categorie.id == 9 %}
+				{% if i < 3 %}
+					<div class="card col-4 m-5" id="card_service" style="width: 18rem;">
+						<img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top mt-3" alt="...">
+						<div class="card-body" id="card_service">
+							<h5 class="card-title" id="p_cards">{{ produit.name }}</h5>
+							<p class="card-text" id="p_cards">{{ produit.description}}</p>
+							<p id="service_price">{{ produit.prix }}€</p>
+							{% if produit.categorie.name == 'Vitrine' %}
+								<a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+							{% elseif produit.categorie.name == 'Sur-mesure' %}
+								<a href="{{ path('app_sur_mesure') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+							{% else %}
+								<a href="{{ path('app_ecommerce') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+							{% endif %}
+							{% set i = i + 1 %}
+						{% endif %}
+					{% elseif produit.categorie.id == 6 %}
+						{% if e < 3 %}
+							<div class="card col-4 m-5" id="card_service" style="width: 18rem;">
+								<img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top mt-3" alt="...">
+								<div class="card-body" id="card_service">
+									<h5 class="card-title" id="p_cards">{{ produit.name }}</h5>
+									<p class="card-text" id="p_cards">{{ produit.description}}</p>
+									<p id="service_price">{{ produit.prix }}€</p>
+									{% if produit.categorie.name == 'Vitrine' %}
+										<a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+									{% elseif produit.categorie.name == 'Sur-mesure' %}
+										<a href="{{ path('app_sur_mesure') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+									{% else %}
+										<a href="{{ path('app_ecommerce') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+									{% endif %}
+									{% set e = e + 1 %}
+								{% endif %}
+							{% else %}
+								{% if s < 3 %}
+									<div class="card col-4 m-5" id="card_service" style="width: 18rem;">
+										<img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top mt-3" alt="...">
+										<div class="card-body" id="card_service">
+											<h5 class="card-title" id="p_cards">{{ produit.name }}</h5>
+											<p class="card-text" id="p_cards">{{ produit.description}}</p>
+											<p id="service_price">{{ produit.prix }}€</p>
+											{% if produit.categorie.name == 'Vitrine' %}
+												<a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+											{% elseif produit.categorie.name == 'Sur-mesure' %}
+												<a href="{{ path('app_sur_mesure') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+											{% else %}
+												<a href="{{ path('app_ecommerce') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+											{% endif %}
+											{% set s = s + 1 %}
+										{% endif %}
+									{% endif %}
+						</div>
+					</div>
+						{% endfor %}
+	</div>
+
 </section>
