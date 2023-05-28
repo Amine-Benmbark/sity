@@ -22,6 +22,10 @@ class Commande
     #[ORM\ManyToMany(targetEntity: Produit::class, mappedBy: 'commande')]
     private Collection $produits;
 
+    #[ORM\ManyToOne(targetEntity: User::class)]
+    #[ORM\JoinColumn(name: "user_id", referencedColumnName: "id")]
+    private $user;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
@@ -67,6 +71,18 @@ class Commande
         if ($this->produits->removeElement($produit)) {
             $produit->removeCommande($this);
         }
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

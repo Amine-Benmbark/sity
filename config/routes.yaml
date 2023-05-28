@@ -16,15 +16,24 @@ app_home:
 #     methods: GET|POST
 
 #Page statiques
+app_register:
+    path: /register
+    controller: App\Controller\RegistrationController::register
 
 # app_inscription:
 #     path: /inscription
 #     controller: App\Controller\SController::inscription
 #     methods: GET
 
-app_register:
-    path: /register
-    controller: App\Controller\RegistrationController::register
+app_politiqueconfidentialite:
+    path: /polititiqueconfidentialite
+    controller: App\Controller\StaticController::politiqueConfidentialite
+    methods: GET
+
+app_cgv:
+    path: /cgv
+    controller: App\Controller\StaticController::cgv
+    methods: GET
 
 app_verify_email:
     path: /verify/email
@@ -65,6 +74,11 @@ app_add_produit:
 app_edit_produit:
     path: /admin/produit/edition/{id}
     controller: App\Controller\ProduitController::edit
+    methods: GET
+
+app_supp_produit:
+    path: /admin/produit/supp/{id}
+    controller: App\Controller\ProduitController::delete
     methods: GET
 
 app_users:
