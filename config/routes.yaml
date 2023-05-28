@@ -16,15 +16,24 @@ app_home:
 #     methods: GET|POST
 
 #Page statiques
+app_register:
+    path: /register
+    controller: App\Controller\RegistrationController::register
 
 # app_inscription:
 #     path: /inscription
 #     controller: App\Controller\SController::inscription
 #     methods: GET
 
-app_register:
-    path: /register
-    controller: App\Controller\RegistrationController::register
+app_politiqueconfidentialite:
+    path: /polititiqueconfidentialite
+    controller: App\Controller\StaticController::politiqueConfidentialite
+    methods: GET
+
+app_cgv:
+    path: /cgv
+    controller: App\Controller\StaticController::cgv
+    methods: GET
 
 app_verify_email:
     path: /verify/email
@@ -99,7 +108,7 @@ app_vitrine:
 
 app_sur_mesure:
     path: /sur_mesure
-    controller: App\Controller\SurMesureController::sur_mesure
+    controller: App\Controller\SurMesureController::surMesure
     methods: GET
 
 app_logo:
