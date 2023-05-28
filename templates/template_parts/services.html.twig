@@ -1,10 +1,10 @@
 <section class="col-12" id="section_list">
-    <h2 class="mb-5">Nos Services</h2>
-    <p id="service_list" class="col-12 text-center">Sity gère toutes les demandes digitales demandées: Conception, création de site internet, UX design, UI design, SEO, maintenance, refonte, migration et web marketing, logo.
-    </p>
+	<h2 class="mb-5">Nos Services</h2>
+	<p id="service_list" class="col-12 text-center">Sity gère toutes les demandes digitales demandées: Conception, création de site internet, UX design, UI design, SEO, maintenance, refonte, migration et web marketing, logo.
+	</p>
 </section>
 
-<section id="cards" class="col-12 row-2">
+<section id="cards" class="col-12 row">
 
     <div class="row">
      {# {% set i = 0 %} #}
@@ -24,7 +24,7 @@
             <p id="service_price">{{ produit.prix }}€</p>
             {% if produit.categorie.name == 'Vitrine' %}
                 <a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
-            {% elseif produit.categorie.name == 'Sur-mesure' %}
+            {% elseif produit.categorie.name == 'Sur Mesure' %}
                 <a href="{{ path('app_sur_mesure') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
              {% else %}
                 <a href="{{ path('app_ecommerce') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>

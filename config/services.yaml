@@ -18,6 +18,8 @@ parameters:
     PANIER_PAGE: "panier"
     LEGAL_PAGE: "mentions"
     COOKIE_PAGE: "cookies"
+    Confidentialite_PAGE: "confidentialite"
+    CGV_PAGE: "cgv"
     INSCRIPTION_PAGE: "inscription"
     CONNEXION_PAGE: "connexion"
     ORDER_CONFIRMATION: 'ORDER_CONFIRMATION'
