@@ -34,7 +34,11 @@
         <header>
             {% block header%}
     <h1>Sity vous accompagne dans l'apogée de votre projet !!</h1>
+    <div class="d-none d-sm-block">
     {% include './template_parts/carousel.html.twig' %}
+    </div>
+    {% include './template_parts/card.html.twig' %}
+
     {# <div class="caroussel mb-5">
          <div class="caroussel-cards mb-5">
              <div class="cards">
@@ -75,7 +79,7 @@
                 {% include './template_parts/chiffre_affaire.html.twig' %}
                 {% include './template_parts/nous.html.twig' %}
                 {% include './template_parts/services.html.twig' %}
-                <p class="lorem">
+                <p class="merriweather">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, iure autem doloribus ipsam aliquam tenetur perspiciatis cupiditate provident distinctio illo quisquam voluptatum sint fugiat doloremque itaque pariatur vitae. Omnis minus necessitatibus a fuga incidunt maxime, nulla recusandae ad dolorum odio voluptatem. Sint placeat, ipsa inventore iure aut in ea libero. Rem, sequi aspernatur nesciunt ipsa, velit similique cumque ad error id, pariatur qui deserunt perferendis eveniet. Explicabo tenetur fuga facere, perspiciatis esse quaerat fugiat eos veritatis quidem velit minus. Rem voluptates dignissimos accusantium quod? Accusamus unde ipsum, aperiam voluptate rem laudantium magnam nesciunt, totam soluta esse exercitationem, harum earum eius!
                 </p>
             {% endblock %}

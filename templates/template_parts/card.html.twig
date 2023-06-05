@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    {% for img in img_carousel %}
+      <div class="col-lg-4 col-md-6">
+        <div class="card m-3" style="width: 18rem;">
+          <img class="img mb-3" src="{{ asset(img) }}" alt="">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="m-auto merriweather " id="NomSite">Site e-commerce</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+ 

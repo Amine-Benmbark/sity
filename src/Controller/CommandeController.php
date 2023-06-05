@@ -21,9 +21,9 @@ class CommandeController extends AbstractController
         $user = $this->getUser();
         $commande = new Commande();
         $commande->setUser($user);
-        // $panier = $user->getPanier();
+       
         $panier = $em->find(Panier::class, $user->getId());
-// dd( $panier);
+        // dd( $panier);
         $produitsId = $em->getRepository(PanierProduit::class)->findBy(['panier'=>$panier]);
         // dd($produits);
         $produits =$em->getRepository(Produit::class)->findAll();
@@ -33,6 +33,7 @@ class CommandeController extends AbstractController
             $produit = $panierProduit->getProduits();
             $commande->addProduit($produit);
         }
+        dd($commande);
         $em->persist($commande);
         $em->flush();
         $total = $session->get('total');

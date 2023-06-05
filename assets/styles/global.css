@@ -5,6 +5,42 @@
     font-family: 'Merriweather', serif;
 }
 
+
+/* Extra Small Devices (portrait phones, less than 576px) */
+@media only screen and (max-width: 575px) {
+    .merriweather {
+      font-size: 14px;
+    }
+  }
+
+  /* Small Devices (landscape phones, 576px and up) */
+  @media only screen and (min-width: 576px) {
+    .merriweather {
+      font-size: 16px;
+    }
+  }
+
+  /* Medium Devices (tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    .merriweather {
+      font-size: 18px;
+    }
+  }
+
+  /* Large Devices (desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    .merriweather {
+      font-size: 20px;
+    }
+  }
+
+  /* Extra Large Devices (large desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    .merriweather {
+      font-size: 22px;
+    }
+  }
+
 :root{
  --bg :  linear-gradient(180deg, #023459 0%, #1e646e 100%);
  --beige: #B2A59F;
