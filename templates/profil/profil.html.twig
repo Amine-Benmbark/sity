@@ -19,10 +19,10 @@
             <tr>
                 <th scope="row">1</th>
                     <td>{{ app.user.email }}</td>
-                    <td>{{ app.user.password }}</td>
+                    {# <td>{{ app.user.password }}</td> #}
                     <td>
                         <a href="{{ path('users_profil_modifier') }}" type="button" class="btn btn-success">Edit</a>
-                        <button type="button" class="btn btn-danger">Delete</button>
+                        <a href="{{ path('users_profil_delete', {'id': app.user.id}) }}" type="button" class="btn btn-danger">Supprimer</a>
                     </td>
                     {# <td>@mdo</td> #}
             </tr>

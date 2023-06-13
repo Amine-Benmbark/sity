@@ -18,6 +18,7 @@ class CommandeController extends AbstractController
     #[Route('/commande', name: 'app_commande')]
     public function index(EntityManagerInterface $em,SessionInterface $session): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $user = $this->getUser();
         $commande = new Commande();
         $commande->setUser($user);

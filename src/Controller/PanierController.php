@@ -21,6 +21,7 @@ class PanierController extends AbstractController
     public function panier(SessionInterface $session, ProduitRepository $produitRepository): Response
     {
 
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $panier = $this->getUser()->getPanier();
         if (null === $panier) {
             $articles = [];

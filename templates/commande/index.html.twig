@@ -19,7 +19,7 @@
                     <td>{{produit.produit.name}}</td>
                     <td>{{produit.produit.prix}}€</td>
                     <td>{{produit.produit.description}}</td>
-                    <td> <img  src="{{ asset('assets/img/' ~ produits[produit.produit.id].img)}}" alt="ffff"/></td>
+                    <td> <img  src="{{ asset('assets/img/' ~ produit.produit.img)}}" alt="ffff"/></td>
                     </td>
                 </tr>
             {% else %}
@@ -29,7 +29,7 @@
             {% endfor %}
         </tbody>
         {# <td>Total: {{produit.produit.total}}</td> #}
-        <td>Total: {{total}}€ </td>
+        <td>Total: {{total}}€</td>
         <td>
             <button class="btn m-auto" href=" {{ path('app_stripe') }} ">
                 <a class="btn btn-order --beige" href=" {{ path('app_stripe') }} ">Passer au paiement</a>

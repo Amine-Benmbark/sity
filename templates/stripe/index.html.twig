@@ -12,8 +12,8 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-4">
-          <div class="card">
-            <div class="card-body">
+          <div>
+            <div>
               {% for message in app.flashes('success') %}
                 <div style="color: green; border: 2px green solid; text-align: center; padding: 5px;margin-bottom: 10px;">
                   {{ message }}
@@ -22,11 +22,11 @@
 
               <form id='checkout-form' method='post' action="{{ path('app_stripe_charge') }}">
                 <input type='hidden' name='stripeToken' id='stripe-token-id'>
-                <label for="card-element" class="mb-5">Checkout Forms</label>
+                <label for="card-element" class="mb-5">Entrez vos coordonnées bancaires:</label>
                 <br>
-                <div id="card-element" class="form-control"></div> //////ll
-                <button id='pay-btn' class="btn btn-success mt-3" type="button" style="margin-top: 20px; width: 100%;padding: 7px;" onclick="createToken()">Payer
-                  {{ orderTotal }}€
+                <div id="card-element" class="form-control input-color"></div>
+                <button id='pay-btn' class="btn btn-order mt-3 ml-5" type="button" onclick="createToken()">Payer
+                  {{ total }}€
                 </button>
                 <form></div>
               </div>

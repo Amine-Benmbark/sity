@@ -18,24 +18,16 @@ use Doctrine\Persistence\ManagerRegistry;
 
 use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\RequestStack;
-
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class StripeController extends AbstractController
-
 {
-
     private string $bodyId;
-
     private $app;
-
     private $db;
-
     private $userInfo;
-
     private $cartCount;
-
     private $session;
-
 
     public function __construct(Security $security, ManagerRegistry $doctrine,  AppHelpers $app, RequestStack $requestStack) {
         $this->app = $app;
@@ -49,7 +41,8 @@ class StripeController extends AbstractController
         $this->session->set('orderTotal', 52.6);
     }
 
-    public function index(): Response {
+    public function index(Session $session): Response {
+        $total = $session->get('total');
 
         return $this->render('stripe/index.html.twig', [
             'clef_stripe' => $_ENV["STRIPE_KEY"],
@@ -57,6 +50,7 @@ class StripeController extends AbstractController
             'cartCount' => $this->cartCount,
             'userInfo' => $this->userInfo,
             'orderTotal' => $this->session->get('orderTotal'),
+            'total' => $total,
         ]);
     }
 
@@ -77,39 +71,29 @@ class StripeController extends AbstractController
         return $this->redirectToRoute('app_stripe_success', [], Response::HTTP_SEE_OTHER);
     }
 
-    public function orderConfirmation(): Response
+    public function orderConfirmation(Session $session): Response {
 
-    {
+        $total = $session->get('total');
 
         return $this->render('stripe/order_confirmation.html.twig', [
-
-            // 'bodyId' => $this->bodyId,
-
             'cartCount' => $this->cartCount,
-
             'userInfo' => $this->userInfo,
-
-            'orderTotal' => $this->session->get('orderTotal'),
-
+            'total' => $total,
         ]);
 
     }
 
 
-    public function paymentFailure(Request $request): Response
+    public function paymentFailure(Request $request, Session $session): Response {
 
-    {
-
+        $total = $session->get('total');
         $error = $request->get('error');
 
         return $this->render('stripe/payment_failure.html.twig', [
-
-            // 'bodyId' => $this->bodyId,
             'cartCount' => $this->cartCount,
-
             'userInfo' => $this->userInfo,
-            'orderTotal' => $this->session->get('orderTotal'),
             'error' => $error,
+            'total' => $total,
         ]);
     }
 }

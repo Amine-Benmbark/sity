@@ -8,7 +8,17 @@
     
     <h1>Modifier mes coordonnées</h1>
     
-    {{ form_start(form) }}
-    {{ form_end(form) }}
+    <div>
+        <div>
+            <p>Email</p>
+            {{ form_widget(form.email, {'attr': {'class': 'input-color'}}) }}
+        </div>
+        <div>
+            <p>Password:</p>
+            {{ form_widget(form.password, {'attr': {'class': 'input-color'}}) }}
+        </div>
+    </div>
+    {# {{ form_end(form, {'attr': {'class': 'btn'}}) }} #}
+    {{ form_widget(form.Valider, {'attr': {'class': 'btn btn-order mt-3 mb-5 ml-5'}}) }}
 
 {% endblock %}
