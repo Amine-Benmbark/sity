@@ -34,7 +34,7 @@ class CommandeController extends AbstractController
             $produit = $panierProduit->getProduits();
             $commande->addProduit($produit);
         }
-        dd($commande);
+        // dd($commande);
         $em->persist($commande);
         $em->flush();
         $total = $session->get('total');

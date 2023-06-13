@@ -24,7 +24,7 @@ class VitrineController extends AbstractController
     #[Route('/vitrine', name: 'app_vitrine')]
     public function vitrine(): Response
     {
-        $categorieId = 6;
+        $categorieId = 2;
         $produit = $this->manager->getRepository(Produit::class)->findBy([
             'categorie' => $categorieId,
         ]);

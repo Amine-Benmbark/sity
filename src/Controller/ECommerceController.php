@@ -23,7 +23,7 @@ class ECommerceController extends AbstractController
     #[Route('/ecommerce', name: 'app_ecommerce')]
     public function ecommerce(): Response
     {
-        $categorieId = 9;
+        $categorieId = 2;
         $produit = $this->manager->getRepository(Produit::class)->findBy([
             'categorie' => $categorieId,
         ]);

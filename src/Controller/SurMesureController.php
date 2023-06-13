@@ -23,7 +23,7 @@ class SurMesureController extends AbstractController
     #[Route('/sur/mesure', name: 'app_sur_mesure')]
     public function surMesure(): Response
     {
-        $categorieId = 7;
+        $categorieId = 3;
         $produit = $this->manager->getRepository(Produit::class)->findBy([
             'categorie' => $categorieId,
         ]);
