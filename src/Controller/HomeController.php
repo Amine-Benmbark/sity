@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Service\AppHelpers;
 use App\Controller\Produit;
+use App\Entity\Categorie as EntityCategorie;
 use App\Entity\Produit as EntityProduit;
 use App\Service\Helpers;
 use Doctrine\ORM\EntityManagerInterface;
@@ -26,6 +27,8 @@ class HomeController extends AbstractController
     public function index(Helpers $app): Response
     {
         // dump($this->app->getUser()); exit();
+        $categorie = $this->manager->getRepository(EntityCategorie::class)->findAll();
+        
         $produit = $this->manager->getRepository(EntityProduit::class)->findAll();
         return $this->render('home/index.html.twig', [
            'bodyId' => $app->getBodyId('HOME_PAGE'),
@@ -39,6 +42,7 @@ class HomeController extends AbstractController
             '6' => 'assets/img_carousel/img6.jfif',
             ],
             'produit' => $produit,
+            'categorie' => $categorie,
         ]);
     }
 }

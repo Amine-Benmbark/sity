@@ -1,16 +1,104 @@
 <div class="container">
   <div class="row">
-    {% for img in img_carousel %}
+   {% set e = 0 %}
+   {% set v = 0 %}
+   {% set s = 0 %}
+   {% set a = 0 %}
+   {% set p = 0 %}
+   {% set l = 0 %}
+    {% for produit in produit %}
+      {% if produit.categorie.name == 'Ecommerce' %}
+        {% if e < 1 %}
       <div class="col-lg-4 col-md-6">
         <div class="card m-3" style="width: 18rem;">
-          <img class="img mb-3" src="{{ asset(img) }}" alt="">
+          <img class="img mb-3" src="{{ asset( 'assets/img/' ~ produit.img) }}" alt="">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="m-auto merriweather " id="NomSite">Site e-commerce</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+            <h5 class="card-title">{{ produit.categorie.name }}</h5>
+            {# <p class="card-text merriweather" id="p_cards">{{ produit.description}}</p> #}
+            {# <p class="m-auto merriweather " id="service_price"{{ produit.name }}€</p> #}
+            <a href="{{ path('app_ecommerce') }}" class="btn btn-color">{{ 'Site ' ~ produit.categorie.name }}</a>
           </div>
         </div>
       </div>
+      {% set e = e + 1 %}
+      {% endif %}
+      {% elseif produit.categorie.name == 'Vitrine' %}
+             {% if v < 1 %}
+             <div class="col-lg-4 col-md-6">
+        <div class="card m-3" style="width: 18rem;">
+          <img class="img mb-3" src="{{ asset( 'assets/img/' ~ produit.img) }}" alt="">
+          <div class="card-body">
+            <h5 class="card-title">{{ produit.categorie.name }}</h5>
+            {# <p class="card-text merriweather" id="p_cards">{{ produit.description}}</p> #}
+            {# <p class="m-auto merriweather " id="service_price"{{ produit.name }}€</p> #}
+            <a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'Site ' ~ produit.categorie.name }}</a>
+          </div>
+        </div>
+      </div>
+      {% set e = e + 1 %}
+      {% endif %}
+      {% elseif produit.categorie.name == 'Sur-mesure' %}
+             {% if s < 1 %}
+             <div class="col-lg-4 col-md-6">
+        <div class="card m-3" style="width: 18rem;">
+          <img class="img mb-3" src="{{ asset( 'assets/img/' ~ produit.img) }}" alt="">
+          <div class="card-body">
+            <h5 class="card-title">{{ produit.categorie.name }}</h5>
+            {# <p class="card-text merriweather" id="p_cards">{{ produit.description}}</p> #}
+            {# <p class="m-auto merriweather " id="service_price"{{ produit.name }}€</p> #}
+            <a href="{{ path('app_sur_mesure') }}" class="btn btn-color">{{ 'Site ' ~ produit.categorie.name }}</a>
+          </div>
+        </div>
+      </div>
+      {% set s = s + 1 %}
+      {% endif %}
+      {% elseif produit.categorie.name == 'App-mobile' %}
+             {% if a < 1 %}
+             <div class="col-lg-4 col-md-6">
+        <div class="card m-3" style="width: 18rem;">
+          <img class="img mb-3" src="{{ asset( 'assets/img/' ~ produit.img) }}" alt="">
+          <div class="card-body">
+            <h5 class="card-title">{{ produit.categorie.name }}</h5>
+            {# <p class="card-text merriweather" id="p_cards">{{ produit.description}}</p> #}
+            {# <p class="m-auto merriweather " id="service_price"{{ produit.name }}€</p> #}
+            <a href="#" class="btn btn-color">{{ 'Votre ' ~ produit.categorie.name }}</a>
+          </div>
+        </div>
+      </div>
+      {% set a = a + 1 %}
+      {% endif %}
+      {% elseif produit.categorie.name == 'Logo' %}
+             {% if l < 1 %}
+             <div class="col-lg-4 col-md-6">
+        <div class="card m-3" style="width: 18rem;">
+          <img class="img mb-3" src="{{ asset( 'assets/img/' ~ produit.img) }}" alt="">
+          <div class="card-body">
+            <h5 class="card-title">{{ produit.categorie.name }}</h5>
+            {# <p class="card-text merriweather" id="p_cards">{{ produit.description}}</p> #}
+            {# <p class="m-auto merriweather " id="service_price"{{ produit.name }}€</p> #}
+            <a href="#" class="btn btn-color">{{ 'Votre ' ~ produit.categorie.name }}</a>
+          </div>
+        </div>
+      </div>
+      {% set l = l + 1 %}
+      {% endif %}
+      {% elseif produit.categorie.name == 'Pub' %}
+             {% if p < 1 %}
+             <div class="col-lg-4 col-md-6">
+        <div class="card m-3" style="width: 18rem;">
+          <img class="img mb-3" src="{{ asset( 'assets/img/' ~ produit.img) }}" alt="">
+          <div class="card-body">
+            <h5 class="card-title">{{ produit.categorie.name }}</h5>
+            {# <p class="card-text merriweather" id="p_cards">{{ produit.description}}</p> #}
+            {# <p class="m-auto merriweather " id="service_price"{{ produit.name }}€</p> #}
+            <a href="#" class="btn btn-color">{{ 'Votre ' ~ produit.categorie.name }}</a>
+          </div>
+        </div>
+      </div>
+      {% set p = p + 1 %}
+      {% endif %}
+      
+      {% endif %}
     {% endfor %}
   </div>
 </div>
