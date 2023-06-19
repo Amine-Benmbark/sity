@@ -1,16 +1,14 @@
 <div class="caroussel mb-5">
     <div class="caroussel-cards mb-5">
-            {# {% set i = 0 %} #}
              {% for produit in produit %}
-                 {# {% if i >= 3 %} #}
+                 {% if produit.categorie.name == 'Sur-mesure' %}
              <div class="cards">
                  <img class="img mb-3" src="{{ asset( 'assets/img/' ~ produit.img) }}" alt="">
                  <a href="{{ path('app_add_panier', {id: produit.id}) }}" class="btn-color">
                     <p class="m-auto" id="NomSite">Ajouter au panier</p>
                  </a>
              </div>
-              {# {% endif %} #}
-                {# {% set i = i + 1 %} #}
+              {% endif %}
                   {% endfor %}
     </div>
     <div class="control_caroussel mt-4">

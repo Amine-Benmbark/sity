@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}  Modifier categorie{% endblock %}
+
+{% block body %}
+
+    {% block header %} {% endblock %}
+    <h1>Modifier categorie</h1>
+    {% include "admin/categorie/_formcategorie.html.twig"  with { 'button_label':'Modifier' } %}
+{% endblock %}

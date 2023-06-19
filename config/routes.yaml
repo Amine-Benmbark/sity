@@ -81,6 +81,26 @@ app_supp_produit:
     controller: App\Controller\ProduitController::delete
     methods: GET
 
+app_categorie:
+    path: /admin/categorie
+    controller: App\Controller\CategorieController::index
+    methods: GET
+
+app_add_categorie:
+    path: /admin/categorie/ajout
+    controller: App\Controller\categorieController::add
+    methods: GET, POST
+
+app_edit_categorie:
+    path: /admin/categorie/edition/{id}
+    controller: App\Controller\categorieController::edit
+    methods: GET
+
+app_supp_categorie:
+    path: /admin/categorie/supp/{id}
+    controller: App\Controller\categorieController::delete
+    methods: GET
+
 app_users:
     path: /admin/user
     controller: App\Controller\admin\UserController::index

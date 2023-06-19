@@ -18,7 +18,7 @@ class Categorie
     #[ORM\Column(type: 'string', length: 20, nullable: false, options:['collation' => 'utf8_general_ci'])]
     private $name;
 
-    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Produit::class)]
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Produit::class, cascade: ['persist', 'remove'])]
     private Collection $produit;
 
     public function __construct()

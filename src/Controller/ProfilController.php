@@ -47,6 +47,8 @@ class ProfilController extends AbstractController
 
     #[Route('/supp_profil/{id}', name:'users_profil_delete')]
     public function delete(User $user, EntityManagerInterface $em, TokenStorageInterface $tokenStorage): Response {
+      
+        $this->denyAccessUnlessGranted('ROLE_USER');
         $user = $this->getUser();
         $tokenStorage = $tokenStorage;
 

@@ -23,10 +23,7 @@ class ECommerceController extends AbstractController
     #[Route('/ecommerce', name: 'app_ecommerce')]
     public function ecommerce(): Response
     {
-        $categorieId = 2;
-        $produit = $this->manager->getRepository(Produit::class)->findBy([
-            'categorie' => $categorieId,
-        ]);
+        $produit = $this->manager->getRepository(Produit::class)->findAll();
         $categorie = $this->manager->getRepository(Categorie::class)->findAll();
 
         return $this->render('e-commerce/ecommerce.html.twig', [

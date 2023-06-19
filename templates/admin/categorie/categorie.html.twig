@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}  Admin categorie{% endblock %}
+
+{% block body %}
+
+    {% block header %} {% endblock %}
+    <h1>Admin categorie</h1>
+
+    <a class="btn" href="{{ path('app_add_categorie') }}"><p class="p_categorie"> Ajouter un categorie </p></a>
+
+    {% for categorie in categorie %}
+     <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                    <td>{{ categorie.name }}</td>
+                    <td>
+                        <a class="btn" href="{{ path('app_add_categorie') }}"><p class="p_categorie"> Ajouter un categorie </p></a>
+                        <a class="btn" href="{{ path('app_edit_categorie', {'id': categorie.id}) }}"><p class="p_categorie"> Modifier un categorie </p></a>
+                        <a class="btn" href="{{ path('app_supp_categorie', {'id': categorie.id}) }}">><p class="p_categorie"> Supprimer un categorie </p></a>
+                    </td>
+            </tr>
+            
+        </tbody>
+    </table>
+    {% endfor%}
+{% endblock %}

@@ -23,10 +23,8 @@ class SurMesureController extends AbstractController
     #[Route('/sur/mesure', name: 'app_sur_mesure')]
     public function surMesure(): Response
     {
-        $categorieId = 3;
-        $produit = $this->manager->getRepository(Produit::class)->findBy([
-            'categorie' => $categorieId,
-        ]);
+        // $categorieId = 4;
+        $produit = $this->manager->getRepository(Produit::class)->findAll();
         $categorie = $this->manager->getRepository(Categorie::class)->findAll();
 
         return $this->render('sur_mesure/index.html.twig', [
