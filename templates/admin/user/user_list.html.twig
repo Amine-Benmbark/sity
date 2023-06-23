@@ -29,6 +29,8 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.id }}</td>
                     <td>{{ user.password }}</td>
+                    {# <td>{{ produit.categorie.name }}</td> #}
+
                     <td> 
                     <a href="{{ path('app_edit_users', {'id': user.id}) }}"  type="button" class="btn btn-success">Edit</a>
                         <button type="button" class="btn btn-danger">Delete</button>

@@ -3,115 +3,98 @@
 {% block title %}Hello ProfilController!{% endblock %}
 
 {% block body %}
+  {% block header %}{% endblock %}
 
-{% block header %} {% endblock %}
-
+  <div class="container mt-5">
+    <h2 class="mb-4">Mon profil</h2>
     <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Email</th>
-                <th scope="col">mot de passe</th>
-                {# <th scope="col">Handle</th> #}
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                    <td>{{ app.user.email }}</td>
-                    {# <td>{{ app.user.password }}</td> #}
-                    <td>
-                        <a href="{{ path('users_profil_modifier') }}" type="button" class="btn btn-success">Edit</a>
-                        <a href="{{ path('users_profil_delete', {'id': app.user.id}) }}" type="button" class="btn btn-danger">Supprimer</a>
-                    </td>
-                    {# <td>@mdo</td> #}
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                    <td>Jacob</td>
-                    {# <td>Thornton</td> #}
-                    {# <td>@fat</td> #}
-            </tr>
-            {# <tr>
-                <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                </tr> #}
-        </tbody>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Email</th>
+          <th scope="col">Mot de passe</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>{{ app.user.email }}</td>
+          <td>*******</td>
+          <td>
+            <div class="btn-group">
+              <a href="{{ path('users_profil_modifier') }}" type="button" class="btn btn-success">Modifier</a>
+              <a href="{{ path('users_profil_delete', {'id': app.user.id}) }}" type="button" class="btn btn-danger">Supprimer</a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
     </table>
 
+    <h2 class="mt-5">Mon panier</h2>
+    <div class="d-flex mt-3">
+      <a href="{{ path("app_delete_all_panier") }}" class="btn btn-danger me-2">
+        <i class="bi bi-cart-x"></i> Vider le panier
+      </a>
+      <a href="{{ path("app_stripe") }}" class="btn btn-success">
+        <i class="bi bi-cart-plus"></i> Payer
+      </a>
+    </div>
 
-    <h2>Mon panier</h2>
-    <a href="{{ path("app_delete_all_panier") }}" 
-                            class="btn btn-danger">
-                            <i class="bi bi-cart-x"></i>
-                    </a>
-                    <a href="{{ path("app_stripe") }}" 
-                            class="btn btn-success">
-                            <i class="bi bi-cart-plus"></i>
-                    </a>
-
-    <h2>Mes commandes</h2>
+    <h2 class="mt-5">Mes commandes</h2>
 
     <table class="table">
-		<thead>
-			<tr>
-				<th>Produit</th>
-				<th>Prix</th>
-				<th>Quantité</th>
-				<th>Total</th>
-				<th>Actions</th>
-			</tr>
-		</thead>
-
-		<tbody>
-			{% if articles is not empty %}
-				{% for article in articles %}
-					<tr>
-						<td>{{ article.produit.name}}</td>
-						<td>{{ article.produit.prix}}€</td>
-						<td>{{ article.quantity}}</td>
-						<td class="text-end">{{ article.quantity * article.produit.prix}}€</td>
-						{# <td>
-							<a href="{{ path("app_add_panier", {id: article.produit.id})}}" class="btn btn-success">
-								<i class="bi bi-cart-plus"></i>
-							</a>
-							<a href="{{ path("app_remove_panier", {id: article.produit.id})}}" class="btn btn-warning">
-								<i class="bi bi-cart-dash"></i>
-							</a>
-							<a href="{{ path("app_delete_panier", {id: article.produit.id})}}" class="btn btn-danger">
-								<i class="bi bi-cart-x"></i>
-							</a>
-						</td> #}
-					</tr>
-				{% endfor %}
-			{% else %}
-				<tr>
-					<td colspan="5" class="text-center">
-						Votre panier est vide!
-					</td>
-				</tr>
-			{% endif %}
-		</tbody>
-	</tbody>
-	<tfoot>
-		<tr>
-			<td collspan="3">Total</td>
-			{# <td class="text-end">{{total}}€</td> #}
-			<td></td>
-			<td></td>
-			<td>
-				<a href="{{ path("app_delete_all_panier") }}" class="btn btn-danger">
-					<i class="bi bi-cart-x"></i>
-				</a>
-			</td>
-		</tr>
-	</tfoot>
-</table>
-
-
-   
-    {# {% for commande in app.user.commandes %}
-
-    {% endfor %} #}
+      <thead>
+        <tr>
+          <th>Produit</th>
+          <th>Prix</th>
+          <th>Quantité</th>
+          <th>Total</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if articles is not empty %}
+          {% for article in articles %}
+            <tr>
+              <td>{{ article.produit.name }}</td>
+              <td>{{ article.produit.prix }}€</td>
+              <td>{{ article.quantity }}</td>
+              <td class="text-end">{{ article.quantity * article.produit.prix }}€</td>
+              {# <td>
+                <a href="{{ path("app_add_panier", {id: article.produit.id}) }}" class="btn btn-success">
+                  <i class="bi bi-cart-plus"></i>
+                </a>
+                <a href="{{ path("app_remove_panier", {id: article.produit.id}) }}" class="btn btn-warning">
+                  <i class="bi bi-cart-dash"></i>
+                </a>
+                <a href="{{ path("app_delete_panier", {id: article.produit.id}) }}" class="btn btn-danger">
+                  <i class="bi bi-cart-x"></i>
+                </a>
+              </td> #}
+            </tr>
+          {% endfor %}
+        {% else %}
+          <tr>
+            <td colspan="5" class="text-center">
+              Votre panier est vide!
+            </td>
+          </tr>
+        {% endif %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Total</td>
+          {# <td class="text-end">{{ total }}€</td> #}
+          <td></td>
+          <td></td>
+          <td>
+            <a href="{{ path("app_delete_all_panier") }}" class="btn btn-danger">
+              <i class="bi bi-cart-x"></i>
+            </a>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
 {% endblock %}
