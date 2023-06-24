@@ -4,14 +4,17 @@
 namespace App\Controller\admin;
 
 use App\Entity\Categorie;
+use App\Entity\Commande;
 use App\Entity\Produit;
 use App\Entity\User;
 use App\Form\ProduitFormType;
 use App\Form\RegistrationFormType;
 use App\Service\FileUploader;
 use App\Service\Helpers;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as ControllerAbstractController;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -37,13 +40,35 @@ class UserController extends ControllerAbstractController
 
         $user = $this->manager->getRepository(User::class)->findAll();
         // $categorie = $this->manager->getRepository(Categorie::class)->findAll();
-
+        $commande = $this->manager->getRepository(Commande::class)->findAll();
+        dump($commande);
         return $this->render('admin/user/user_list.html.twig', [
             'user' => $user,
+            'commande' => $commande,
             // 'categorie' => $categorie,
         ]);
     }
 
+    #[Route('/users_commande/{id}', name: 'users_commande')]
+    public function users_commande(EntityManagerInterface $em, $id): Response
+    {
+        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+    
+        $user = $this->manager->getRepository(User::class)->find($id);
+        $articles = [];
+    
+        if ($user !== null) {
+            $panier = $user->getPanier();
+            if ($panier !== null) {
+                $articles = $panier->getArticle();
+            }
+        }
+    
+        return $this->render('admin/user/users_commande.html.twig', [
+            'user' => $user,
+            'articles' => $articles,
+        ]);
+    }
 
 
     #[Route('/ajout', name:'add')]

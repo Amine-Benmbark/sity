@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin users commande{% endblock %}
+
+{% block body %}
+    {% block header %}{% endblock %}
+    <h1>Admin users commande</h1>
+
+    <div>
+        <a class="btn" href="{{ path('app_add_users') }}"><p class="p_produit"> Ajouter un user </p></a>
+        <button class="btn"><p class="p_produit"> Supprimer un user </p></button>
+    </div>
+
+    {% if user is not null %}
+        <h2>User: {{ user.email }}</h2>
+        {% if articles is not empty %}
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Produit</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Quantité</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for article in articles %}
+                        <tr>
+                            <td>{{ article.produit.name }}</td>
+                            <td>{{ article.produit.prix }}€</td>
+                            <td>{{ article.quantity }}</td>
+                            <td class="text-end">{{ article.produit.prix * article.quantity }}€</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Aucun article pour cet utilisateur.</p>
+        {% endif %}
+    {% else %}
+        <p>Utilisateur non trouvé.</p>
+    {% endif %}
+{% endblock %}

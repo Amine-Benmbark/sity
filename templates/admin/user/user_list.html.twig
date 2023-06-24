@@ -19,7 +19,9 @@
                 <th scope="col">email</th>
                 <th scope="col">password</th>
                 <th scope="col">Actions</th>
-                {# <th scope="col">image</th> #}
+        {# {% for commande in commande %} #}
+
+                <th scope="col">commande</th>
                 {# <th scope="col">description</th> #}
                 {# <th scope="col">categorie</th> #}
             </tr>
@@ -29,7 +31,9 @@
                     <td>{{ user.email }}</td>
                     <td>{{ user.id }}</td>
                     <td>{{ user.password }}</td>
-                    {# <td>{{ produit.categorie.name }}</td> #}
+                    <td><a href="{{ path("app_users_commande", {'id': user.id}) }}">voir les commandes</a></td>
+                    {# <td>{{ commande.id }}</td> #}
+    {# {% endfor %} #}
 
                     <td> 
                     <a href="{{ path('app_edit_users', {'id': user.id}) }}"  type="button" class="btn btn-success">Edit</a>
