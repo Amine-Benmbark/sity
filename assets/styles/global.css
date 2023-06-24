@@ -104,7 +104,10 @@ h1{
     font-size: 4rem;
 }
 
-  
+td{
+  background-color:#E5D0C6;
+}
+
   p#NomSite{
     border: #B2A59F solid 0.1rem;
     border-radius: 10px;

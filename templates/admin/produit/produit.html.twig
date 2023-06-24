@@ -7,7 +7,7 @@
   <div class="container">
     <h1 class="text-center mt-5">Admin produit</h1>
     <div class="text-center mt-4">
-      <a class="btn btn-primary" href="{{ path('app_add_produit') }}">Ajouter un produit</a>
+      <a class="btn btn-order" href="{{ path('app_add_produit') }}">Ajouter un produit</a>
     </div>
     <div class="table-responsive mt-4">
       <table class="table table-striped">
@@ -31,8 +31,12 @@
               <td>{{ produit.categorie.name }}</td>
               <td>
                 <div class="d-flex justify-content-center">
-                  <a class="btn btn-primary mx-1" href="{{ path('app_edit_produit', {'id': produit.id}) }}">Modifier</a>
-                  <a class="btn btn-danger mx-1" href="{{ path('app_supp_produit', {'id': produit.id}) }}">Supprimer</a>
+                <a href="{{ path('app_edit_produit', {'id': produit.id}) }}" class="btn btn-order">
+                    <i class="fas fa-pencil-alt"></i> <span class="d-none d-sm-block">Modifier</span>
+                  </a>
+                  <a href="{{ path('app_supp_produit', {'id': produit.id}) }}" class="btn btn-order">
+                    <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block">Supprimer</span>
+                  </a>
                 </div>
               </td>
             </tr>

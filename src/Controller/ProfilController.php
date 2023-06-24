@@ -7,12 +7,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ProfilController extends AbstractController
 {
     #[Route('/profil', name: 'app_profil')]
-    public function profil(): Response
+    public function profil(SessionInterface $session): Response
     {   
         $this->denyAccessUnlessGranted('ROLE_USER');
         $panier = $this->getUser()->getPanier();
@@ -21,10 +22,16 @@ class ProfilController extends AbstractController
         } else {
             $articles = $panier->getArticle();
         }
+        $total = 0;
+        foreach ($articles as $article) {
+            $total += $article->getProduit()->getPrix() * $article->getQuantity();
+        }
+        $session->set('total', $total);
 
         return $this->render('profil/profil.html.twig', [
             'controller_name' => 'ProfilController',
             'articles' => $articles,
+            'total' => $total,
         ]);
     }
 

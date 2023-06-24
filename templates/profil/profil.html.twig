@@ -6,7 +6,9 @@
   {% block header %}{% endblock %}
 
   <div class="container mt-5">
+
     <h2 class="mb-4">Mon profil</h2>
+
     <table class="table table-striped">
       <thead>
         <tr>
@@ -23,8 +25,12 @@
           <td>*******</td>
           <td>
             <div class="btn-group">
-              <a href="{{ path('users_profil_modifier') }}" type="button" class="btn btn-success">Modifier</a>
-              <a href="{{ path('users_profil_delete', {'id': app.user.id}) }}" type="button" class="btn btn-danger">Supprimer</a>
+              <a href="{{ path('users_profil_modifier') }}" class="btn btn-order">
+                <i class="fas fa-pencil-alt"></i> <span class="d-none d-sm-block">Modifier</span>
+              </a>
+              <a href="{{ path('users_profil_delete', {'id': app.user.id}) }}" class="btn btn-order">
+                <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block">Supprimer</span>
+              </a>
             </div>
           </td>
         </tr>
@@ -32,16 +38,6 @@
     </table>
 
     <h2 class="mt-5">Mon panier</h2>
-    <div class="d-flex mt-3">
-      <a href="{{ path("app_delete_all_panier") }}" class="btn btn-danger me-2">
-        <i class="bi bi-cart-x"></i> Vider le panier
-      </a>
-      <a href="{{ path("app_stripe") }}" class="btn btn-success">
-        <i class="bi bi-cart-plus"></i> Payer
-      </a>
-    </div>
-
-    <h2 class="mt-5">Mes commandes</h2>
 
     <table class="table">
       <thead>
@@ -61,17 +57,19 @@
               <td>{{ article.produit.prix }}€</td>
               <td>{{ article.quantity }}</td>
               <td class="text-end">{{ article.quantity * article.produit.prix }}€</td>
-              {# <td>
-                <a href="{{ path("app_add_panier", {id: article.produit.id}) }}" class="btn btn-success">
-                  <i class="bi bi-cart-plus"></i>
-                </a>
-                <a href="{{ path("app_remove_panier", {id: article.produit.id}) }}" class="btn btn-warning">
-                  <i class="bi bi-cart-dash"></i>
-                </a>
-                <a href="{{ path("app_delete_panier", {id: article.produit.id}) }}" class="btn btn-danger">
-                  <i class="bi bi-cart-x"></i>
-                </a>
-              </td> #}
+              <td>
+                <div class="btn-group">
+                  <a href="{{ path("app_add_panier", {id: article.produit.id}) }}" class="btn btn-order">
+                    <i class="fas fa-check-circle"></i> <span class="d-none d-sm-block">Ajouter</span>
+                  </a>
+                  <a href="{{ path("app_remove_panier", {id: article.produit.id}) }}" class="btn btn-order">
+                    <i class="fas fa-pencil-alt"></i> <span class="d-none d-sm-block">Modifier</span>
+                  </a>
+                  <a href="{{ path("app_delete_panier", {id: article.produit.id}) }}" class="btn btn-order">
+                    <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block">Supprimer</span>
+                  </a>
+                </div>
+              </td>
             </tr>
           {% endfor %}
         {% else %}
@@ -85,14 +83,54 @@
       <tfoot>
         <tr>
           <td colspan="3">Total</td>
-          {# <td class="text-end">{{ total }}€</td> #}
-          <td></td>
-          <td></td>
+          <td class="text-end">{{ total }}€</td>
           <td>
-            <a href="{{ path("app_delete_all_panier") }}" class="btn btn-danger">
-              <i class="bi bi-cart-x"></i>
-            </a>
+            <div class="btn-group">
+              <a href="{{ path("app_delete_all_panier") }}" class="btn btn-order">
+                <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block">Vider le panier</span>
+              </a>
+              <a href="{{ path("app_commande") }}" class="btn btn-order">
+                <i class="fas fa-check-circle"></i> <span class="d-none d-sm-block">Commander</span>
+              </a>
+            </div>
           </td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <h2 class="mt-5">Mes commandes</h2>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Produit</th>
+          <th>Prix</th>
+          <th>Quantité</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if articles is not empty %}
+          {% for article in articles %}
+            <tr>
+              <td>{{ article.produit.name }}</td>
+              <td>{{ article.produit.prix }}€</td>
+              <td>{{ article.quantity }}</td>
+              <td>{{ article.quantity * article.produit.prix }}€</td>
+            </tr>
+          {% endfor %}
+        {% else %}
+          <tr>
+            <td colspan="5" class="text-center">
+              Votre panier est vide!
+            </td>
+          </tr>
+        {% endif %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">Total</td>
+          <td>{{ total }}€</td>
         </tr>
       </tfoot>
     </table>
