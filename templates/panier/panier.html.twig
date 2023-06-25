@@ -12,6 +12,7 @@
       <thead>
         <tr>
           <th>Produit</th>
+          <th>Image</th>
           <th>Prix</th>
           <th>Quantité</th>
           <th>Total</th>
@@ -23,19 +24,20 @@
           {% for article in articles %}
             <tr>
               <td>{{ article.produit.name }}</td>
+              <td><img src="{{ asset('assets/img/' ~ article.produit.img) }}" alt="ffff" class="img-fluid"></td>
               <td>{{ article.produit.prix }}€</td>
               <td>{{ article.quantity }}</td>
-              <td class="text-end">{{ article.quantity * article.produit.prix }}€</td>
+              <td>{{ article.quantity * article.produit.prix }}€</td>
               <td>
                 <div class="btn-group">
-                  <a href="{{ path("app_add_panier", {id: article.produit.id}) }}" class="btn btn-success">
-                    <i class="bi bi-cart-plus"></i>
+                  <a href="{{ path("app_add_panier", {id: article.produit.id}) }}" class="btn btn-order">
+                    <i class="fas fa-check-circle"></i><span class="d-none d-sm-block">Ajouter le produit</span>
                   </a>
-                  <a href="{{ path("app_remove_panier", {id: article.produit.id}) }}" class="btn btn-warning">
-                    <i class="bi bi-cart-dash"></i>
+                  <a href="{{ path("app_remove_panier", {id: article.produit.id}) }}" class="btn btn-order">
+                    <i class="fas fa-pencil-alt"></i> <span class="d-none d-sm-block">Enlever une quantité</span>
                   </a>
-                  <a href="{{ path("app_delete_panier", {id: article.produit.id}) }}" class="btn btn-danger">
-                    <i class="bi bi-cart-x"></i>
+                  <a href="{{ path("app_delete_panier", {id: article.produit.id}) }}" class="btn btn-order">
+                    <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block">Supprimer le produit</span>
                   </a>
                 </div>
               </td>
@@ -43,6 +45,7 @@
           {% endfor %}
         {% else %}
           <tr>
+          <td></td>
             <td colspan="5" class="text-center">
               Votre panier est vide!
             </td>
@@ -52,14 +55,15 @@
       <tfoot>
         <tr>
           <td colspan="3">Total</td>
-          <td class="text-end">{{ total }}€</td>
+          <td>{{ total }}€</td>
+          <td></td>
           <td>
             <div class="btn-group">
-              <a href="{{ path("app_delete_all_panier") }}" class="btn btn-danger">
-                <i class="bi bi-cart-x"></i> Vider le panier
-              </a>
-              <a href="{{ path("app_commande") }}" class="btn btn-success">
-                <i class="bi bi-cart-x"></i> Commander
+              <a href="{{ path("app_delete_all_panier") }}" class="btn btn-order">
+                <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block">Supprimer le panier</span>
+                </a>
+              <a href="{{ path("app_commande") }}" class="btn btn-order">
+                    <i class="fas fa-check-circle"></i><span class="d-none d-sm-block">Passer la commande</span>
               </a>
             </div>
           </td>

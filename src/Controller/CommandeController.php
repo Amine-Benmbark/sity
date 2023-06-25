@@ -24,26 +24,38 @@ class CommandeController extends AbstractController
         $commande->setUser($user);
        
         $panier = $em->find(Panier::class, $user->getId());
-        // dd( $panier);
-        $produitsId = $em->getRepository(PanierProduit::class)->findBy(['panier'=>$panier]);
-        // dd($produits);
-        $produits =$em->getRepository(Produit::class)->findAll();
+        // // dd( $panier);
+        // $produitsId = $em->getRepository(PanierProduit::class)->findBy(['panier'=>$panier]);
+        // // dd($produits);
+        // $produits =$em->getRepository(Produit::class)->findAll();
        
-        // dd($produitsId);
-        foreach ($panier->getProduits() as $panierProduit) {
-            $produit = $panierProduit->getProduits();
-            $commande->addProduit($produit);
+        // // dd($produitsId);
+        // foreach ($panier->getProduits() as $panierProduit) {
+        //     $produit = $panierProduit->getProduits();
+        //     $commande->addProduit($produit);
+        // }
+        // // dd($commande);
+        // $em->persist($commande);
+        // $em->flush();
+        // $total = $session->get('total');
+        $panier = $this->getUser()->getPanier();
+        if (null === $panier) {
+            $articles = [];
+        } else {
+            $articles = $panier->getArticle();
         }
-        // dd($commande);
-        $em->persist($commande);
-        $em->flush();
-        $total = $session->get('total');
+        $total = 0;
+        foreach ($articles as $article) {
+            $total += $article->getProduit()->getPrix() * $article->getQuantity();
+        }
+        $session->set('total', $total);
 
         return $this->render('commande/index.html.twig', [
             'commande' => $commande,
             'panier' => $panier,
-            'produitsId'=>$produitsId,
-            'produits' => $produits,
+            // 'produitsId'=>$produitsId,
+             'articles' => $articles,
+            // 'produits' => $produits,
             'total' => $total,
         ]);
     }

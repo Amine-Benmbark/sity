@@ -12,16 +12,20 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">Nom</th>
+          <th scope="col">Prenom</th>
           <th scope="col">Email</th>
+          <th scope="col">Tel</th>
           <th scope="col">Mot de passe</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th scope="row">1</th>
+          <td>{{ app.user.name }}</td>
+          <td>{{ app.user.firstname }}</td>
           <td>{{ app.user.email }}</td>
+          <td>{{ app.user.tel }}</td>
           <td>*******</td>
           <td>
             <div class="btn-group">

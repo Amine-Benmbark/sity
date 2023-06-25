@@ -21,6 +21,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private  $email = null;
 
+    #[ORM\Column(type: 'string', length: 14, nullable: true)]
+    private $tel;
+
     #[ORM\Column]
     private array $roles = [];
 
@@ -29,6 +32,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\Column]
+    private ?string $name = null;
+
+    #[ORM\Column]
+    private ?string $firstname = null;
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
@@ -148,5 +157,65 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function isIsVerified(): ?bool
     {
         return $this->isVerified;
+    }
+
+    /**
+     * Get the value of name
+     */ 
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set the value of name
+     *
+     * @return  self
+     */ 
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of firstname
+     */ 
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * Set the value of firstname
+     *
+     * @return  self
+     */ 
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tel
+     */ 
+    public function getTel()
+    {
+        return $this->tel;
+    }
+
+    /**
+     * Set the value of tel
+     *
+     * @return  self
+     */ 
+    public function setTel($tel)
+    {
+        $this->tel = $tel;
+
+        return $this;
     }
 }

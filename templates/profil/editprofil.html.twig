@@ -9,9 +9,19 @@
     <h1>Modifier mes coordonnées</h1>
     
     <div>
+    <div>
+        <p>Nom:</p>
+            {{ form_widget(form.name, {'attr': {'class': 'input-color'}}) }}
+        </div>
+        <p>Prenom:</p>
+            {{ form_widget(form.firstname, {'attr': {'class': 'input-color'}}) }}
+        </div>
         <div>
             <p>Email</p>
             {{ form_widget(form.email, {'attr': {'class': 'input-color'}}) }}
+        </div>
+        <p>Numero de télèphone :</p>
+            {{ form_widget(form.tel, {'attr': {'class': 'input-color'}}) }}
         </div>
         <div>
             <p>Password:</p>

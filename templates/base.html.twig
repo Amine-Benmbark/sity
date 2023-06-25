@@ -34,44 +34,16 @@
         
         <header>
             {% block header%}
-    <h1>Sity vous accompagne dans l'apogée de votre projet !!</h1>
+
+    {% if is_granted('ROLE_SUPER_ADMIN') or  is_granted('ROLE_USER') %}
+    <h1> Hello {{app.user.firstname}} {{app.user.name}} ! Sity vous accompagne dans l'apogée de votre projet !!</h1>
+    {% else %}
+    <h1> Hello ! Sity vous accompagne dans l'apogée de votre projet !!</h1>
+    {% endif %}
     <div class="d-none d-sm-block">
     {% include './template_parts/carousel.html.twig' %}
     </div>
     {# {% include './template_parts/card.html.twig' %} #}
-
-    {# <div class="caroussel mb-5">
-         <div class="caroussel-cards mb-5">
-             <div class="cards">
-                 <img class="img mb-3" src="./asset/img/vitrine.jfif" alt="">
-                 <p class="m-auto" id="NomSite">Site e-commerce</p>
-             </div>
-             <div class="cards">
-                 <img class="img  mb-3" src="./asset/img/2338290.jpg" alt="">
-                 <p class="m-auto"  id="NomSite">Site vitrine</p>
-             </div>
-             <div class="cards">
-                 <img class="img mb-3" src="./asset/img/2593044.jpg" alt="">
-                 <p class="m-auto" id="NomSite">Site e-commerce</p>
-             </div>
-             <div class="cards">
-                 <img class="img mb-3" src="./asset/img/img4.jfif" alt="">
-                 <p class="m-auto" id="NomSite">Site e-commerce</p>
-             </div>
-             <div class="cards">
-                 <img class="img mb-3" src="./asset/img/Image e-commerce mobile.jfif" alt="">
-                 <p class="m-auto" id="NomSite">Site e-commerce</p>
-             </div>
-             <div class="cards">
-                 <img class="img mb-3" src="./asset/img/img6.jfif" alt="">
-                 <p class="m-auto floatingTextarea2 center" id="NomSite">Site e-commerce</p>
-             </div>
-         </div>
-         <div class="control_caroussel mt-4">
-             <button class="btn btn-order fw-bold previous">previous</button>
-             <button class="btn btn-order fw-bold ms-5 next">next</button>
-         </div>
-    </div> #}
              {% endblock %}
         </header>
 
