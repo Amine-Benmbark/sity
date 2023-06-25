@@ -90,10 +90,14 @@
     </div>
     <div class="col-md-4 col-sm-12 p-5">
       <h5 class="text-uppercase fw-bold mb-4 text-decoration-underline">Contact</h5>
-      <p class="merriweather"> <img src="{{asset('assets/icone/icons-home.svg')}}" alt="icon home" height="17px"> Paris, 13ème, FRANCE </p>
-      <p class="merriweather"> <img src="{{asset('assets/icone/icons-mail.png')}}" alt="icon mail" height="17px"> info@example.com</p>
-      <p class="merriweather"> <img src="{{asset('assets/icone/icons-phone.png')}}" alt="icon phone" height="17px">+ 01 23 45 67 88 </p>
-      <p class="merriweather"> <img src="{{asset('assets/icone/icons-fax.png')}}" alt="icon fax" height="17px"> + 01 23 45 67 89</p>
+      {# <p class="merriweather"> <img src="{{asset('assets/icone/icons-home.svg')}}" alt="icon home" height="17px"> Paris, 13ème, FRANCE </p> #}
+      <a class="a_lien" href="https://www.google.com/maps/search/Paris%2C+13%C3%A8me%2C+FRANCE">
+        <p class="merriweather">
+        <img src="{{asset('assets/icone/icons-home.svg')}}" alt="icon home" height="17px">Paris, 13ème, FRANCE</p>
+      </a>
+      <p class="merriweather"> <img src="{{asset('assets/icone/icons-mail.png')}}" alt="icon mail" height="17px"> <a class="a_lien" href="mailto:contact@example.com">Sity@hotmail.com</a></p>
+      <p class="merriweather"> <img src="{{asset('assets/icone/icons-phone.png')}}" alt="icon phone" height="17px"  ><a class="a_lien" href="tel:+1234567890">+ 01 23 45 67 88</a></p>
+      <p class="merriweather"> <img src="{{asset('assets/icone/icons-fax.png')}}" alt="icon fax" height="17px"><a class="a_lien" href="tel:+1234567890">+ 01 23 45 67 88</a></p>
     </div>
   </section>
 </footer>

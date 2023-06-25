@@ -5,18 +5,28 @@
 {% block body %}
 
 {% block header %}  {% endblock %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<h2 class="mb-5" >Des projets qu'on a pu réaliser !</h2>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/Ben-m/OneDrive/Bureau/sity/src/Controller/NosRealisationsController.php'|file_link(0) }}">src/Controller/NosRealisationsController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/Ben-m/OneDrive/Bureau/sity/templates/nos_realisations/index.html.twig'|file_link(0) }}">templates/nos_realisations/index.html.twig</a></code></li>
-    </ul>
+<div class="container mb-2">
+    <p class="merriweather nous">Des clients ravient du travail effectuée par notre équipe Sity, tous cela grâce à une étroite collaboration avec le client et des échanges régulier sur l'avancement du projet en temps et en heure !</p>
 </div>
+<section class="container mb-4">
+    <div class="row">
+        <div class="col-5 m-2">
+            <div class="aspect-ratio aspect-ratio-4x3">
+                <a href="https://bytheway-app.com/">
+                <img class="img-fluid aspect-ratio-img rounded" src="{{ asset('assets/img/ByTheWay_confiance.png') }}" alt="">
+                </a>
+                <h3 class="text-center">By The Way</h3>
+            </div>
+        </div>
+        <div class="col-5 m-2">
+            <div class="aspect-ratio aspect-ratio-4x3">
+                <img class="img-fluid aspect-ratio-img rounded" src="{{ asset('assets/img/Restau_confiance.png') }}" alt="">
+                <h3 class="text-center">Sity Food</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}
