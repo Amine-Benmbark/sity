@@ -16,18 +16,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for produit in articles %}
-                        <tr>
+                    {% for produit in app.user.panier.article %}
+                         <tr>
                             <td>{{ produit.produit.name }}</td>
                             <td>{{ produit.produit.prix }}€</td>
                             <td>{{ produit.produit.description }}</td>
                             <td><img src="{{ asset('assets/img/' ~ produit.produit.img) }}" alt="ffff" class="img-fluid"></td>
-                        </tr>
+                        </tr>  
                     {% else %}
+                       
                         <tr>
                             <td colspan="4">Aucun produit trouvé.</td>
-                        </tr>
-                    {% endfor %}
+                        </tr> 
+                  
+                
+                   {% endfor %}
                 </tbody>
                 <tfoot>
                     <tr>

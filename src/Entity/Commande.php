@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Cascade;
 
 #[ORM\Entity(repositoryClass: CommandeRepository::class)]
 class Commande
@@ -22,7 +23,7 @@ class Commande
     #[ORM\ManyToMany(targetEntity: Produit::class, mappedBy: 'commande')]
     private Collection $produits;
 
-    #[ORM\ManyToOne(targetEntity: User::class)]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'commande')]
     #[ORM\JoinColumn(name: "user_id", referencedColumnName: "id")]
     private $user;
 

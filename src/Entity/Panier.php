@@ -25,7 +25,7 @@ class Panier
     #[ORM\OneToMany(mappedBy: 'panier', targetEntity: PanierProduit::class)]
     private Collection $article;
 
-    #[ORM\OneToOne(inversedBy: 'panier', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(inversedBy: 'panier')]
     #[ORM\JoinColumn(name: 'user_id', referencedColumnName: 'id')]
     private ?User $User = null;
 

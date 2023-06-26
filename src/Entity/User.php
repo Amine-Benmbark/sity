@@ -42,8 +42,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    #[ORM\OneToOne(mappedBy: 'User')]
+    #[ORM\OneToOne(mappedBy: 'User', cascade: ['persist', 'remove'])]
     private ?Panier $panier = null;
+
+    #[ORM\OneToMany(targetEntity: Commande::class, mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private $commande;
 
     public function __toString(): string
     {
@@ -215,6 +218,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setTel($tel)
     {
         $this->tel = $tel;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of commande
+     */ 
+    public function getCommande()
+    {
+        return $this->commande;
+    }
+
+    /**
+     * Set the value of commande
+     *
+     * @return  self
+     */ 
+    public function setCommande($commande)
+    {
+        $this->commande = $commande;
 
         return $this;
     }

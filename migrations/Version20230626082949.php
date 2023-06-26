@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230624152601 extends AbstractMigration
+final class Version20230626082949 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -22,7 +22,6 @@ final class Version20230624152601 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE categorie CHANGE name name VARCHAR(20) NOT NULL COLLATE `utf8_general_ci`');
         $this->addSql('ALTER TABLE produit CHANGE name name VARCHAR(20) NOT NULL COLLATE `utf8_general_ci`, CHANGE description description VARCHAR(255) NOT NULL COLLATE `utf8_general_ci`, CHANGE img img VARCHAR(255) NOT NULL COLLATE `utf8_general_ci`');
-        $this->addSql('ALTER TABLE user ADD tel VARCHAR(12) DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
@@ -30,6 +29,5 @@ final class Version20230624152601 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE categorie CHANGE name name VARCHAR(20) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`');
         $this->addSql('ALTER TABLE produit CHANGE name name VARCHAR(20) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, CHANGE description description VARCHAR(255) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`, CHANGE img img VARCHAR(255) CHARACTER SET utf8 NOT NULL COLLATE `utf8_general_ci`');
-        $this->addSql('ALTER TABLE user DROP tel');
     }
 }

@@ -121,6 +121,12 @@ app_edit_users:
     controller: App\Controller\admin\UserController::edit_user
     methods: GET
 
+app_supp_users:
+    path: /admin/user/supp_user/{id}
+    controller: App\Controller\admin\UserController::delete
+    methods: GET
+
+
 app_ecommerce:
     path: /ecommerce
     controller: App\Controller\ECommerceController::ecommerce

@@ -22,40 +22,34 @@ class CommandeController extends AbstractController
         $user = $this->getUser();
         $commande = new Commande();
         $commande->setUser($user);
-       
-        $panier = $em->find(Panier::class, $user->getId());
-        // // dd( $panier);
-        // $produitsId = $em->getRepository(PanierProduit::class)->findBy(['panier'=>$panier]);
-        // // dd($produits);
-        // $produits =$em->getRepository(Produit::class)->findAll();
-       
-        // // dd($produitsId);
-        // foreach ($panier->getProduits() as $panierProduit) {
-        //     $produit = $panierProduit->getProduits();
-        //     $commande->addProduit($produit);
-        // }
-        // // dd($commande);
-        // $em->persist($commande);
-        // $em->flush();
-        // $total = $session->get('total');
+        $commande->setDate(new \DateTime('today'));
+        //dd($commande);
         $panier = $this->getUser()->getPanier();
-        if (null === $panier) {
-            $articles = [];
-        } else {
-            $articles = $panier->getArticle();
-        }
-        $total = 0;
-        foreach ($articles as $article) {
-            $total += $article->getProduit()->getPrix() * $article->getQuantity();
-        }
-        $session->set('total', $total);
+        // $panier = $em->find(Panier::class, $user);
+        //  dd($panier);
+        $produitsId = $em->getRepository(PanierProduit::class)->findBy(['panier'=>$panier]);
+        //  dd($produitsId);
+        $produits = $em->getRepository(Produit::class)->findAll();
+       
+        //  dd($produits);
+
+        // if ($panier != null){ 
+
+       foreach ($panier as $panierProduit) {
+            $produit = $panierProduit->getProduits();
+            $commande->addProduit($produit);}
+        // }
+
+        //  dd($commande);
+        $em->persist($commande);
+        $em->flush();
+        $total = $session->get('total');
 
         return $this->render('commande/index.html.twig', [
             'commande' => $commande,
             'panier' => $panier,
-            // 'produitsId'=>$produitsId,
-             'articles' => $articles,
-            // 'produits' => $produits,
+            'produitsId'=>$produitsId,
+            'produits' => $produits,
             'total' => $total,
         ]);
     }
