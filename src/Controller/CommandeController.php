@@ -34,11 +34,14 @@ class CommandeController extends AbstractController
         //  dd($produits);
 
         // if ($panier != null){ 
-
-       foreach ($panier as $panierProduit) {
-            $produit = $panierProduit->getProduits();
-            $commande->addProduit($produit);}
-        // }
+            if($panier !== null){
+                foreach ($panier as $panierProduit) {
+                     $produit = $panierProduit->getProduits();
+                     $commande->addProduit($produit);}
+                }
+            else {
+                return $this->redirectToRoute('app_panier');
+            }
 
         //  dd($commande);
         $em->persist($commande);

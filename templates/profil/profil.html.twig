@@ -81,11 +81,24 @@
             <td colspan="5" class="text-center">
               Votre panier est vide!
             </td>
-          </tr>
+            <tr>
+          <td colspan="3">Total</td>
+          <td class="text-end">0€</td>
+          <td>
+            <div class="btn-group">
+              <a href="{{ path("app_delete_all_panier") }}" class="btn btn-order">
+                <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block">Vider le panier</span>
+              </a>
+              <a href="{{ path("app_commande") }}" class="btn btn-order">
+                <i class="fas fa-check-circle"></i> <span class="d-none d-sm-block">Commander</span>
+              </a>
+            </div>
+          </td>
+        </tr>
         {% endif %}
       </tbody>
       <tfoot>
-        <tr>
+        {# <tr>
           <td colspan="3">Total</td>
           <td class="text-end">{{ total }}€</td>
           <td>
@@ -98,7 +111,7 @@
               </a>
             </div>
           </td>
-        </tr>
+        </tr> #}
       </tfoot>
     </table>
 
@@ -128,14 +141,18 @@
             <td colspan="5" class="text-center">
               Votre panier est vide!
             </td>
+            <tr>
+          <td colspan="3">Total</td>
+          <td>0€</td>
+        </tr>
           </tr>
         {% endif %}
       </tbody>
       <tfoot>
-        <tr>
+        {# <tr>
           <td colspan="3">Total</td>
           <td>{{ total }}€</td>
-        </tr>
+        </tr> #}
       </tfoot>
     </table>
   </div>
