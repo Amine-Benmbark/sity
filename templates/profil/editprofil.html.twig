@@ -9,16 +9,17 @@
     <h1>Modifier mes coordonnées</h1>
     
     {{ form_start(form) }}
-        {{ form_row(form.name, {'attr': {'class': 'input-color'}}) }}
-        {{ form_row(form.firstname, {'attr': {'class': 'input-color'}}) }}
-        {{ form_row(form.tel, {'attr': {'class': 'input-color'}}) }}
-        {{ form_row(form.email, {'attr': {'class': 'input-color'}}) }}
-        {{ form_row(form.password, {
+        {{ form_row(registrationform.name, {'attr': {'class': 'input-color'}}) }}
+        {{ form_row(registrationform.firstname, {'attr': {'class': 'input-color'}}) }}
+        {{ form_row(registrationform.tel, {'attr': {'class': 'input-color'}}) }}
+        {{ form_row(registrationform.email, {'attr': {'class': 'input-color'}}) }}
+        {{ form_row(registrationform.password, {
             label: 'Password',
             'attr': {
                  'class': 'input-color'
             }
         }) }}
+
 
         <button type="submit" class="btn">Register</button>
     {{ form_end(form) }}
