@@ -8,9 +8,12 @@
     {% set e = 0 %}
     {% set v = 0 %}
     {% set s = 0 %}
+    {% set a = 0 %}
+    {% set p = 0 %}
+    {% set l = 0 %}
     {% for produit in produit %}
       {% if produit.categorie.name == 'Ecommerce' %}
-        {% if e < 3 %}
+        {% if e < 2 %}
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="card m-3" id="card_service">
               <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top mt-3" alt="...">
@@ -31,7 +34,7 @@
           {% set e = e + 1 %}
         {% endif %}
       {% elseif produit.categorie.name == 'Vitrine' %}
-        {% if v < 3 %}
+        {% if v < 2 %}
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="card m-3" id="card_service">
               <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top mt-3" alt="...">
@@ -51,8 +54,71 @@
           </div>
           {% set v = v + 1 %}
         {% endif %}
-      {% else %}
-        {% if s < 3 %}
+        {% elseif produit.categorie.name == 'App-mobile' %}
+        {% if a < 2 %}
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="card m-3" id="card_service">
+              <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top mt-3" alt="...">
+              <div class="card-body" id="card_service">
+                <h5 class="card-title" id="p_cards">{{ produit.name }}</h5>
+                <p class="card-text merriweather" id="p_cards">{{ produit.description}}</p>
+                <p id="service_price" class="merriweather">{{ produit.prix }}€</p>
+                {% if produit.categorie.name == 'Vitrine' %}
+                  <a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+                {% elseif produit.categorie.name == 'Sur-mesure' %}
+                  <a href="{{ path('app_sur_mesure') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+                {% else %}
+                  <a href="{{ path('app_ecommerce') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% set a = a + 1 %}
+        {% endif %}
+        {% elseif produit.categorie.name == 'Pub' %}
+        {% if p < 2 %}
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="card m-3" id="card_service">
+              <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top mt-3" alt="...">
+              <div class="card-body" id="card_service">
+                <h5 class="card-title" id="p_cards">{{ produit.name }}</h5>
+                <p class="card-text merriweather" id="p_cards">{{ produit.description}}</p>
+                <p id="service_price" class="merriweather">{{ produit.prix }}€</p>
+                {% if produit.categorie.name == 'Vitrine' %}
+                  <a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+                {% elseif produit.categorie.name == 'Sur-mesure' %}
+                  <a href="{{ path('app_sur_mesure') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+                {% else %}
+                  <a href="{{ path('app_ecommerce') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% set p = p + 1 %}
+        {% endif %}
+        {% elseif produit.categorie.name == 'Logo' %}
+        {% if l < 2 %}
+          <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="card m-3" id="card_service">
+              <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top mt-3" alt="...">
+              <div class="card-body" id="card_service">
+                <h5 class="card-title" id="p_cards">{{ produit.name }}</h5>
+                <p class="card-text merriweather" id="p_cards">{{ produit.description}}</p>
+                <p id="service_price" class="merriweather">{{ produit.prix }}€</p>
+                {% if produit.categorie.name == 'Vitrine' %}
+                  <a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+                {% elseif produit.categorie.name == 'Sur-mesure' %}
+                  <a href="{{ path('app_sur_mesure') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+                {% else %}
+                  <a href="{{ path('app_ecommerce') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% set l = l + 1 %}
+        {% endif %}
+      {% elseif produit.categorie.name == 'Sur-mesure' %}
+        {% if s < 2 %}
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="card m-3" id="card_service">
               <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top mt-3" alt="...">
