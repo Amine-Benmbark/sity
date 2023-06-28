@@ -47,7 +47,7 @@ class UserAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
         if (in_array("ROLE_SUPER_ADMIN",$token->getUser()->getRoles(),true)){
-        return new RedirectResponse($this->urlGenerator->generate('app_admin'));
+        return new RedirectResponse($this->urlGenerator->generate('app_home'));
     }
     if (in_array("ROLE_USER",$token->getUser()->getRoles(),true)){
         return new RedirectResponse($this->urlGenerator->generate('app_home'));

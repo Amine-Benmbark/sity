@@ -157,6 +157,6 @@ class UserController extends ControllerAbstractController
 
        $this->addFlash('success', 'Utilisateur supprimé');
 
-       return $this->redirectToRoute('admin/user/user.html.twig');
+       return $this->redirectToRoute('/admin/user/user_list.html.twig');
     }
 }

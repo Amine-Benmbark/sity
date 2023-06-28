@@ -48,6 +48,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: Commande::class, mappedBy: 'user', cascade: ['persist', 'remove'])]
     private $commande;
 
+    #[ORM\OneToMany(targetEntity: ResetPasswordRequest::class, mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private $resetpassword;
+
     public function __toString(): string
     {
         return $this->email;
