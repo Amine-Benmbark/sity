@@ -47,8 +47,8 @@ class ChangePasswordFormType extends AbstractType
             'second_options' => ['label' => 'Confirmer le Password',
             'attr' => [
                 'class' => 'iinput',
-                // 'style' => 'border-radius: 40px'
-                ],],
+                ],
+            ],
            
             ]);
     }

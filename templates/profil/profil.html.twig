@@ -32,7 +32,7 @@
               <a href="{{ path('users_profil_modifier') }}" class="btn btn-order">
                 <i class="fas fa-pencil-alt"></i> <span class="d-none d-sm-block">Modifier</span>
               </a>
-              <a href="{{ path('users_profil_delete', {'id': app.user.id}) }}" class="btn btn-order">
+              <a onClick="return confirm('vous etes sur ?')" href="{{ path('users_profil_delete', {'id': app.user.id}) }}" class="btn btn-order">
                 <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block">Supprimer</span>
               </a>
             </div>

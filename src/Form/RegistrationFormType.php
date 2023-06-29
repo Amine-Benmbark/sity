@@ -96,7 +96,10 @@ class RegistrationFormType extends AbstractType
                 ]),
             ],
         ])
-        ->add('Valider', SubmitType::class);
+        ->add('Valider', SubmitType::class, [
+            'attr' => ['class' => 'btn btn-order',
+            ],
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

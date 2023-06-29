@@ -16,11 +16,13 @@ class PanierProduit
     #[ORM\Column]
     private ?int $Quantity = null ;
 
-    #[ORM\ManyToOne(inversedBy: 'panierProduits',  cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'panierProduits')]
+    // #[ORM\ManyToOne(inversedBy: 'panierProduits',  cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Produit $produit = null;
 
-    #[ORM\ManyToOne(inversedBy: 'article', cascade: ['persist', 'remove'])]
+    // #[ORM\ManyToOne(inversedBy: 'article', cascade: ['persist', 'remove'])]
+    #[ORM\ManyToOne(inversedBy: 'article')]
     #[ORM\JoinColumn(nullable: true)]
     private ?Panier $panier;
 

@@ -147,9 +147,10 @@ class UserController extends ControllerAbstractController
         ]);
     }
 
-    #[Route('/supp_user/{id}', name:'delete')]
+    #[Route('/supp_user/{id}', name:'delete', methods:['DELETE'])]
     public function delete(User $user,  EntityManagerInterface $em): Response
     {
+       
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
         
         $em->remove($user);
@@ -157,6 +158,6 @@ class UserController extends ControllerAbstractController
 
        $this->addFlash('success', 'Utilisateur supprimé');
 
-       return $this->redirectToRoute('/admin/user/user_list.html.twig');
+       return $this->redirectToRoute('app_users');
     }
 }

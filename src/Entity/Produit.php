@@ -37,7 +37,8 @@ class Produit
     #[ORM\ManyToMany(targetEntity: Commande::class, inversedBy: 'produits')]
     private Collection $commande;
 
-    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: PanierProduit::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'produit', targetEntity: PanierProduit::class, cascade: ['persist', 'remove'])]
+    //#[ORM\OneToMany(mappedBy: 'produit', targetEntity: PanierProduit::class, orphanRemoval: true)]
     private Collection $panierProduits;
 
     public function __construct()

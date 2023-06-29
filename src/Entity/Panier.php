@@ -22,7 +22,7 @@ class Panier
     #[ORM\ManyToMany(targetEntity: Produit::class, mappedBy: 'panier')]
     private Collection $produits;
 
-    #[ORM\OneToMany(mappedBy: 'panier', targetEntity: PanierProduit::class)]
+    #[ORM\OneToMany(mappedBy: 'panier', targetEntity: PanierProduit::class, cascade: ['persist','remove'])]
     private Collection $article;
 
     #[ORM\OneToOne(inversedBy: 'panier')]

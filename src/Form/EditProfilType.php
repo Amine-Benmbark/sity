@@ -89,7 +89,10 @@ class EditProfilType extends AbstractType
                     new Regex('/[\$\.\!\?\^@\\/\+\*_\-]/', 'Votre mot de passe doit contenir au moins un caractère spécial'),
             ],
         ],)
-        ->add('Valider', SubmitType::class);
+        ->add('Valider', SubmitType::class, [
+            'attr' => ['class' => 'btn btn-order',
+            ],
+        ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
