@@ -29,6 +29,9 @@
                         <a class="nav-link" href="{{ path('app_produit') }}">Produit</a>
                     </li>
                     <li class="nav-item pe-4">
+                        <a class="nav-link" href="{{ path('app_categorie') }}">Categories</a>
+                    </li>
+                    <li class="nav-item pe-4">
                         <a class="nav-link" href="{{ path('app_users') }}">Users</a>
                     </li>
                     <li class="nav-item pe-4">
@@ -37,6 +40,7 @@
                     <li class="nav-item pe-4">
                         <a class="btn btn-order rounded-0 --bs-beige" href=" {{ path('app_panier') }} "><i class="fas fa-shopping-cart"></i> Mon panier</a>
                     </li>
+                    
 
 
                 {% elseif is_granted("ROLE_USER") %}

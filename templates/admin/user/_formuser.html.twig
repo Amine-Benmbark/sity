@@ -1,8 +1,8 @@
 {{ form_start(formuser) }}
-    {{ form_row(formuser.email) }}
-    {{ form_row(formuser.password) }}
-    {# {{ form_row(formuser.description) }} #}
-    {# {{ form_row(formuser.img) }} #}
-    {# {{ form_row(formuser.categorie) }} #}
-    <button type="submit">{{ button_label|default('Ajouter') }}</button>
+    {{ form_row(formuser.name, {'attr': {'class': 'input-color'}}) }}
+    {{ form_row(formuser.firstname, {'attr': {'class': 'input-color'}}) }}
+    {{ form_row(formuser.tel, {'attr': {'class': 'input-color'}}) }}
+    {{ form_row(formuser.email, {'attr': {'class': 'input-color'}}) }}
+    {{ form_row(formuser.password, {'attr': {'class': 'input-color'}}) }}
+    {# <button class="btn btn-order" type="submit">{{ button_label|default('Ajouter') }}</button> #}
 {{ form_end(formuser) }}

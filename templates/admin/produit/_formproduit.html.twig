@@ -1,8 +1,8 @@
 {{ form_start(formproduit) }}
-    {{ form_row(formproduit.name) }}
-    {{ form_row(formproduit.prix) }}
-    {{ form_row(formproduit.description) }}
-    {{ form_row(formproduit.img) }}
-    {{ form_row(formproduit.categorie) }}
-    <button type="submit">{{ button_label|default('Ajouter') }}</button>
+    {{ form_row(formproduit.name, {'attr': {'class': 'input-color'}}) }}
+    {{ form_row(formproduit.prix, {'attr': {'class': 'input-color'}}) }}
+    {{ form_row(formproduit.description, {'attr': {'class': 'input-color'}}) }}
+    {{ form_row(formproduit.img, {'attr': {'class': 'input-color'}}) }}
+    {{ form_row(formproduit.categorie, {'attr': {'class': 'input-color'}}) }}
+    <button class="btn btn-order" type="submit">{{ button_label|default('Ajouter') }}</button>
 {{ form_end(formproduit) }}
