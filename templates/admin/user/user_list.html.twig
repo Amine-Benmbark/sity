@@ -19,17 +19,20 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">email</th>
-                            <th scope="col">password</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prenom</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Tél</th>
                             <th scope="col">Actions</th>
-                            <th scope="col">commande</th>
+                            <th scope="col">Commandes</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.firstname }}</td>
                             <td>{{ user.email }}</td>
-                            <td>{{ user.id }}</td>
-                            <td>{{ user.password }}</td>
+                            <td>{{ user.tel }}</td>
                             <td>
                                 <a class="btn btn-order" href="{{ path("app_users_commande", {'id': user.id}) }}">voir les commandes</a>
                             </td>
