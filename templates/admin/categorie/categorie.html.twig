@@ -26,7 +26,7 @@
                     <a href="{{ path('app_edit_categorie', {'id': categorie.id}) }}" class="btn btn-order">
                         <i class="fas fa-pencil-alt"></i> <span class="d-none d-sm-block"><p>Modifier la categorie</p></span>
                     </a>
-                    <a href="{{ path('app_supp_categorie', {'id': categorie.id}) }}" class="btn btn-order">
+                    <a onClick="return confirm('Voulez vous vraiement suprimer cette categorie ?')"href="{{ path('app_supp_categorie', {'id': categorie.id}) }}" class="btn btn-order">
                         <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block"><p>Supprimer la categorie</p></span>
                     </a>
                     </div>

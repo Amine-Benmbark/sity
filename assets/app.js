@@ -19,7 +19,7 @@ import './styles/nous.css';
 import './styles/scrolling_cards.css';
 import './styles/services.css';
 import './styles/footer.css';
-// import './styles/navbar.css';
+import './styles/card.css';
 import './styles/confiance.css';
 import './styles/global.css';
 import './styles/tableau.css';

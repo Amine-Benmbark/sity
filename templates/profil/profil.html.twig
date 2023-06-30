@@ -32,7 +32,7 @@
               <a href="{{ path('users_profil_modifier') }}" class="btn btn-order">
                 <i class="fas fa-pencil-alt"></i> <span class="d-none d-sm-block">Modifier</span>
               </a>
-              <a onClick="return confirm('vous etes sur ?')" href="{{ path('users_profil_delete', {'id': app.user.id}) }}" class="btn btn-order">
+              <a onClick="return confirm('Voulez vous vraiement suprimer votre profil ?')" href="{{ path('users_profil_delete', {'id': app.user.id}) }}" class="btn btn-order">
                 <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block">Supprimer</span>
               </a>
             </div>
@@ -69,7 +69,7 @@
                   <a href="{{ path("app_remove_panier", {id: article.produit.id}) }}" class="btn btn-order">
                     <i class="fas fa-pencil-alt"></i> <span class="d-none d-sm-block">Modifier</span>
                   </a>
-                  <a href="{{ path("app_delete_panier", {id: article.produit.id}) }}" class="btn btn-order">
+                  <a onClick="return confirm('Voulez vous vraiement suprimer votre panier ?')" href="{{ path("app_delete_panier", {id: article.produit.id}) }}" class="btn btn-order">
                     <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block">Supprimer</span>
                   </a>
                 </div>
@@ -86,7 +86,7 @@
           <td class="text-end">0€</td>
           <td>
             <div class="btn-group">
-              <a href="{{ path("app_delete_all_panier") }}" class="btn btn-order">
+              <a onClick="return confirm('Voulez vous vraiement vider votre panier ?')" href="{{ path("app_delete_all_panier") }}" class="btn btn-order">
                 <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block">Vider le panier</span>
               </a>
               <a href="{{ path("app_commande") }}" class="btn btn-order">

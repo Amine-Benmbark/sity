@@ -33,10 +33,10 @@
                   <a href="{{ path("app_add_panier", {id: article.produit.id}) }}" class="btn btn-order">
                     <i class="fas fa-check-circle"></i><span class="d-none d-sm-block">Ajouter le produit</span>
                   </a>
-                  <a href="{{ path("app_remove_panier", {id: article.produit.id}) }}" class="btn btn-order">
+                  <a onClick="return confirm('Etes-vous sur de vouloir retirer une quantité?')" href="{{ path("app_remove_panier", {id: article.produit.id}) }}" class="btn btn-order">
                     <i class="fas fa-pencil-alt"></i> <span class="d-none d-sm-block">Enlever une quantité</span>
                   </a>
-                  <a href="{{ path("app_delete_panier", {id: article.produit.id}) }}" class="btn btn-order">
+                  <a onClick="return confirm('Voulez-vous vraiment supprimé le produit ?')" href="{{ path("app_delete_panier", {id: article.produit.id}) }}" class="btn btn-order">
                     <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block">Supprimer le produit</span>
                   </a>
                 </div>
@@ -59,7 +59,7 @@
           <td></td>
           <td>
             <div class="btn-group">
-              <a href="{{ path("app_delete_all_panier") }}" class="btn btn-order">
+              <a onClick="return confirm('Voulez-vous vraiment supprimé le panier ?')" href="{{ path("app_delete_all_panier") }}" class="btn btn-order">
                 <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block">Supprimer le panier</span>
                 </a>
               <a href="{{ path("app_commande") }}" class="btn btn-order">
