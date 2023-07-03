@@ -52,50 +52,6 @@ body {
     padding-top: 10rem;
 }
 
-.cc-navbar{
-    top: 0;
-    background-color: transparent;
-    font-family: "Merriweather" serif;
-    box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.54);
-    z-index: 99;
-}
-.cc-navbar, .nav-link.active{
-    color: #B2A59F !important;
-}
-
-.cc-navbar, .nav-link{
-    border-bottom: 1px solid transparent;
-    color: #B2A59F;
-    transition: padding-bottom .4s ease-in-out, border-color .3s ease;
-}
-.cc-navbar .nav-link:hover{
-    padding-bottom: 20px;
-    color: #B2A59F;
-    border-bottom-color: var(--bs-beige) ;
-}
-
-.banner, .order-form{
-    background-size: cover;
-    height: 800px;
-}
-.order-form{
-    height: 500px;
-}
-.banner .banner-desc{
-    font-size: 48px;
-    font-weight: 400;
-    color: white;
-}
-
-.cc-menu{
-    background-size: cover;
-    height: 1500px;
-}
-
-.nav-footer{
-    color: gray;
-}
-
 
 h1{
     text-align: center;

@@ -1,4 +1,48 @@
-.navback:hover {
-    background-color: #B2A59F;
-    /* border: 0.1rem solid #B2A59F; */
+
+.cc-navbar{
+
+   
+    top: 0;
+    background-color: #b2a59fe0;
+    font-family: "Merriweather" serif;
+    box-shadow: 1px 1px 3px #B2A59F;
+    z-index: 99;
+}
+.cc-navbar, .nav-link.active{
+  color: #023459 !important;
+}
+
+.cc-navbar, .nav-link{
+    border-bottom: 1px solid transparent;
+    color: #023459;
+    font-weight: bold;
+    transition: padding-bottom .4s ease-in-out, border-color .3s ease;
+}
+.cc-navbar .nav-link:hover{
+    padding-bottom: 20px;
+    color: #023459;
+    font-weight: bold;
+    border-bottom-color: var(--bs-beige) ;
+}
+
+.banner, .order-form{
+    background-size: cover;
+    height: 800px;
+}
+.order-form{
+    height: 500px;
+}
+.banner .banner-desc{
+    font-size: 48px;
+    font-weight: 400;
+    color: white;
+}
+
+.cc-menu{
+    background-size: cover;
+    height: 1500px;
+}
+
+.nav-footer{
+    color: gray;
 }

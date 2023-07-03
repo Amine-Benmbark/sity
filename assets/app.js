@@ -23,6 +23,7 @@ import './styles/card.css';
 import './styles/confiance.css';
 import './styles/global.css';
 import './styles/tableau.css';
+import './styles/navbar.css';
 import './styles/vitrine.css';
 // import './controllers/say-hello_controller.js';
 
