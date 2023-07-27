@@ -55,7 +55,7 @@ class ProduitController extends ControllerAbstractController
         $formproduit->handleRequest($request);
         // dd($formproduit);
         if($formproduit->isSubmitted() && $formproduit->isValid()){
-            $prix = $produit->getPrix() * 2;
+            $prix = $produit->getPrix();
             $produit->setPrix($prix);
 
             $imgFile = $formproduit->get('img')->getData();
@@ -81,7 +81,7 @@ class ProduitController extends ControllerAbstractController
 
             $this->addFlash('success', 'Produit ajouté');
 
-            return $this->redirectToRoute('admin_produitadd');
+            return $this->redirectToRoute('admin_produit');
         }
 
         return $this->render('admin/produit/add.html.twig',[
@@ -97,7 +97,7 @@ class ProduitController extends ControllerAbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
 
-        $prix = $produit->getPrix() / 100;
+        $prix = $produit->getPrix();
         $produit->setPrix($prix);
 
         $formproduit = $this->createForm(ProduitFormType::class, $produit);
@@ -105,7 +105,7 @@ class ProduitController extends ControllerAbstractController
         $formproduit->handleRequest($request);
         // dd($formproduit);
         if($formproduit->isSubmitted() && $formproduit->isValid()){
-            $prix = $produit->getPrix() * 100;
+            $prix = $produit->getPrix();
             $produit->setPrix($prix);
             $imgFile = $formproduit->get('img')->getData();
             if ($imgFile) {
@@ -130,7 +130,7 @@ class ProduitController extends ControllerAbstractController
 
             $this->addFlash('success', 'Produit ajouté');
 
-            return $this->redirectToRoute('admin_produitadd');
+            return $this->redirectToRoute('app_produit');
         }
 
         return $this->render('admin/produit/edit.html.twig',[

@@ -10,9 +10,6 @@ import './styles/connexion.css';
 import './styles/inscription.css';
 import './styles/carousel/carousel.css';
 import './styles/carousel/vitrine_carousel.css';
-import './js/carousel.js';
-import './js/cards.js';
-import './js/scrolling_cards.js';
 import './styles/chiffre_affaire.css';
 import './styles/produit.css';
 import './styles/nous.css';
@@ -25,7 +22,18 @@ import './styles/global.css';
 import './styles/tableau.css';
 import './styles/navbar.css';
 import './styles/vitrine.css';
+
 // import './controllers/say-hello_controller.js';
+// import './js/cards.js';
+// import './js/test.js';
+
+import './js/nous.js';
+import './js/flash.js';
+import './js/chiffredaffaire.js';
+import './js/carousel.js';
+
+
+// import './js/scrolling_cards.js';
 
 // start the Stimulus application
 import './bootstrap';

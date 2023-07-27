@@ -1,7 +1,6 @@
-// $(document).ready(function() {
-//     alert('coucou');
-// })
-
+//  $(document).ready(function() {
+//      alert('mmmmm');
+//  })
 $(document).ready(function button_carousel() {
     const next = document.querySelector(".next");
     const previous = document.querySelector(".previous");

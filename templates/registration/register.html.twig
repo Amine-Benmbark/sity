@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Inscription{% endblock %}
 
 {% block body %}
 
@@ -9,17 +9,82 @@
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
+<style>
+ .custom-input-width {
+  width: 400px;
+}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.name, {'attr': {'class': 'input-color'}}) }}
-        {{ form_row(registrationForm.firstname, {'attr': {'class': 'input-color'}}) }}
-        {{ form_row(registrationForm.email, {'attr': {'class': 'input-color'}}) }}
-        {{ form_row(registrationForm.tel, {'attr': {'class': 'input-color'}}) }}
-        {{ form_row(registrationForm.password, {'attr': {'class': 'input-color'}}) }}
+/* Media query pour les écrans extra-petits (≥ 0px) jusqu'à petits (≥ 576px) */
+@media (max-width: 575.98px) {
+  .custom-input-width {
+    width: 100%;
+  }
+}
 
-        {{ form_row(registrationForm.RGPD) }}
+/* Media query pour les écrans petits (≥ 576px) jusqu'à moyens (≥ 768px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .custom-input-width {
+    width: 100%;
+  }
+}
 
-        {# <button type="submit" class="btn">Register</button> #}
-    {{ form_end(registrationForm) }}
+/* Media query pour les écrans moyens (≥ 768px) jusqu'à grands (≥ 992px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .custom-input-width {
+    width: 300px;
+  }
+}
+
+/* Media query pour les écrans grands (≥ 992px) jusqu'à grands (≥ 1200px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .custom-input-width {
+    width: 350px;
+  }
+}
+
+/* Media query pour les écrans très grands (≥ 1200px) */
+@media (min-width: 1200px) {
+  .custom-input-width {
+    width: 400px;
+  }
+}
+</style>
+    
+
+<h1 class="text-center">Inscription</h1>
+
+<div class="container col-12">
+  {{ form_start(registrationForm) }}
+  <div class="row">
+    <div class="col-12 col-sm-6">
+      
+      {{ form_row(registrationForm.name, {'attr': {'class': 'input-color custom-input-width'}}) }}
+      {{ form_row(registrationForm.firstname, {'attr': {'class': 'input-color custom-input-width'}}) }}
+    </div>
+    <div class="col-12 col-sm-6">
+      {{ form_row(registrationForm.email, {'attr': {'class': 'input-color custom-input-width'}}) }}
+      {{ form_row(registrationForm.tel, {'attr': {'class': 'input-color custom-input-width'}}) }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 col-md-6">
+      {{ form_row(registrationForm.password, {'attr': {'class': 'input-color custom-input-width'}}) }}
+    </div>
+    <div class="col-12 col-md-6">
+      {{ form_row(registrationForm.RGPD) }}
+    </div>
+  </div>
+
+  <p class="merriweather" style="font-size: 17px;">* champs obligatoires</p>
+  <p class="merriweather" style="font-size: 17px;">
+    <a class="text-reset" href="{{ path('app_politiqueconfidentialite') }}">* Lire le RGPD</a>
+  </p>
+
+  {# <button type="submit" class="btn">Register</button> #}
+
+  {{ form_end(registrationForm) }}
+</div>
+
 {% endblock %}
+				

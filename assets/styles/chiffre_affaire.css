@@ -7,6 +7,24 @@
     /* background-image : url('../img/chiffre_affaire.jpg'); */
 }
 
+.custom-text {
+  left: 0;
+  right: auto;
+}
+
+
+.chiffredaffairetext {
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+
+.chiffredaffairetext.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 /* Extra Small Devices (portrait phones, less than 576px) */
 @media only screen and (max-width: 575px) {
     .merriweather {

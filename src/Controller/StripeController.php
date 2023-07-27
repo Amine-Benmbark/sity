@@ -1,99 +1,138 @@
 <?php
 
-
 namespace App\Controller;
 
-
+use Stripe\Stripe;
+use App\Entity\Panier;
+use App\Entity\Produit;
+use App\Service\Helpers;
+use Stripe\StripeClient;
+use App\services\AppHelpers;
+use Stripe\Checkout\Session;
+use App\services\CartService;
+use Doctrine\ORM\Query\Expr\Math;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
+use Symfony\Component\HttpFoundation\Response;
+use App\Service\AppHelpers as ServiceAppHelpers;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Routing\Generator\UrlGenerator;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-use Symfony\Component\HttpFoundation\Request;
-
-use Symfony\Component\HttpFoundation\Response;
-
-use Stripe;
-
-use App\Service\AppHelpers;
-
-use Doctrine\Persistence\ManagerRegistry;
-
-use Symfony\Component\Security\Core\Security;
-use Symfony\Component\HttpFoundation\RequestStack;
-use Symfony\Component\HttpFoundation\Session\Session;
 
 class StripeController extends AbstractController
+
 {
+
     private string $bodyId;
     private $app;
     private $db;
     private $userInfo;
-    private $cartCount;
     private $session;
+    private EntityManagerInterface $em;
+    private UrlGeneratorInterface $generator;
 
-    public function __construct(Security $security, ManagerRegistry $doctrine,  AppHelpers $app, RequestStack $requestStack) {
+
+    public function __construct( ManagerRegistry $doctrine, Helpers $app, RequestStack $requestStack, EntityManagerInterface $em, UrlGeneratorInterface $generator)
+
+    {
+
         $this->app = $app;
-        // $this->bodyId = $app->getBodyId('ORDER_CONFIRMATION');
+        $this->bodyId = $app->getBodyId('ORDER_CONFIRMATION');
         $this->db = $doctrine->getManager();
-        $this->userInfo = $app->getUser();
+        // $this->userInfo = $this->getUser();
+        $this->em = $em;
+        $this->generator = $generator;
+
+
         $this->session = $requestStack->getSession();
+    
 
-        // on simule le montant obtenu depuis la page de commande:
-
-        $this->session->set('orderTotal', 52.6);
     }
 
-    public function index(Session $session): Response {
-        $total = $session->get('total');
+    
+    public function index(): RedirectResponse {
+        $panier = $this->getUser()->getPanier();
 
-        return $this->render('stripe/index.html.twig', [
-            'clef_stripe' => $_ENV["STRIPE_KEY"],
-            // 'bodyId' => $this->bodyId,
-            'cartCount' => $this->cartCount,
-            'userInfo' => $this->userInfo,
-            'orderTotal' => $this->session->get('orderTotal'),
-            'total' => $total,
-        ]);
-    }
+        // $productStripe = [];
 
-    public function createCharge(Request $request){
-        Stripe\Stripe::setApiKey($_ENV["STRIPE_SECRET"]);
-        try {
-            Stripe\Charge::create([
-                "amount" => $this->session->get('orderTotal') * 100,
-                "currency" => "eur",
-                "source" => $request->request->get('stripeToken'),
-                "description" => "Payment Test"
-            ]);
-        } catch (\Exception $e) {
-            return $this->redirectToRoute('app_stripe_fail', [
-                'error' => $e->getMessage(),
-            ], Response::HTTP_SEE_OTHER);
+        // $order = $this->em->getRepository(Order::class)->findOneBy(['reference' => $reference]);
+
+       
+
+        // $panier = $this->getUser()->getPanier();
+        if (null === $panier) {
+            $articles = [];
+        } else {
+            $articles = $panier->getArticle();
         }
-        return $this->redirectToRoute('app_stripe_success', [], Response::HTTP_SEE_OTHER);
+        // $lineItems = [];
+        foreach ($articles as $article) {
+
+            $lineItems[] = [
+                    'price_data' => [
+                        'currency' => 'eur',
+                        'product_data' => [
+                            'name' => $article->getProduit(),
+                            'images' => [$article->getProduit()->getImg()],
+                        ],
+                        'unit_amount' => $article->getProduit()->getPrix()*100, // Amount in cents (e.g., $10.00)
+                    ],
+                    'quantity' => $article->getQuantity(),
+            ];
+        }
+        $total = 0;
+        foreach ($lineItems as $item) {
+            $total += $item['price_data']['unit_amount'] * $item['quantity'];
+        }
+        Stripe::setApiKey($_ENV["STRIPE_SECRET"]);
+
+        $checkout_session = Session::create([
+            'customer_email' => $this->getUser(),
+            'payment_method_types' => ['card'],
+            'line_items' => $lineItems,
+            'mode' => 'payment',
+            'success_url' => $this->generator->generate('app_stripe_success', [
+                'reference' => $article->getProduit(),
+                'total' => $total // Passer le total dans les paramètres de redirection
+            ], UrlGenerator::ABSOLUTE_URL),
+            'cancel_url' => $this->generator->generate('app_stripe_fail', [
+                'reference' => $article->getProduit(),
+                'total' => $total
+            ], UrlGeneratorInterface::ABSOLUTE_URL),
+
+            ]);
+            
+
+            return new RedirectResponse($checkout_session->url);
+
+
     }
 
-    public function orderConfirmation(Session $session): Response {
-
-        $total = $session->get('total');
-
+    public function stripeSuccess(Request $request): Response
+    {
+        $total = $request->query->get('total'); // Récupérer le total depuis les paramètres de redirection
+        // dd($total);
         return $this->render('stripe/order_confirmation.html.twig', [
-            'cartCount' => $this->cartCount,
+            'bodyId' => $this->bodyId,
             'userInfo' => $this->userInfo,
             'total' => $total,
         ]);
-
     }
-
-
-    public function paymentFailure(Request $request, Session $session): Response {
-
-        $total = $session->get('total');
-        $error = $request->get('error');
-
+    
+    public function paymentFailure(Request $request): Response {
+        $total = $request->query->get('total'); // Récupérer le total depuis les paramètres de redirection
+        // dd($total);
         return $this->render('stripe/payment_failure.html.twig', [
-            'cartCount' => $this->cartCount,
-            'userInfo' => $this->userInfo,
-            'error' => $error,
+            'bodyId' => $this->bodyId,
             'total' => $total,
+            'userInfo' => $this->userInfo,
         ]);
     }
+
+
 }

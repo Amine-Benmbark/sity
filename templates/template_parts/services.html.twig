@@ -1,9 +1,20 @@
+<style>
+.custom-img-size {
+  width: 300px;
+  height: 200px;
+margin: auto;
+}
+</style>
+
 <section class="col-12" id="section_list">
   <h2 class="mb-5">Nos Services</h2>
-  <p id="service_list" class="col-12 text-center merriweather">Sity gère toutes les demandes digitales demandées: Conception, création de site internet, UX design, UI design, SEO, maintenance, refonte, migration et web marketing, logo.</p>
+ <p id="service_list" class="col-12 text-center merriweather" style="font-size: 30px;">
+  Sity gère toutes les demandes digitales demandées : Conception, création de site internet, UX design, UI design, SEO, maintenance, refonte, migration et web marketing, logo.
+</p>
+
 </section>
 
-<section id="cards" class="col-11 m-4 container-fluid p-0 row mb-3">
+<section id="cards" class="col-11 mx-auto container row justify-content-center mb-3">
   <div class="row">
     {% set e = 0 %}
     {% set v = 0 %}
@@ -16,11 +27,11 @@
         {% if e < 2 %}
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="card m-3" id="card_service">
-              <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top  img-fluid mt-3" alt="...">
+              <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top img-fluid mt-3 custom-img-size" alt="...">
               <div class="card-body" id="card_service">
                 <h5 class="card-title" id="p_cards">{{ produit.name }}</h5>
                 <p class="card-text merriweather" id="p_cards">{{ produit.description}}</p>
-                <p class="merriweather" id="service_price">{{ produit.prix }}€</p>
+                <p class="merriweather" id="service_price">{{ produit.prix|number_format(2, ',', ' ') }}€</p>
                 {% if produit.categorie.name == 'Vitrine' %}
                   <a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
                 {% elseif produit.categorie.name == 'Sur-mesure' %}
@@ -37,11 +48,11 @@
         {% if v < 2 %}
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="card m-3" id="card_service">
-              <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top img-fluid mt-3" alt="...">
+              <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top img-fluid mt-3 custom-img-size" alt="...">
               <div class="card-body" id="card_service">
                 <h5 class="card-title" id="p_cards">{{ produit.name }}</h5>
                 <p class="card-text merriweather" id="p_cards">{{ produit.description}}</p>
-                <p id="service_price" class="merriweather">{{ produit.prix }}€</p>
+                <p id="service_price" class="merriweather">{{ produit.prix|number_format(2, ',', ' ') }}€</p>
                 {% if produit.categorie.name == 'Vitrine' %}
                   <a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
                 {% elseif produit.categorie.name == 'Sur-mesure' %}
@@ -58,11 +69,11 @@
         {% if a < 2 %}
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="card m-3" id="card_service">
-              <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top img-fluid mt-3" alt="...">
+              <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top img-fluid mt-3 custom-img-size" alt="...">
               <div class="card-body" id="card_service">
                 <h5 class="card-title" id="p_cards">{{ produit.name }}</h5>
                 <p class="card-text merriweather" id="p_cards">{{ produit.description}}</p>
-                <p id="service_price" class="merriweather">{{ produit.prix }}€</p>
+                <p id="service_price" class="merriweather">{{ produit.prix|number_format(2, ',', ' ') }}€</p>
                 {% if produit.categorie.name == 'Vitrine' %}
                   <a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
                 {% elseif produit.categorie.name == 'Sur-mesure' %}
@@ -79,11 +90,11 @@
         {% if p < 2 %}
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="card m-3" id="card_service">
-              <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top img-fluid mt-3" alt="...">
+              <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top img-fluid mt-3 custom-img-size" alt="...">
               <div class="card-body" id="card_service">
                 <h5 class="card-title" id="p_cards">{{ produit.name }}</h5>
                 <p class="card-text merriweather" id="p_cards">{{ produit.description}}</p>
-                <p id="service_price" class="merriweather">{{ produit.prix }}€</p>
+                <p id="service_price" class="merriweather">{{ produit.prix|number_format(2, ',', ' ') }}€</p>
                 {% if produit.categorie.name == 'Vitrine' %}
                   <a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
                 {% elseif produit.categorie.name == 'Sur-mesure' %}
@@ -100,11 +111,11 @@
         {% if l < 2 %}
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="card m-3" id="card_service">
-              <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top img-fluid mt-3" alt="...">
+              <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top img-fluid mt-3 custom-img-size" alt="...">
               <div class="card-body" id="card_service">
                 <h5 class="card-title" id="p_cards">{{ produit.name }}</h5>
                 <p class="card-text merriweather" id="p_cards">{{ produit.description}}</p>
-                <p id="service_price" class="merriweather">{{ produit.prix }}€</p>
+                <p id="service_price" class="merriweather">{{ produit.prix|number_format(2, ',', ' ') }}€</p>
                 {% if produit.categorie.name == 'Vitrine' %}
                   <a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
                 {% elseif produit.categorie.name == 'Sur-mesure' %}
@@ -121,11 +132,11 @@
         {% if s < 2 %}
           <div class="col-md-4 col-sm-6 col-xs-12">
             <div class="card m-3" id="card_service">
-              <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top img-fluid mt-3" alt="...">
+              <img src="{{ asset( 'assets/img/' ~ produit.img) }}" class="card-img-top img-fluid mt-3 custom-img-size" alt="...">
               <div class="card-body" id="card_service">
                 <h5 class="card-title" id="p_cards">{{ produit.name }}</h5>
                 <p class="card-text merriweather" id="p_cards">{{ produit.description}}</p>
-                <p class="merriweather" id="service_price">{{ produit.prix }}€</p>
+                <p class="merriweather" id="service_price">{{ produit.prix|number_format(2, ',', ' ') }}€</p>
                 {% if produit.categorie.name == 'Vitrine' %}
                   <a href="{{ path('app_vitrine') }}" class="btn btn-color">{{ 'plus de choix de site ' ~ produit.categorie.name }}</a>
                 {% elseif produit.categorie.name == 'Sur-mesure' %}

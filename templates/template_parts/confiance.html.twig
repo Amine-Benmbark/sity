@@ -1,35 +1,44 @@
 <style>
-    .aspect-ratio-img {
-        object-fit: cover;
-    }
+  .aspect-ratio-img {
+    object-fit: cover;
+    max-height: 100%;
+    max-width: 100%;
+  }
+.custom-img-size {
+  width: 140px;
+  height: 140px;
+}
 </style>
 
-<h2>Ils nous font confiance !</h2>
+<h2 class="text-center">Ils nous font confiance !</h2>
 
-<section class="container">
-    <div class="row">
-     <div class="col-sm-6 col-md-4 col-lg-3 m-2">
-            <div class="aspect-ratio aspect-ratio-4x3">
-                <a href="{{ path('app_home') }}">
-                <img class="img-fluid aspect-ratio-img rounded" src="{{ asset('assets/logo/logo_sity.png') }}" alt="">
-                </a>
-                <h5 class="mt-2">Sity</h5>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 m-2">
-            <div class="aspect-ratio aspect-ratio-4x3">
-                <a href="https://bytheway-app.com/">
-                <img class="img-fluid aspect-ratio-img rounded" src="{{ asset('assets/img/png_logo.png') }}" alt="">
-                </a>
-                <h5 class="mt-2">By The Way</h5>
-            </div>
-        </div>
-        <div class="col-sm-6 col-md-4 col-lg-3 m-2">
-            <div class="aspect-ratio aspect-ratio-4x3">
-                <img class="img-fluid aspect-ratio-img rounded" src="{{ asset('assets/img/Restau_logo.jpg') }}" alt="">
-                <h5 class="mt-2">Sity Food</h5>
-            </div>
-        </div>
-    </div>
+<section class="container mx-auto my-4">
+  <div class="row">
+
+<div class="col-12 col-sm-6 col-md-4 col-lg-3 m-2">
+  <div class="aspect-ratio aspect-ratio-4x3">
+    <a href="{{ path('app_home') }}">
+      <img class="img-fluid aspect-ratio-img rounded custom-img-size" src="{{ asset('assets/logo/logo_sity.png') }}" alt="">
+    </a>
+    <h5 class="mt-2 text-center">Sity</h5>
+  </div>
+</div>
+<div class="col-12 col-sm-6 col-md-4 col-lg-3 m-2">
+  <div class="aspect-ratio aspect-ratio-4x3">
+    <a href="https://bytheway-app.com/">
+      <img class="img-fluid aspect-ratio-img rounded custom-img-size" src="{{ asset('assets/img/png_logo.png') }}" alt="">
+    </a>
+    <h5 class="mt-2 text-center">By The Way</h5>
+  </div>
+</div>
+<div class="col-12 col-sm-6 col-md-4 col-lg-3 m-2">
+  <div class="aspect-ratio aspect-ratio-4x3">
+    <img class="img-fluid aspect-ratio-img rounded custom-img-size" src="{{ asset('assets/img/Restau_logo.jpg') }}" alt="">
+    <h5 class="mt-2 text-center">Sity Food</h5>
+  </div>
+</div>
+
+
+  </div>
 </section>
-
+	

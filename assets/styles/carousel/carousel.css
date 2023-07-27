@@ -1,12 +1,12 @@
 .caroussel{
-  margin-top: 5rem;
+  margin-top: 5px;
   height: 60vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  perspective: 100rem;
+  perspective: 100%;
 }
 
 .caroussel-cards{

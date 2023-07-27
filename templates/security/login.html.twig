@@ -1,11 +1,52 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Se connecter{% endblock %}
 
 {% block body %}
 
  {% block header %} {% endblock %}
-<form method="post" class="ml-5">
+<style>
+.custom-input-width {
+  width: 400px;
+}
+
+/* Media query pour les écrans extra-petits (≥ 0px) jusqu'à petits (≥ 576px) */
+@media (max-width: 575.98px) {
+  .custom-input-width {
+    width: 100%;
+  }
+}
+
+/* Media query pour les écrans petits (≥ 576px) jusqu'à moyens (≥ 768px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .custom-input-width {
+    width: 100%;
+  }
+}
+
+/* Media query pour les écrans moyens (≥ 768px) jusqu'à grands (≥ 992px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .custom-input-width {
+    width: 300px;
+  }
+}
+
+/* Media query pour les écrans grands (≥ 992px) jusqu'à grands (≥ 1200px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .custom-input-width {
+    width: 350px;
+  }
+}
+
+/* Media query pour les écrans très grands (≥ 1200px) */
+@media (min-width: 1200px) {
+  .custom-input-width {
+    width: 400px;
+  }
+}
+</style>
+
+<form method="post" class="ml-5 container">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
@@ -16,11 +57,11 @@
         </div>
     {% endif %}
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <h1 class="mb-3 font-weight-normal">Connectez vous !</h1>
     <label for="inputEmail">Email</label>
-    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control input-color w-50 mb-3" autocomplete="email" required autofocus>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control input-color custom-input-width w-50 mb-3" autocomplete="email" required autofocus>
     <label for="inputPassword">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control input-color w-50 mb-3" autocomplete="current-password" required>
+    <input type="password" name="password" id="inputPassword" class="form-control input-color w-50 custom-input-width mb-3" autocomplete="current-password" required>
 
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
@@ -32,7 +73,7 @@
 
         <div class="checkbox mb-3">
             <label>
-                <input type="checkbox" name="_remember_me"> Remember me
+                <input type="checkbox" name="_remember_me"> Se souvenir de moi
             </label>
         </div>
         <button class="btn btn-order fw-bold">
@@ -42,7 +83,7 @@
    
 
     <button class="btn btn-order fw-bold" type="submit">
-        Sign in
+        Se connecter
     </button>
 </form>
 {% endblock %}

@@ -50,9 +50,9 @@ class Produit
 
     public function __toString(): string
     {
-        return $this->name.' '.$this->categorie;
+        return $this->name . ' ' . $this->categorie->getName();
     }
-
+    
     public function getId(): ?int
     {
         return $this->id;

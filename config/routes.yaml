@@ -61,6 +61,11 @@ app_profil:
     controller: App\Controller\ProfilController::profil
     methods: GET
 
+app_contact:
+    path: /contact
+    controller: App\Controller\ContactController::contact
+    methods: [GET, POST]
+
 app_produit:
     path: /admin/produit
     controller: App\Controller\ProduitController::index
@@ -179,7 +184,7 @@ app_stripe_charge:
 
 app_stripe_success:
   path: /order/confirmation
-  controller: App\Controller\StripeController::orderConfirmation
+  controller: App\Controller\StripeController::stripeSuccess
 
 app_stripe_fail:
   path: /payment/failure

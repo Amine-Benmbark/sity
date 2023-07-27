@@ -7,7 +7,7 @@ function handleIntersection(entries, observer) {
       }
     });
   }
-  
+ 
   // Fonction pour initialiser l'observateur lors du défilement
   function initIntersectionObserver() {
     // Création de l'observateur

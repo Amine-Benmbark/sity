@@ -27,7 +27,7 @@ class RegistrationFormType extends AbstractType
     {
         $builder
         ->add('name', TextType::class, [
-            'label' => 'Nom :',
+            'label' => 'Nom : *',
             'constraints' => [
                 new Regex([
                     'pattern' => '/^[a-zA-Z\s]+$/',
@@ -36,7 +36,7 @@ class RegistrationFormType extends AbstractType
             ],
         ])
         ->add('firstname', TextType::class, [
-            'label' => 'Prénom :',
+            'label' => 'Prénom : *',
             'constraints' => [
                 new Regex([
                     'pattern' => '/^[a-zA-Z\s]+$/',
@@ -45,8 +45,9 @@ class RegistrationFormType extends AbstractType
             ],
         ])
         ->add('email', EmailType::class, [
-            'attr' => ['class' => 'form-control', 'id' => 'email'],
+            'attr' => ['class' => 'form-control', 'id' => 'email:'],
             'required' => true,
+            'label' => 'Email : *',
             'constraints' => [
                 new NotBlank([
                     'message' => 'Ce champ est obligatoire.',
@@ -57,7 +58,7 @@ class RegistrationFormType extends AbstractType
             ],
         ])
         ->add('tel', TelType::class, [
-            'label' => 'Téléphone :',
+            'label' => 'Téléphone : *',
             'constraints' => [
                 new Regex([
                     'pattern' => '/^(0|\+33)[1-9]( ?\d{2}){4}$/',
@@ -71,10 +72,10 @@ class RegistrationFormType extends AbstractType
             'invalid_message' => 'Les mots de passe doivent correspondre.',
             'first_options' => [
                 'attr' => ['autocomplete' => 'new-password',
-                            'class' => 'input-color',
+                            'class' => 'input-color custom-input-width',
                             // 'style' => 'border-radius: 40px'
                             ],
-                'label' => "Mot de passe:",
+                'label' => "Mot de passe : *",
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Entrez un mot de passe',
@@ -93,13 +94,14 @@ class RegistrationFormType extends AbstractType
 
                 ],
             ],
-            'second_options' => ['label' => 'Confirmer le mot de passe:',
+            'second_options' => ['label' => 'Confirmer le mot de passe : *',
             'attr' => [
-                'class' => 'input-color',
+                'class' => 'input-color custom-input-width',
                 ],
             ],
     ])
         ->add('RGPD', CheckboxType::class, [
+            'label' => 'RGPD',
             'mapped' => false,
             'constraints' => [
                 new IsTrue([
@@ -120,3 +122,4 @@ class RegistrationFormType extends AbstractType
         ]);
     }
 }
+	
