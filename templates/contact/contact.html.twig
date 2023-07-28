@@ -4,18 +4,28 @@
 
 {% block body %}
 {% block header %}{% endblock %}
-    <div class="container text-dark">
+    <div class="container">
         {% for message in app.flashes('success') %}
             <div class="alert alert-success mt-4">
                 {{message}}
             </div>
         {% endfor %}
         <h1 class="text-center">Formulaire de contact</h1>
-        <p class="text-danger">(*) Champs obligatoire</p>
         
         {# {{ dump(form) }} #}
-         {# {{ form_start(form) }}  #}
-         {{form(form)}}
-          {# {{ form_end(form) }} #}
+         {{ form_start(form) }}
+        {{ form_row(form.name, {'attr': {'class': 'input-color custom-input-width'}}) }}
+        {{ form_row(form.firstname, {'attr': {'class': 'input-color custom-input-width'}}) }}
+         {{ form_row(form.email, {'attr': {'class': 'input-color custom-input-width'}}) }}
+        {{ form_row(form.tel, {'attr': {'class': 'input-color custom-input-width'}}) }}
+         {{ form_row(form.sujet, {'attr': {'class': 'input-color custom-input-width'}}) }}
+        {{ form_row(form.message, {'attr': {'class': 'input-color custom-input-width'}}) }}
+<p class="merriweather" style="font-size: 17px;">* champs obligatoires</p>
+         {{ form_end(form) }} 
+
     </div> 
+
+{% endblock %}
+
+{% block javascripts %}
 {% endblock %}

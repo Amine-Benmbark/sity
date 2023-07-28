@@ -1,3 +1,4 @@
+$(document).ready(function() {
 const nav = document.getElementById('pronav');
 
 const changeNavColor = () => {
@@ -11,3 +12,4 @@ const changeNavColor = () => {
 };
 
 window.addEventListener('scroll', changeNavColor);
+});

@@ -6,69 +6,74 @@
   {% block header %}{% endblock %}
 
   <div class="container mt-5">
-    <h2>Mon panier</h2>
+    <h2 class="text-center">Mon panier</h2>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Produit</th>
-          <th>Image</th>
-          <th>Prix</th>
-          <th>Quantité</th>
-          <th>Total</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% if articles is not empty %}
-          {% for article in articles %}
-            <tr>
-              <td>{{ article.produit.name }}</td>
-              <td><img src="{{ asset('assets/img/' ~ article.produit.img) }}" alt="ffff" class="img-fluid"></td>
-              <td>{{ article.produit.prix }}€</td>
-              <td>{{ article.quantity }}</td>
-              <td>{{ article.quantity * article.produit.prix }}€</td>
-              <td>
-                <div class="btn-group">
-                  <a href="{{ path("app_add_panier", {id: article.produit.id}) }}" class="btn btn-order">
-                    <i class="fas fa-check-circle"></i><span class="d-none d-sm-block">Ajouter le produit</span>
-                  </a>
-                  <a onClick="return confirm('Etes-vous sur de vouloir retirer une quantité?')" href="{{ path("app_remove_panier", {id: article.produit.id}) }}" class="btn btn-order">
-                    <i class="fas fa-pencil-alt"></i> <span class="d-none d-sm-block">Enlever une quantité</span>
-                  </a>
-                  <a onClick="return confirm('Voulez-vous vraiment supprimé le produit ?')" href="{{ path("app_delete_panier", {id: article.produit.id}) }}" class="btn btn-order">
-                    <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block">Supprimer le produit</span>
-                  </a>
-                </div>
-              </td>
-            </tr>
-          {% endfor %}
-        {% else %}
-          <tr>
-          <td></td>
-            <td colspan="5" class="text-center">
-              Votre panier est vide!
-            </td>
-          </tr>
-        {% endif %}
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="3">Total</td>
-          <td>{{ total }}€</td>
-          <td></td>
-          <td>
-            <div class="btn-group">
-              <a onClick="return confirm('Voulez-vous vraiment supprimé le panier ?')" href="{{ path("app_delete_all_panier") }}" class="btn btn-order">
-                <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block">Supprimer le panier</span>
-                </a>
-              <a href="{{ path("app_commande") }}" class="btn btn-order">
-                    <i class="fas fa-check-circle"></i><span class="d-none d-sm-block">Passer la commande</span>
-              </a>
-            </div>
-          </td>
-        </tr>
-      </tfoot>
-    </table>
-  </div>
+    <div class="table-responsive"> <!-- Permettre le défilement horizontal sur mobile -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Produit</th>
+                    <th>Image</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if articles is not empty %}
+                    {% for article in articles %}
+                        <tr>
+                            <td>{{ article.produit.name }}</td>
+                            <td><img src="{{ asset('assets/img/' ~ article.produit.img) }}" alt="ffff" class="img-fluid"></td>
+                            <td>{{ article.produit.prix }}€</td>
+                            <td>{{ article.quantity }}</td>
+                            <td>{{ article.quantity * article.produit.prix }}€</td>
+                            <td>
+                                <div class="btn-group">
+                                    <a href="{{ path("app_add_panier", {id: article.produit.id}) }}" class="btn btn-order">
+                                        <i class="fas fa-check-circle"></i><span class="d-none d-sm-inline">Ajouter le produit</span>
+                                    </a>
+                                    <a onClick="return confirm('Etes-vous sur de vouloir retirer une quantité?')" href="{{ path("app_remove_panier", {id: article.produit.id}) }}" class="btn btn-order">
+                                        <i class="fas fa-pencil-alt"></i><span class="d-none d-sm-inline">Enlever une quantité</span>
+                                    </a>
+                                    <a onClick="return confirm('Voulez-vous vraiment supprimer le produit ?')" href="{{ path("app_delete_panier", {id: article.produit.id}) }}" class="btn btn-order">
+                                        <i class="fas fa-trash-alt"></i><span class="d-none d-sm-inline">Supprimer le produit</span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center">
+                            Votre panier est vide!
+                        </td>
+                    </tr>
+                {% endif %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Total</td>
+                    <td>{{ total }}€</td>
+                    <td></td>
+                    <td>
+                        <div class="btn-group">
+                            <a onClick="return confirm('Voulez-vous vraiment supprimer le panier ?')" href="{{ path("app_delete_all_panier") }}" class="btn btn-order">
+                                <i class="fas fa-trash-alt"></i><span class="d-none d-sm-inline">Supprimer le panier</span>
+                            </a>
+                            <a href="{{ path("app_commande") }}" class="btn btn-order">
+                                <i class="fas fa-check-circle"></i><span class="d-none d-sm-inline">Passer la commande</span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
 {% endblock %}

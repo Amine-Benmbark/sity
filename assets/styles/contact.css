@@ -1,0 +1,13 @@
+
+#elementToZoom {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    line-height: 100px;
+    font-size: 20px;
+    cursor: pointer;
+    transform-origin: center; /* Définir le point d'origine de la transformation au centre */
+    transition: transform 0.3s ease;
+}

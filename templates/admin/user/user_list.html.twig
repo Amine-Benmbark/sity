@@ -1,57 +1,63 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Admin user list{% endblock %}
+{% block title %}Admin liste utilisateurs{% endblock %}
 
 {% block body %}
 
     {% block header %} {% endblock %}
-    <h1>Admin user list</h1>
+    
+    <div class="container">
+    <h1 class="text-center mt-5">Admin liste utilisateurs</h1>
 
-    <div class="row">
-        <div class="col-md-12">
-            <a class="btn btn-order m-3" href="{{ path('app_add_users') }}">Ajouter un user</a>
+    <div class="row justify-content-center"> <!-- Centrer le bouton -->
+        <div class="col-md-6 col-12"> <!-- Limiter la largeur du bouton sur mobile -->
+            <a class="btn btn-order m-3" href="{{ path('app_add_users') }}">Ajouter un utilisateur</a>
         </div>
     </div>
 
-    {% for user in user %}
-        <div class="row">
-            <div class="col-md-12">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th scope="col">Nom</th>
-                            <th scope="col">Prenom</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Tél</th>
-                            <th scope="col">Actions</th>
-                            <th scope="col">Commandes</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
+    <div class="row justify-content-center"> <!-- Centrer le tableau -->
+        <div class="col-md-10 col-12 overflow-x-auto"> <!-- Limiter la largeur du tableau sur mobile et permettre le défilement -->
+            <table class="table table-striped">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Tél</th>
+                        <th scope="col">Actions</th>
+                        <th scope="col">Commandes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in user %}
+                        <tr class="text-center">
                             <td>{{ user.name }}</td>
                             <td>{{ user.firstname }}</td>
                             <td>{{ user.email }}</td>
                             <td>{{ user.tel }}</td>
                             <td>
-                                <a class="btn btn-order" href="{{ path("app_users_commande", {'id': user.id}) }}">voir les commandes</a>
+                                <a class="btn btn-order" href="{{ path("app_users_commande", {'id': user.id}) }}">Voir les commandes</a>
                             </td>
                             <td> 
-                             <a href="{{ path('app_edit_users', {'id': user.id}) }}" class="btn btn-order">
-                              <i class="fas fa-pencil-alt"></i> <span class="d-none d-sm-block">Modifier</span>
-                            </a>
-                            <a onClick="return confirm('Voulez vous vraiement supprimer cet utilisateur ?')" href="{{ path('app_supp_users', {'id': user.id}) }}" class="btn btn-order">
-                              <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-block">Supprimer</span>
-                            </a>
-                            
-                                {# <a href="{{ path('app_edit_users', {'id': user.id}) }}"  type="button" class="btn btn-success">Edit</a> #}
-                                {# <button type="button" class="btn btn-danger">Delete</button> #}
+                                <a href="{{ path('app_edit_users', {'id': user.id}) }}" class="btn btn-order">
+                                    <i class="fas fa-pencil-alt"></i> 
+                                    <span class="d-none d-sm-inline">Modifier</span>
+                                </a>
+                                <a onClick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')" href="{{ path('app_supp_users', {'id': user.id}) }}" class="btn btn-order">
+                                    <i class="fas fa-trash-alt"></i> 
+                                    <span class="d-none d-sm-inline">Supprimer</span>
+                                </a>
                             </td>
                         </tr>
-                    </tbody>
-                </table>
-            </div>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
-    {% endfor %}
+    </div>
+</div>
 
+
+{% endblock %}
+
+{% block javascripts %}
 {% endblock %}

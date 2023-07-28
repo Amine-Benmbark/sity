@@ -28,6 +28,7 @@ import './styles/vitrine.css';
 // import './js/test.js';
 
 import './js/nous.js';
+import './js/contact.js'
 import './js/flash.js';
 import './js/chiffredaffaire.js';
 import './js/carousel.js';

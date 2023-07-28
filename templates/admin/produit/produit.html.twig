@@ -5,19 +5,19 @@
 {% block body %}
   {% block header %}{% endblock %}
   <div class="container">
-    <h1 class="text-center mt-5">Admin produit</h1>
+      <h1 class="text-center mt-5">Admin produit</h1>
     <div class="text-center mt-4">
       <a class="btn btn-order" href="{{ path('app_add_produit') }}">Ajouter un produit</a>
     </div>
-    <div class="table-responsive mt-4">
+    <div class="table-responsive mt-4 mx-auto">
       <table class="table table-striped">
         <thead>
           <tr>
             <th scope="col">Nom</th>
             <th scope="col">Prix</th>
             <th scope="col">Image</th>
-            <th scope="col">Description</th>
-            <th scope="col">Catégorie</th>
+            <th scope="col" class="d-none d-sm-table-cell">Description</th>
+             <th scope="col" class="d-none d-sm-table-cell">Catégorie</th>
             <th scope="col">Actions</th>
           </tr>
         </thead>
@@ -27,8 +27,8 @@
               <td>{{ produit.name }}</td>
               <td>{{ produit.prix }}€</td>
               <td><img class="img-fluid" src="{{ asset('assets/img/' ~ produit.img) }}" alt="Product Image"></td>
-              <td>{{ produit.description }}</td>
-              <td>{{ produit.categorie.name }}</td>
+             <td scope="col" class="d-none d-sm-table-cell">{{ produit.description }}</td>
+             <td scope="col" class="d-none d-sm-table-cell">{{ produit.categorie.name }}</td>
               <td>
                 <div class="d-flex justify-content-center">
                 <a href="{{ path('app_edit_produit', {'id': produit.id}) }}" class="btn btn-order">
@@ -49,4 +49,6 @@
       </table>
     </div>
   </div>
+{% endblock %}
+{% block javascripts %}
 {% endblock %}

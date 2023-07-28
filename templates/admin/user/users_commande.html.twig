@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Admin users commande{% endblock %}
+{% block title %}Admin commandes utilisateur{% endblock %}
 
 {% block body %}
     {% block header %}{% endblock %}
-    <h1>Admin users commande</h1>
+    <h1 class="mb-5">Admin commandes utilisateur</h1>
 
     {% if user is not null %}
-        <h2>User: {{ user.email }}</h2>
+        <h2 class="mb-5">Utilisateur : {{ user.name }} {{ user.firstname }}</h2>
         {% if articles is not empty %}
-            <table class="table table-striped">
+            <table class="table mb-5 table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Produit</th>
@@ -30,9 +30,12 @@
                 </tbody>
             </table>
         {% else %}
-            <p>Aucun article pour cet utilisateur.</p>
+            <p class=" p-5 chiffre_affaire mb-5">Aucun article pour cet utilisateur.</p>
         {% endif %}
     {% else %}
-        <p>Utilisateur non trouvé.</p>
+        <p class="mb-5 p-5 chiffre_affaire">Utilisateur non trouvé.</p>
     {% endif %}
+{% endblock %}
+
+{% block javascripts %}
 {% endblock %}

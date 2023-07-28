@@ -2,7 +2,7 @@
 //     alert('coucou');
 // })
 
-$(document).ready(function() {
+function chiffre() {
     const slidingNewsletter = document.querySelector('.chiffredaffairetext');
   
     window.addEventListener('scroll', () => {
@@ -14,6 +14,6 @@ $(document).ready(function() {
       } else {
         slidingNewsletter.classList.remove('active');
       }
-    });
 });
-  
+}
+chiffre();  

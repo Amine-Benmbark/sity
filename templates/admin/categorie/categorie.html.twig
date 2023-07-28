@@ -5,16 +5,22 @@
 {% block body %}
 
     {% block header %} {% endblock %}
-    <h1>Admin categorie</h1>
-    <a href="{{ path('app_add_categorie') }}" class="btn btn-order m-4">
-        <i class="fas"></i> <span class="d-none d-sm-block"><p>Ajouter une categorie</p></span>
-    </a>
+    <div class="container">
+    <h1 class="text-center mt-5">Admin categorie</h1>
+    <div class="text-center mt-4">
+        <!-- Utilisez les classes pour afficher le bouton différemment sur les petits écrans -->
+        <a href="{{ path('app_add_categorie') }}" class="btn btn-order m-4">
+            <i class="fas"></i> 
+            <span class="d-none d-sm-inline">Ajouter une categorie</span>
+            <span class="d-inline d-sm-none">Ajouter une categorie</span>
+        </a>
+    </div>
 
     {% for categorie in categorie %}
      <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col-5">name</th>
+                <th scope="col-3">nom</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -35,4 +41,7 @@
         </tbody>
     </table>
     {% endfor%}
+{% endblock %}
+
+{% block javascripts %}
 {% endblock %}

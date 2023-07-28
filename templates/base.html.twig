@@ -28,6 +28,12 @@
         {% endblock %}
 
     </head>
+
+<style> 
+.responsive-text {
+    font-size: 3vw; /* Ajustez la taille de la police en fonction de vos besoins */
+}
+</style>
     {# <body id=" {{ bodyId }}" > #}
 <body >
         {% block nav %}
@@ -38,10 +44,27 @@
             {% block header%}
 
     {% if is_granted('ROLE_SUPER_ADMIN') or  is_granted('ROLE_USER') %}
-    <h1> Hello {{app.user.firstname}} {{app.user.name}} ! Sity vous accompagne dans l'apogée de votre projet !!</h1>
-    {% else %}
-    <h1> Hello ! Sity vous accompagne dans l'apogée de votre projet !!</h1>
-    {% endif %}
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 class="responsive-text text-center">
+                Hello {{ app.user.firstname }} {{ app.user.name }} ! Sity vous accompagne dans l'apogée de votre projet !!
+            </h1>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-sm-12">
+            <h1 class="responsive-text text-center">
+                Hello ! Sity vous accompagne dans l'apogée de votre projet !!
+            </h1>
+        </div>
+    </div>
+</div>
+{% endif %}
+
     <div class="d-none d-sm-block">
     {% include './template_parts/carousel.html.twig' %}
     </div>
@@ -51,6 +74,41 @@
 
         <main>
             {% block body %}
+                {# {% include './contact/contact.html.twig' %} #}
+
+
+            <div class="d-none d-sm-block">
+              <div class="container mt-5 text-center">
+    <div class="row mb-5">
+        <div id="elementToZoom" class="col-md-9 col-sm-10 mx-auto">
+            <div class="text-center">
+                <h2 class="mb-4">Vous êtes sur le point de lancer un projet ?</h2>
+                <p class="merriweather lead">
+                    Besoin d'un site web ou d'une application mobile pour plus de visibilité et démarrer vos services ?
+                </p>
+                <a href="{{ path('app_contact') }}" class="btn btn-order mt-3">Contactez-nous !</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="d-sm-none">
+              <div class="container mt-5 text-center">
+    <div class="row mb-5">
+        <div class="col-md-9 col-sm-10 mx-auto">
+            <div class="text-center">
+                <h2 class="mb-4">Vous êtes sur le point de lancer un projet ?</h2>
+                <p class="merriweather lead">
+                    Besoin d'un site web ou d'une application mobile pour plus de visibilité et démarrer vos services ?
+                </p>
+                <a href="{{ path('app_contact') }}" class="btn btn-order mt-3">Contactez-nous !</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
                 {% include './template_parts/chiffre_affaire.html.twig' %}
                 {% include './template_parts/nous.html.twig' %}
                 {% include './template_parts/confiance.html.twig' %}

@@ -58,8 +58,8 @@ class ContactController extends AbstractController
 
             $contact = $form->getData();
 
-            // $manager->persist($contact);
-            // $manager->flush();
+            $manager->persist($contact);
+            $manager->flush();
 // Envoi sur la boite mail
 
             $email = (new TemplatedEmail())
@@ -70,6 +70,8 @@ class ContactController extends AbstractController
             ->context([
                     'contact' => $contact
                    ]);
+            // $htmlBody = $email->getHtmlBody();
+
 
         $mailer->send($email);
 
@@ -78,13 +80,7 @@ class ContactController extends AbstractController
                 'Votre message à été envoyé avec succès !'
             );
 
-            return $this->render('contact/contact.html.twig', [
-                'form' => $form->createView(),
-                // 'bodyId' => $app->getBodyId('CONTACT'),
-                'userInfo' => $this->user,
-            ]);
         }
-
         return $this->render('contact/contact.html.twig', [
             'form' => $form->createView(),
             // 'bodyId' => $app->getBodyId('CONTACT'),

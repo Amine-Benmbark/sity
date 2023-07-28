@@ -1,35 +1,43 @@
 <footer class="m-0">
-  <section class="container-fluid m-0 col-12 p-0 row">
-    <div class="col-md-4 col-sm-12 p-5">
-      <h5 class="text-decoration-underline">Nos réseaux</h5>
-      <a href="#" class="text-reset">
-        <p>Facebook <img src="{{asset('assets/icone/icons-facebook.svg')}}" alt="social" height="17px"></p>
-      </a>
-      <a href="#" class="text-reset">
-        <p>Twitter <img src="{{asset('assets/icone/icons-twitter.png')}}" alt="social" height="17px"></p>
-      </a>
-      <a href="#" class="text-reset">
-        <p>LinkedIn <img src="{{asset('assets/icone/icons-linkedin.png')}}" alt="social" height="17px"></p>
-      </a>
-    </div>
-    <div class="col-md-4 col-sm-12 p-5">
-      <h5 class="text-uppercase fw-bold mb-4 text-decoration-underline">Liens utiles</h5>
-      <p class="merriweather"> <a href="{{ path('app_cgv') }}" class="text-reset">CGV</a> </p>
-      <p class="merriweather"> <a href="{{ path('app_legale')}}" class="text-reset">Mentions légales</a> </p>
-      <p class="merriweather"> <a href="{{path('app_politiqueconfidentialite')}}" class="text-reset">Politique de confidentialité</a> </p>
-      <p class="merriweather"> <a href="{{ path('app_home') }}" class="text-reset">Qui sommes-nous ?</a> </p>
-      <p class="merriweather"> <a href="#!" class="text-reset">Trouver une boutique</a> </p>
-    </div>
-    <div class="col-md-4 col-sm-12 p-5">
-      <h5 class="text-uppercase fw-bold mb-4 text-decoration-underline">Contact</h5>
-      {# <p class="merriweather"> <img src="{{asset('assets/icone/icons-home.svg')}}" alt="icon home" height="17px"> Paris, 13ème, FRANCE </p> #}
-      <a class="a_lien" href="https://www.google.com/maps/search/Paris%2C+13%C3%A8me%2C+FRANCE">
-        <p class="merriweather">
-        <img src="{{asset('assets/icone/icons-home.svg')}}" alt="icon home" height="17px">Paris, 13ème, FRANCE</p>
-      </a>
-      <p class="merriweather"> <img src="{{asset('assets/icone/icons-mail.png')}}" alt="icon mail" height="17px"> <a class="a_lien" href="mailto:support@sitna.fr">support@sitna.fr</a></p>
-      <p class="merriweather"> <img src="{{asset('assets/icone/icons-phone.png')}}" alt="icon phone" height="17px"  ><a class="a_lien" href="tel:+1234567890">+ 01 23 45 67 88</a></p>
-      <p class="merriweather"> <img src="{{asset('assets/icone/icons-fax.png')}}" alt="icon fax" height="17px"><a class="a_lien" href="tel:+1234567890">+ 01 23 45 67 88</a></p>
-    </div>
-  </section>
+    <section class="container-fluid m-0 p-0 row">
+        <div class="col-md-4 col-sm-12 p-4">
+            <h5 class="text-decoration-underline">Nos réseaux</h5>
+            <div class="row">
+                <div class="col-4">
+                    <a href="#" class="text-reset">
+                        <p>Facebook <img src="{{asset('assets/icone/icons-facebook.svg')}}" alt="social" height="17px"></p>
+                    </a>
+                </div>
+                <div class="col-4">
+                    <a href="#" class="text-reset">
+                        <p>Twitter <img src="{{asset('assets/icone/icons-twitter.png')}}" alt="social" height="17px"></p>
+                    </a>
+                </div>
+                <div class="col-4">
+                    <a href="#" class="text-reset">
+                        <p>LinkedIn <img src="{{asset('assets/icone/icons-linkedin.png')}}" alt="social" height="17px"></p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-12 p-4">
+            <h5 class="text-uppercase fw-bold mb-4 text-decoration-underline">Liens utiles</h5>
+            {# <p class="merriweather"> <a href="{{ path('app_cgv') }}" class="text-reset">CGV</a> </p> #}
+            <p class="merriweather"> <a href="{{ path('app_legale')}}" class="text-reset">Mentions légales</a> </p>
+            <p class="merriweather"> <a href="{{path('app_politiqueconfidentialite')}}" class="text-reset">Politique de confidentialité</a> </p>
+            <p class="merriweather"> <a href="{{ path('app_home') }}" class="text-reset">Qui sommes-nous ?</a> </p>
+            {# <p class="merriweather"> <a href="#!" class="text-reset">Trouver une boutique</a> </p> #}
+        </div>
+        <div class="col-md-4 col-sm-12 p-4">
+            <h5 class="text-uppercase fw-bold mb-4 text-decoration-underline">Contact</h5>
+            <a class="a_lien" href="https://www.google.com/maps/search/Paris%2C+13%C3%A8me%2C+FRANCE">
+                <p class="merriweather">
+                    <img src="{{asset('assets/icone/icons-home.svg')}}" alt="icon home" height="17px"> Paris, 13ème, FRANCE</p>
+            </a>
+            <p class="merriweather"> <img src="{{asset('assets/icone/icons-mail.png')}}" alt="icon mail" height="17px"> <a class="a_lien" href="mailto:support@sitna.fr">support@sitna.fr</a></p>
+            <p class="merriweather"> <img src="{{asset('assets/icone/icons-phone.png')}}" alt="icon phone" height="17px"><a class="a_lien" href="tel:+1234567890">+ 01 23 45 67 88</a></p>
+            {# <p class="merriweather"> <img src="{{asset('assets/icone/icons-fax.png')}}" alt="icon fax" height="17px"><a class="a_lien" href="tel:+1234567890">+ 01 23 45 67 88</a></p> #}
+        </div>
+    </section>
 </footer>
+
