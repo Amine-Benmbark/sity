@@ -4,12 +4,17 @@ namespace App\Controller;
 
 use Stripe\Stripe;
 use App\Entity\Panier;
+use DateTimeImmutable;
+use DateTimeInterface;
 use App\Entity\Produit;
+use App\Entity\Commande;
 use App\Service\Helpers;
 use Stripe\StripeClient;
 use App\services\AppHelpers;
 use Stripe\Checkout\Session;
 use App\services\CartService;
+use App\Entity\DetailCommande;
+use App\Entity\PanierProduit;
 use Doctrine\ORM\Query\Expr\Math;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
@@ -18,6 +23,7 @@ use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use App\Service\AppHelpers as ServiceAppHelpers;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Doctrine\ORM\Tools\Console\EntityManagerProvider;
 use Symfony\Component\Routing\Generator\UrlGenerator;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -113,16 +119,41 @@ class StripeController extends AbstractController
 
     }
 
-    public function stripeSuccess(Request $request): Response
+    public function stripeSuccess(Request $request, EntityManagerInterface $em): Response
     {
         $total = $request->query->get('total'); // Récupérer le total depuis les paramètres de redirection
-        // dd($total);
+       
+        $user = $this->getUser();
+        $panier = $this->getUser()->getPanier();
+        
+        $commande = new Commande();
+        $commande->setUser($user);
+        $commande->setDate(new \DateTimeImmutable());
+        $em->persist($commande);
+        
+        foreach ($panier->getArticle() as $panierProduit) {
+            $produit = $panierProduit->getProduit();
+            $quantite = $panierProduit->getQuantity();
+            $prixUnitaire = $produit->getPrix();
+        
+            $detail_commande = new DetailCommande();
+            $detail_commande->setCommande($commande);
+            $detail_commande->setName($produit->getName());
+            $detail_commande->setQuantity($quantite);
+            $detail_commande->setPrix($prixUnitaire);
+            $detail_commande->setTotal(); // Calculer le total pour chaque produit
+        
+            $em->persist($detail_commande);
+        }
+        
+        $em->remove($panier);
+        $em->flush();
         return $this->render('stripe/order_confirmation.html.twig', [
             'bodyId' => $this->bodyId,
             'userInfo' => $this->userInfo,
             'total' => $total,
         ]);
-    }
+}
     
     public function paymentFailure(Request $request): Response {
         $total = $request->query->get('total'); // Récupérer le total depuis les paramètres de redirection

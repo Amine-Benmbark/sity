@@ -15,7 +15,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
-class ContactType extends AbstractType
+class ContactFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -24,7 +24,7 @@ class ContactType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'Nom ()',
+                'label' => 'Nom *',
                 'constraints' => [
                     new Regex([
                         'pattern' => '/^[a-zA-Z\s]+$/',
@@ -36,7 +36,7 @@ class ContactType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'Prenom ()',
+                'label' => 'Prenom *',
                 'constraints' => [
                     new Regex([
                         'pattern' => '/^[a-zA-Z\s]+$/',
@@ -48,7 +48,7 @@ class ContactType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'Adresse email (*)',
+                'label' => 'Adresse email *',
                 'label_attr' => [
                     'class' => 'form-label'
                 ],
@@ -62,7 +62,7 @@ class ContactType extends AbstractType
                 ],
             ])
             ->add('tel', TelType::class, [
-                'label' => 'Téléphone : *',
+                'label' => 'Téléphone *',
                 'constraints' => [
                     new Regex([
                         'pattern' => '/^(0|\+33)[1-9]( ?\d{2}){4}$/',
@@ -74,17 +74,17 @@ class ContactType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'Sujet',
+                'label' => 'Sujet *',
             ])
             ->add('message',TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control',
                 ],
-                'label' => 'Message (*)'
+                'label' => 'Message *'
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [
-                    'class' => 'btn btn-warning my-4'
+                    'class' => 'btn btn-order my-4'
                 ],
                 'label' => 'Envoyer le message'
             ])

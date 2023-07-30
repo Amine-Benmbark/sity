@@ -101,22 +101,38 @@
           </tr>
         </thead>
         <tbody>
-          {% if articles is not empty %}
-            {% for article in articles %}
-              <tr>
-                <td>{{ article.produit.name }}</td>
-                <td>{{ article.produit.prix }}€</td>
-                <td>{{ article.quantity }}</td>
-                <td>{{ article.quantity * article.produit.prix }}€</td>
-              </tr>
+          {# {% if commande is not empty %} #}
+           {% for commandes in commande %}
+            <td colspan=4 >{{ commandes.id}}</td>
+            {% for detailcommandes in detailcommande %}
+              {% for detail in detailcommandes %}
+              {% if commandes.id == detail.commande.id %}
+                <tr>
+                    <td>{{ detail.name }}</td>
+                    <td>{{ detail.quantity }}</td>
+                    <td>{{ detail.prix }}</td>
+                    <td>{{ detail.total }}</td>
+                </tr>
+                 {% endif %}
+              {% endfor %}
+           {# {{ dump(detailcommandes) }} #}
+            {# {% if  %} #}
+                {# <tr>
+                    <td>{{ detailcommandes.name }}</td>
+                    <td>{{ detailcommandes.quantity }}</td>
+                    <td>{{ detailcommandes.prix }}</td>
+                    <td>{{ detailcommandes.total }}</td>
+                </tr> #}
+                 {# {% endif %} #}
             {% endfor %}
-          {% else %}
+        {% endfor %}
+          {# {% else %}
             <tr>
               <td colspan="4" class="text-center">
                 Votre panier est vide!
               </td>
-            </tr>
-          {% endif %}
+            </tr> #}
+          {# {% endif %} #}
         </tbody>
       </table>
     </div>

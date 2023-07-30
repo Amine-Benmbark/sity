@@ -20,38 +20,40 @@ class CommandeController extends AbstractController
     {
         $this->denyAccessUnlessGranted('ROLE_USER');
         $user = $this->getUser();
-        $commande = new Commande();
-        $commande->setUser($user);
-        $commande->setDate(new \DateTime('today'));
+        $produits = $em->getRepository(Commande::class)->findBy(['user' => $user]);
+        // dd($produits);
+        // $commande = new Commande();
+        // $commande->setUser($user);
+        // $commande->setDate(new \DateTime('today'));
         //dd($commande);
-        $panier = $this->getUser()->getPanier();
+        //$panier = $this->getUser()->getPanier();
         // $panier = $em->find(Panier::class, $user);
         //  dd($panier);
-        $produitsId = $em->getRepository(PanierProduit::class)->findBy(['panier'=>$panier]);
+        //$produitsId = $em->getRepository(PanierProduit::class)->findBy(['panier'=>$panier]);
         //  dd($produitsId);
-        $produits = $em->getRepository(Produit::class)->findAll();
+        // $produits = $em->getRepository(Produit::class)->findAll();
        
-        //  dd($produits);
+        // //  dd($produits);
 
-        // if ($panier != null){ 
-            if($panier !== null){
-                foreach ($panier as $panierProduit) {
-                     $produit = $panierProduit->getProduits();
-                     $commande->addProduit($produit);}
-                }
-            else {
-                return $this->redirectToRoute('app_panier');
-            }
+        // // if ($panier != null){ 
+        //     if($panier !== null){
+        //         foreach ($panier as $panierProduit) {
+        //              $produit = $panierProduit->getProduits();
+        //              $commande->addProduit($produit);}
+        //         }
+        //     else {
+        //         return $this->redirectToRoute('app_panier');
+        //     }
 
-        //  dd($commande);
-        $em->persist($commande);
-        $em->flush();
+        // //  dd($commande);
+        // $em->persist($commande);
+        // $em->flush();
         $total = $session->get('total');
 
         return $this->render('commande/index.html.twig', [
-            'commande' => $commande,
-            'panier' => $panier,
-            'produitsId'=>$produitsId,
+           // 'commande' => $commande,
+            //'panier' => $panier,
+            //'produitsId'=>$produitsId,
             'produits' => $produits,
             'total' => $total,
         ]);

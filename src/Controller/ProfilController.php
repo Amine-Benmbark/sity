@@ -2,19 +2,36 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\User;
+use App\Entity\Commande;
+use App\Entity\DetailCommande;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Doctrine\ORM\EntityManagerInterface;
-use App\Entity\User;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class ProfilController extends AbstractController
 {
     #[Route('/profil', name: 'app_profil')]
-    public function profil(): Response
+    public function profil( EntityManagerInterface $em, Request $request): Response
     {   
         $this->denyAccessUnlessGranted('ROLE_USER');
+        $user = $this->getUser();
+        // $id = $request->attributes->get('id');
+        $commande = $user->getCommande();
+        $Detailcommande = [];
+
+        foreach ($commande as $detail){
+            if($em->getRepository(DetailCommande::class)->findBy(['commande' => $detail->getId()])){
+                $detailcommande[] = $em->getRepository(DetailCommande::class)->findBy(['commande' => $detail->getId()]);
+            }
+        }
+        // dd($detailcommande);
+
+
         $panier = $this->getUser()->getPanier();
         if (null === $panier) {
             $articles = [];
@@ -25,6 +42,8 @@ class ProfilController extends AbstractController
         return $this->render('profil/profil.html.twig', [
             'controller_name' => 'ProfilController',
             'articles' => $articles,
+            'commande' => $commande,
+            'detailcommande' => $detailcommande,
         ]);
     }
 
@@ -47,11 +66,12 @@ class ProfilController extends AbstractController
 
     
     #[Route('/supp_profil/{id}', name:'users_profil_delete')]
-    public function delete(User $user, EntityManagerInterface $em, TokenStorageInterface $tokenStorage): Response {
-      
-        $this->denyAccessUnlessGranted('ROLE_USER');
+    public function delete(EntityManagerInterface $em, TokenStorageInterface $tokenStorage, SessionInterface $session): Response
+    {
+        // Votre logique de suppression d'utilisateur ici
+
+        // Récupérer l'utilisateur actuel
         $user = $this->getUser();
-        $tokenStorage = $tokenStorage;
 
         if (!$user) {
             throw $this->createNotFoundException('Utilisateur non trouvé.');
@@ -63,10 +83,9 @@ class ProfilController extends AbstractController
 
         // Déconnecter l'utilisateur après la suppression de son compte
         $tokenStorage->setToken(null);
-        $this->get('session')->invalidate();
+        $session->invalidate();
 
-        // Ajoutez ici votre logique supplémentaire ou des redirections
-
-        return $this->redirectToRoute('app_home');
+        // Rediriger l'utilisateur vers la page de connexion
+        return $this->redirectToRoute('app_login');
     }
 }

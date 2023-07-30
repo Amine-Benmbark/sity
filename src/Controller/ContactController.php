@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
-use App\Form\ContactType;
+use App\Form\ContactFormType;
 use App\services\Helpers;
 use App\Service\AppHelpers;
 use Doctrine\ORM\EntityManagerInterface;
@@ -50,11 +50,11 @@ class ContactController extends AbstractController
                     ->setEmail($this->getUser()->getEmail());
         }
 
-        $form = $this->createForm(ContactType::class, $contact);
+        $form = $this->createForm(ContactFormType::class, $contact);
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
-        $form = $this->createForm(ContactType::class, $contact);
+        $form = $this->createForm(ContactFormType::class, $contact);
 
             $contact = $form->getData();
 
