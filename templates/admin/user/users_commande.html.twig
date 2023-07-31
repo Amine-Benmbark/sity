@@ -4,38 +4,67 @@
 
 {% block body %}
     {% block header %}{% endblock %}
+      <style>
+.custom-img-size {
+  width: 300px;
+  height: 200px;
+margin: auto;
+}
+</style>
     <h1 class="mb-5">Admin commandes utilisateur</h1>
 
-    {% if user is not null %}
+    {% if user %}
         <h2 class="mb-5">Utilisateur : {{ user.name }} {{ user.firstname }}</h2>
-        {% if articles is not empty %}
-            <table class="table mb-5 table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">Produit</th>
-                        <th scope="col">Prix</th>
-                        <th scope="col">Quantité</th>
-                        <th scope="col">Total</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for article in articles %}
-                        <tr>
-                            <td>{{ article.produit.name }}</td>
-                            <td>{{ article.produit.prix }}€</td>
-                            <td>{{ article.quantity }}</td>
-                            <td>{{ article.produit.prix * article.quantity }}€</td>
-                        </tr>
+       <div class="table-responsive container">
+    <table class="table">
+    <thead>
+        {% if commande and detailcommande %}
+            {% for commandes in commande %}
+                <tr>
+                    <th colspan="4">Commande N°{{ commandes.id }}</th>
+                    <th colspan="4"><strong>Date de la commande : {{ commandes.date|date("d-m-Y") }}</strong></th>
+                </tr>
+                <tr>
+                    <th>Produit</th>
+                    <th>Image</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Total</th>
+                </tr>
+                {% for detailcommandes in detailcommande %}
+                    {% for detail in detailcommandes %}
+                        {% if commandes.id == detail.commande.id %}
+                            <tr>
+                                <td>{{ detail.name }}</td>
+                                <td>
+                                    <img class="img-fluid  custom-img-size" src="{{ asset('assets/img/' ~ detail.img) }}" alt="Product Image">
+                                </td>
+                                <td>{{ detail.prix }}€</td>
+                                <td>{{ detail.quantity }}</td>
+                                <td>{{ detail.total }}€</td>
+                            </tr>
+                        {% endif %}
                     {% endfor %}
-                </tbody>
-            </table>
+                {% endfor %}
+            {% endfor %}
         {% else %}
-            <p class=" p-5 chiffre_affaire mb-5">Aucun article pour cet utilisateur.</p>
+            <tr>
+                <td colspan="5" class="text-center">
+                    Aucune commande effectuée !
+                </td>
+            </tr>
         {% endif %}
-    {% else %}
-        <p class="mb-5 p-5 chiffre_affaire">Utilisateur non trouvé.</p>
-    {% endif %}
+    </thead>
+</table>
+
+</div>
+
+{% else %}
+<p class="mb-5 p-5 chiffre_affaire">Utilisateur non trouvé.</p>
+{% endif %}
+
 {% endblock %}
+
 
 {% block javascripts %}
 {% endblock %}

@@ -3,26 +3,27 @@
 
 namespace App\Controller\admin;
 
-use App\Entity\Categorie;
-use App\Entity\Commande;
-use App\Entity\Produit;
 use App\Entity\User;
-use App\Form\ProduitFormType;
-use App\Form\RegistrationFormType;
-use App\Service\FileUploader;
+use App\Entity\Produit;
+use App\Entity\Commande;
 use App\Service\Helpers;
+use App\Entity\Categorie;
+use App\Form\ProduitFormType;
+use App\Service\FileUploader;
+use App\Entity\DetailCommande;
 use Doctrine\ORM\EntityManager;
+use App\Form\RegistrationFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as ControllerAbstractController;
-use Symfony\Bundle\FrameworkBundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Entity;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Bundle\FrameworkBundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController as ControllerAbstractController;
 
 #[Route('/admin/user', name:'admin_user')]
 class UserController extends ControllerAbstractController
@@ -55,6 +56,18 @@ class UserController extends ControllerAbstractController
         $this->denyAccessUnlessGranted('ROLE_ADMIN');
     
         $user = $this->manager->getRepository(User::class)->find($id);
+
+
+        // $id = $request->attributes->get('id');
+        $commande = $user->getCommande();
+        $detailcommande = [];
+
+        foreach ($commande as $detail){
+            if($em->getRepository(DetailCommande::class)->findBy(['commande' => $detail->getId()])){
+                $detailcommande[] = $em->getRepository(DetailCommande::class)->findBy(['commande' => $detail->getId()]);
+            }
+        }
+
         $articles = [];
     
         if ($user !== null) {
@@ -67,6 +80,8 @@ class UserController extends ControllerAbstractController
         return $this->render('admin/user/users_commande.html.twig', [
             'user' => $user,
             'articles' => $articles,
+            'commande' => $commande,
+            'detailcommande' => $detailcommande,
         ]);
     }
 

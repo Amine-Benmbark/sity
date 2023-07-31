@@ -135,12 +135,14 @@ class StripeController extends AbstractController
             $produit = $panierProduit->getProduit();
             $quantite = $panierProduit->getQuantity();
             $prixUnitaire = $produit->getPrix();
+            $img = $produit->getImg();
         
             $detail_commande = new DetailCommande();
             $detail_commande->setCommande($commande);
             $detail_commande->setName($produit->getName());
             $detail_commande->setQuantity($quantite);
             $detail_commande->setPrix($prixUnitaire);
+            $detail_commande->setImg($img);
             $detail_commande->setTotal(); // Calculer le total pour chaque produit
         
             $em->persist($detail_commande);

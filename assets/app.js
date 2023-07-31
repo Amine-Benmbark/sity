@@ -22,11 +22,13 @@ import './styles/global.css';
 import './styles/tableau.css';
 import './styles/navbar.css';
 import './styles/vitrine.css';
+import './styles/surmesure.css';
 
 // import './controllers/say-hello_controller.js';
 // import './js/cards.js';
 // import './js/test.js';
 
+import './js/surmesure.js';
 import './js/nous.js';
 import './js/contact.js'
 import './js/flash.js';

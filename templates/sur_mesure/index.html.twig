@@ -4,6 +4,27 @@
 
 {% block body %}
 {% block header %}  {% endblock %}
+<h1 class=" mb-4"> Site Sur Mesure</h1>
+    <div class="container-fluid ml-2 ">
+        <div class="row">
+            <div class="col-6 nousanimG">
+                <p class="merriweather">
+    Chez Sity, nous sommes passionnés par la conception de sites web uniques qui répondent parfaitement aux besoins de nos clients. Notre équipe talentueuse de designers et de développeurs est déterminée à créer des sites web qui non seulement impressionnent visuellement, mais qui offrent également une expérience utilisateur exceptionnelle. <br><br>
+    Nous sommes fiers de collaborer avec des entreprises de toutes tailles et de tous secteurs d'activité. Que vous souhaitiez créer un site web vitrine, un site e-commerce sophistiqué ou une plateforme web complexe, nous avons l'expertise et les compétences nécessaires pour réaliser votre projet.
+    </p>
+            </div>
+            <div class="col-6">
+                <p id="un" class="merriweather">Pourquoi choisir notre agence pour la création de votre site web sur mesure ? </p>
+                <p id="deux" class="merriweather">1- Approche personnalisée </p>
+                <p id="trois" class="merriweather">2- Design créatif </p>
+                <p id="quatre" class="merriweather">3- Responsive Design </p>
+                <p id="cinq" class="merriweather">4- Optimisation pour les moteurs de recherche (SEO) </p>
+                <p id="six" class="merriweather">5- Sécurité renforcée </p>
+                <p id="sept" class="merriweather">6- Support continu </p>
+            </div>
+        </div>
+    </div>
+
  <h2 class="mt-5">Choisissez votre style de site Sur mesure!</h2>
  <div class="d-none d-sm-block">
     {% include './template_parts/carousel_surMesure.html.twig' %}
@@ -11,4 +32,13 @@
 <div class="d-sm-none d-lg-none">
     {% include './template_parts/card_Sur_mesure.html.twig' %}
 </div>
+
+<div class="container mt-3">
+    <div class="text-center nousanim">
+     <p class=" merriweather">
+            Prenez contact avec notre équipe dès aujourd'hui pour discuter de votre projet et obtenir un devis personnalisé. Nous sommes impatients de vous aider à concrétiser votre vision et à créer un site web sur mesure qui propulsera votre entreprise vers de nouveaux sommets en ligne !
+          </p> 
+          <a href="{{ path('app_contact') }}" class="btn btn-order mb-3 mt-3">Contactez-nous !</a>
+    </div>
+    </div>
 {% endblock %}

@@ -4,6 +4,30 @@
 
 {% block body %}
 {% block header %}  {% endblock %}
+<h1 class=" mb-4"> Site E-commerce</h1>
+    <div class="container-fluid ml-2 ">
+        <div class="row">
+            <div class="col-6 nousanimG">
+                <p class="merriweather">
+Chez Sity, nous sommes passionnés par l'e-commerce et nous comprenons l'importance d'avoir une boutique en ligne performante et attractive. Que vous soyez un entrepreneur en herbe ou une entreprise établie, nous sommes là pour vous aider à créer une boutique en ligne sur mesure qui vous démarquera de la concurrence et vous permettra de réussir dans le monde du commerce électronique.
+
+<br><br>
+
+Que vous vendiez des produits physiques, des produits numériques ou des services, nous avons l'expertise nécessaire pour transformer votre idée en une boutique en ligne réussie. Notre objectif est de vous offrir une boutique en ligne qui reflète votre marque, fidélise vos clients et augmente vos ventes.
+    </p>
+            </div>
+            <div class="col-6">
+                <p id="un" class="merriweather">Pourquoi choisir notre agence pour la création de votre site web sur mesure ? </p>
+                <p id="deux" class="merriweather">1- Approche personnalisée </p>
+                <p id="trois" class="merriweather">2- Design créatif </p>
+                <p id="quatre" class="merriweather">3- Fonctionnalités puissantes </p>
+                <p id="cinq" class="merriweather">4- Optimisation pour les moteurs de recherche (SEO) </p>
+                <p id="six" class="merriweather">5- Sécurité renforcée </p>
+                <p id="sept" class="merriweather">6- Gestion facile </p>
+            </div>
+        </div>
+    </div>
+
  <h2 class="mt-5">Choisissez votre style de site e-commerce!</h2>
  <div class="d-none d-sm-block">
     {% include './template_parts/carousel_ecommerce.html.twig' %}
@@ -11,4 +35,13 @@
 <div class="d-sm-none d-lg-none">
     {% include './template_parts/card_ecommerce.html.twig' %}
 </div>
+
+<div class="container mt-3">
+    <div class="text-center nousanim">
+     <p class=" merriweather">
+            Prenez contact avec notre équipe dès aujourd'hui pour discuter de votre projet et obtenir un devis personnalisé. Nous sommes impatients de vous aider à concrétiser votre vision et à créer un site web sur mesure qui propulsera votre entreprise vers de nouveaux sommets en ligne !
+          </p> 
+          <a href="{{ path('app_contact') }}" class="btn btn-order mb-3 mt-3">Contactez-nous !</a>
+    </div>
+    </div>
 {% endblock %}

@@ -1,6 +1,7 @@
 
 $(document).ready(function() {
     const slidingNewsletter = document.querySelector('.nousanim');
+    if (slidingNewsletter) {
     window.addEventListener('scroll', () => {
       const { scrollTop, clientHeight } = document.documentElement;
       const topElementToTopViewport = slidingNewsletter.getBoundingClientRect().top;
@@ -11,8 +12,10 @@ $(document).ready(function() {
         slidingNewsletter.classList.remove('active');
       }
     });
+  }
 
     const nousanimG = document.querySelector('.nousanimG');
+    if (nousanimG) {
       window.addEventListener('scroll', () => {
         const { scrollTop, clientHeight } = document.documentElement;
         const topElementToTopViewport = nousanimG.getBoundingClientRect().top;
@@ -23,8 +26,10 @@ $(document).ready(function() {
           nousanimG.classList.remove('active');
         }
       });
+    }
 
       const nousanimGa = document.querySelector('.nousanimGa');
+      if (nousanimGa) {
       window.addEventListener('scroll', () => {
         const { scrollTop, clientHeight } = document.documentElement;
         const topElementToTopViewport =  nousanimGa.getBoundingClientRect().top;
@@ -35,4 +40,5 @@ $(document).ready(function() {
             nousanimGa.classList.remove('active');
         }
       });
+    }
 });

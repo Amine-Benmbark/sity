@@ -1,7 +1,11 @@
 $(document).ready(function() {
     $(window).scroll(function() {
+      const contactverif = document.querySelector('.contactverif');
+      if(contactverif){
       // Récupérer la position de l'élément par rapport au haut de la page
       var elementPosition = $('#elementToZoom').offset().top;
+      if (elementPosition) {
+
       // Récupérer la position actuelle du scroll
       var scrollPosition = $(window).scrollTop();
       
@@ -13,7 +17,9 @@ $(document).ready(function() {
         scale = Math.min(scale, 1.3);
         $('#elementToZoom').css('transform', 'scale(' + scale + ')');
       }
+    }
+  }
     });
-  });
+});
   
 

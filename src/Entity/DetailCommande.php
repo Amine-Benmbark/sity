@@ -19,6 +19,9 @@ class DetailCommande
     #[ORM\Column]
     private ?int $quantity = null;
 
+    #[ORM\Column(type: 'string', length: 255, nullable :false, options:['collation' => 'utf8_general_ci'])]
+    private $img = null;
+
     #[ORM\Column]
     private ?float $prix = null;
 
@@ -90,6 +93,26 @@ class DetailCommande
     public function setCommande(?Commande $commande): static
     {
         $this->commande = $commande;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of img
+     */ 
+    public function getImg()
+    {
+        return $this->img;
+    }
+
+    /**
+     * Set the value of img
+     *
+     * @return  self
+     */ 
+    public function setImg($img)
+    {
+        $this->img = $img;
 
         return $this;
     }

@@ -4,6 +4,15 @@
 
 {% block body %}
   {% block header %}{% endblock %}
+
+     <style>
+.custom-img-size {
+  width: 600px;
+  height: 200px;
+margin: auto;
+}
+</style>
+
   <div class="container">
       <h1 class="text-center mt-5">Admin produit</h1>
     <div class="text-center mt-4">
@@ -26,7 +35,7 @@
             <tr>
               <td>{{ produit.name }}</td>
               <td>{{ produit.prix }}€</td>
-              <td><img class="img-fluid" src="{{ asset('assets/img/' ~ produit.img) }}" alt="Product Image"></td>
+              <td><img class="img-fluid custom-img-size" src="{{ asset('assets/img/' ~ produit.img) }}" alt="Product Image"></td>
              <td scope="col" class="d-none d-sm-table-cell">{{ produit.description }}</td>
              <td scope="col" class="d-none d-sm-table-cell">{{ produit.categorie.name }}</td>
               <td>

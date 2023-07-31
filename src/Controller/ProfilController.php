@@ -22,7 +22,7 @@ class ProfilController extends AbstractController
         $user = $this->getUser();
         // $id = $request->attributes->get('id');
         $commande = $user->getCommande();
-        $Detailcommande = [];
+        $detailcommande = [];
 
         foreach ($commande as $detail){
             if($em->getRepository(DetailCommande::class)->findBy(['commande' => $detail->getId()])){
