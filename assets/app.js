@@ -23,17 +23,22 @@ import './styles/tableau.css';
 import './styles/navbar.css';
 import './styles/vitrine.css';
 import './styles/surmesure.css';
+import './styles/maquette/maquette.css';
+import './styles/maquette/inventaire.css';
 
 // import './controllers/say-hello_controller.js';
 // import './js/cards.js';
 // import './js/test.js';
 
+
 import './js/surmesure.js';
+import './js/maquette.js';
 import './js/nous.js';
 import './js/contact.js'
 import './js/flash.js';
 import './js/chiffredaffaire.js';
 import './js/carousel.js';
+
 
 
 // import './js/scrolling_cards.js';

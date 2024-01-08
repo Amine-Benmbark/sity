@@ -1,0 +1,76 @@
+.redressed{
+    font-family: 'Redressed', cursive;
+}
+.merriweather{
+    font-family: 'Merriweather', serif;
+}
+
+
+/* Extra Small Devices (portrait phones, less than 576px) */
+@media only screen and (max-width: 575px) {
+    .merriweather {
+      font-size: 14px;
+    }
+  }
+
+  /* Small Devices (landscape phones, 576px and up) */
+  @media only screen and (min-width: 576px) {
+    .merriweather {
+      font-size: 16px;
+    }
+  }
+
+  /* Medium Devices (tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    .merriweather {
+      font-size: 18px;
+    }
+  }
+
+  /* Large Devices (desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    .merriweather {
+      font-size: 20px;
+    }
+  }
+
+  /* Extra Large Devices (large desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    .merriweather {
+      font-size: 22px;
+    }
+  }
+
+:root{
+ --bg :  linear-gradient(180deg, #023459 0%, #1e646e 100%);
+ --beige: #B2A59F;
+}
+
+body {
+    background: var(--bg);
+    height: auto;
+    padding-top: 10rem;
+}
+
+
+h1{
+    text-align: center;
+    color:#E5D0C6;
+    font-weight: 100;
+    font-size: 4rem;
+}
+
+/* td{
+  background-color:#E5D0C6;
+} */
+
+  p#NomSite{
+    border: #B2A59F solid 0.1rem;
+    border-radius: 10px;
+    color: #B2A59F;
+    width: 18rem;
+    font-size: 22px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }

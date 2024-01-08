@@ -5,14 +5,17 @@
 {% block body %}
   {% block header %}{% endblock %}
 
-     <style>
-.custom-img-size {
-  width: 600px;
-  height: 200px;
-margin: auto;
-}
+<style>
+  .custom-img-size {
+    width: 350px;
+    height: auto;
+  }
 </style>
-
+{% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+                {{message}}
+            </div>
+        {% endfor %}
   <div class="container">
       <h1 class="text-center mt-5">Admin produit</h1>
     <div class="text-center mt-4">

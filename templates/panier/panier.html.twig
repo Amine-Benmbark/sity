@@ -1,18 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PanierController!{% endblock %}
+{% block title %}Mon panier{% endblock %}
 
 {% block body %}
   {% block header %}{% endblock %}
-  <style>
-.custom-img-size {
-  width: 300px;
-  height: 200px;
-margin: auto;
-}
+<style>
+  .custom-img-size {
+    width: 150px;
+    height: auto;
+  }
 </style>
   <div class="container mt-5">
-    <h2 class="text-center">Mon panier</h2>
+    <h2 class="text-center mb-5">Mon panier</h2>
 
     <div class="table-responsive"> <!-- Permettre le défilement horizontal sur mobile -->
         <table class="table">

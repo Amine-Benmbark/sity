@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
+{% block title %}Mon profil{% endblock %}
 
 {% block body %}
   {% block header %}{% endblock %}
-  <style>
-.custom-img-size {
-  width: 300px;
-  height: 200px;
-margin: auto;
-}
+
+<style>
+  .custom-img-size {
+    width: 150px;
+    height: auto;
+  }
 </style>
 
   <div class="container mt-5">
@@ -48,99 +48,107 @@ margin: auto;
       </table>
     </div>
 
-    <h2 class="mt-5 text-center">Mon panier</h2>
+<h2 class="mt-5 mb-5 text-center">Votre panier</h2>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Produit</th>
+        <th>Image</th>
+        <th>Prix</th>
+        <th>Quantité</th>
+        <th class="text-end">Total</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if articles is not empty %}
+        {% for article in articles %}
+          <tr>
+            <td>{{ article.produit.name }}</td>
+            <td><img class="img-fluid custom-img-size" alt="image du produit" src="{{ asset('assets/img/' ~ article.produit.img) }}"></td>
+            <td>{{ article.produit.prix }}€</td>
+            <td>{{ article.quantity }}</td>
+            <td class="text-end">{{ article.quantity * article.produit.prix }}€</td>
+            <td>
+              <div class="btn-group">
+                <a href="{{ path("app_add_panier", {id: article.produit.id}) }}" class="btn btn-order">
+                  <i class="fas fa-check-circle"></i> <span class="d-none d-sm-inline">Ajouter</span>
+                </a>
+                <a href="{{ path("app_remove_panier", {id: article.produit.id}) }}" class="btn btn-order">
+                  <i class="fas fa-pencil-alt"></i> <span class="d-none d-sm-inline">Modifier</span>
+                </a>
+                <a onClick="return confirm('Voulez-vous vraiment supprimer cet article du panier ?')" href="{{ path("app_delete_panier", {id: article.produit.id}) }}" class="btn btn-order">
+                  <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-inline">Supprimer</span>
+                </a>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      {% else %}
+        <tr>
+          <td colspan="6" class="text-center">
+            Votre panier est vide!
+          </td>
+        </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</div>
 
-    <div class="table-responsive">
-      <table class="table">
-        <thead>
+<h2 class="mt-5 mb-5 text-center">Mes commandes</h2>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Produit</th>
+        <th>Image</th>
+        <th>Prix</th>
+        <th>Quantité</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if commande and detailcommande %}
+        {% for commandes in commande %}
+          <tr>
+            <th colspan="4">Commande N°{{ commandes.id }}</th>
+            <th colspan="4"><strong>Date de la commande : {{ commandes.date|date("d-m-Y") }}</strong></th>
+          </tr>
           <tr>
             <th>Produit</th>
             <th>Image</th>
             <th>Prix</th>
             <th>Quantité</th>
-            <th class="text-end">Total</th>
-            <th>Action</th>
+            <th>Total</th>
           </tr>
-        </thead>
-        <tbody>
-          {% if articles is not empty %}
-            {% for article in articles %}
-              <tr>
-                <td>{{ article.produit.name }}</td>
-                <td><img class=" custom-img-size" alt="image du produit"{{ article.produit.img }}></td>
-                <td>{{ article.produit.prix }}€</td>
-                <td>{{ article.quantity }}</td>
-                <td class="text-end">{{ article.quantity * article.produit.prix }}€</td>
-                <td>
-                  <div class="btn-group">
-                    <a href="{{ path("app_add_panier", {id: article.produit.id}) }}" class="btn btn-order">
-                      <i class="fas fa-check-circle"></i> <span class="d-none d-sm-inline">Ajouter</span>
-                    </a>
-                    <a href="{{ path("app_remove_panier", {id: article.produit.id}) }}" class="btn btn-order">
-                      <i class="fas fa-pencil-alt"></i> <span class="d-none d-sm-inline">Modifier</span>
-                    </a>
-                    <a onClick="return confirm('Voulez-vous vraiment supprimer cet article du panier ?')" href="{{ path("app_delete_panier", {id: article.produit.id}) }}" class="btn btn-order">
-                      <i class="fas fa-trash-alt"></i> <span class="d-none d-sm-inline">Supprimer</span>
-                    </a>
-                  </div>
-                </td>
-              </tr>
-            {% endfor %}
-          {% else %}
-            <tr>
-              <td colspan="6" class="text-center">
-                Votre panier est vide!
-              </td>
-            </tr>
-          {% endif %}
-        </tbody>
-      </table>
-    </div>
-
-    <h2 class="mt-5 mb-5 text-center">Mes commandes</h2>
-
-   <div class="table-responsive">
-  <table class="table">
-    <thead>
-        {% if commande and detailcommande %}
-            {% for commandes in commande %}
+          {% for detailcommandes in detailcommande %}
+            {% for detail in detailcommandes %}
+              {% if commandes.id == detail.commande.id %}
                 <tr>
-                    <th colspan="4">Commande N°{{ commandes.id }}</th>
-                    <th colspan="4"><strong>Date de la commande : {{ commandes.date|date("d-m-Y") }}</strong></th>
+                  <td>{{ detail.name }}</td>
+                  <td>
+                    <img class="img-fluid custom-img-size" src="{{ asset('assets/img/' ~ detail.img) }}" alt="Product Image">
+                  </td>
+                  <td>{{ detail.prix }}€</td>
+                  <td>{{ detail.quantity }}</td>
+                  <td>{{ detail.total }}€</td>
                 </tr>
-                <tr>
-                    <th>Produit</th>
-                    <th>Image</th>
-                    <th>Prix</th>
-                    <th>Quantité</th>
-                    <th>Total</th>
-                </tr>
-                {% for detailcommandes in detailcommande %}
-                    {% for detail in detailcommandes %}
-                        {% if commandes.id == detail.commande.id %}
-                            <tr>
-                                <td>{{ detail.name }}</td>
-                                <td>
-                                    <img class="img-fluid  custom-img-size" src="{{ asset('assets/img/' ~ detail.img) }}" alt="Product Image">
-                                </td>
-                                <td>{{ detail.prix }}€</td>
-                                <td>{{ detail.quantity }}</td>
-                                <td>{{ detail.total }}€</td>
-                            </tr>
-                        {% endif %}
-                    {% endfor %}
-                {% endfor %}
+              {% endif %}
             {% endfor %}
-        {% else %}
-            <tr>
-                <td colspan="5" class="text-center">
-                    Aucune commande effectuée !
-                </td>
-            </tr>
-        {% endif %}
-    </thead>
-</table>
+          {% endfor %}
+        {% endfor %}
+      {% else %}
+        <tr>
+          <td colspan="5" class="text-center">
+            Aucune commande effectuée !
+          </td>
+        </tr>
+      {% endif %}
+    </tbody>
+  </table>
 </div>
+
 
 {% endblock %}
 

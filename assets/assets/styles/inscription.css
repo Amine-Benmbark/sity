@@ -1,0 +1,79 @@
+.redressed{
+    font-family: 'Redressed', cursive;
+}
+.merriweather{
+    font-family: 'Merriweather', serif;
+}
+
+.banner, .order-form{
+    /* background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url("./img/image-restau.jpg") center center fixed no-repeat; */
+    background-size: cover;
+    height: 800px;
+}
+.order-form{
+    height: 500px;
+}
+.banner .banner-desc{
+    font-size: 48px;
+    font-weight: 400;
+    color: white;
+}
+
+.btn-order{
+    color: #B2A59F;
+    border-color: var(--bs-beige);
+    transition: 0.5s;
+}
+
+.btn-order:hover,
+.btn-order:active{
+    color: #023459;
+    font-weight:600;
+    background-color: #B2A59F;
+    transition: 0.5s;
+}
+
+.cc-menu{
+    /* background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url("./img/image-restau.jpg") center center fixed no-repeat; */
+    background-size: cover;
+    height: 1500px;
+}
+
+.nav-footer{
+    color: #B2A59F;
+}
+
+h1{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
+    color:#E5D0C6;
+    font-weight: 100;
+    font-size: 4rem;
+}
+
+div{
+    color:#B2A59F;
+}
+
+form{
+    padding: 2em;
+    margin-bottom: 2em;
+    border: #B2A59F solid 1rem;
+    border-radius: 50px;
+    padding-bottom: 5px;
+}
+
+.input-color{
+    background: #B2A59F;
+    border: #958178 solid 0.3rem;
+    color:#1E646E;
+    font-size: large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.input-color:focus{
+    background: #B2A59F;
+    border: #958178 solid 0.3rem;
+    color:#145761;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

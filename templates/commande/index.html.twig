@@ -1,9 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CommandeController!{% endblock %}
+{% block title %}Ma commande{% endblock %}
 
 {% block body %}
     {% block header %}{% endblock %}
+<style>
+  .custom-img-size {
+    width: 150px;
+    height: auto;
+  }
+</style>
     <div class="container">
         <div class="table-responsive">
             <table class="table">
@@ -11,7 +17,6 @@
                     <tr>
                         <th>Nom</th>
                         <th>Prix</th>
-                        <th>Description</th>
                         <th>Image</th>
                     </tr>
                 </thead>
@@ -20,8 +25,7 @@
                          <tr>
                             <td>{{ produit.produit.name }}</td>
                             <td>{{ produit.produit.prix }}€</td>
-                            <td>{{ produit.produit.description }}</td>
-                            <td><img src="{{ asset('assets/img/' ~ produit.produit.img) }}" alt="ffff" class="img-fluid"></td>
+                            <td><img src="{{ asset('assets/img/' ~ produit.produit.img) }}" alt="image produit" class="img-fluid custom-img-size"></td>
                         </tr>  
                     {% else %}
                        
@@ -34,7 +38,7 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="4">Total: {{ total }}€</td>
+                        <td colspan="3">Total: {{ total }}€</td>
                     </tr>
                 </tfoot>
             </table>

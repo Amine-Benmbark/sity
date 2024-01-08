@@ -1,0 +1,37 @@
+#service_list{
+    text-align: center;
+    font-size: 20px;
+    color: #B2A59F;
+}
+
+#section_list{
+    border: transparent;
+}
+
+#card_service{
+    background-color:#B2A59F;
+}
+
+#p_cards{
+    color: #023459;
+}
+
+#service_price{
+    color: #023459;
+    font-size: 20px;
+}
+
+
+.btn-color{
+    color: #023459;
+    border-color: var(--bs-beige);
+    transition: 0.5s;
+}
+
+.btn-color:hover,
+.btn-color:active{
+    color: #023459;
+    font-weight:600;
+    background-color: #1e646e;
+    transition: 0.5s;
+}

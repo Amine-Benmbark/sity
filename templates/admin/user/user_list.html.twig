@@ -39,10 +39,10 @@
                                 <a class="btn btn-order" href="{{ path("app_users_commande", {'id': user.id}) }}">Voir les commandes</a>
                             </td>
                             <td> 
-                                <a href="{{ path('app_edit_users', {'id': user.id}) }}" class="btn btn-order">
+                                {# <a href="{{ path('app_edit_users', {'id': user.id}) }}" class="btn btn-order">
                                     <i class="fas fa-pencil-alt"></i> 
                                     <span class="d-none d-sm-inline">Modifier</span>
-                                </a>
+                                </a> #}
                                 <a onClick="return confirm('Voulez-vous vraiment supprimer cet utilisateur ?')" href="{{ path('app_supp_users', {'id': user.id}) }}" class="btn btn-order">
                                     <i class="fas fa-trash-alt"></i> 
                                     <span class="d-none d-sm-inline">Supprimer</span>

@@ -42,7 +42,7 @@ class UserController extends ControllerAbstractController
         $user = $this->manager->getRepository(User::class)->findAll();
         // $categorie = $this->manager->getRepository(Categorie::class)->findAll();
         $commande = $this->manager->getRepository(Commande::class)->findAll();
-        dump($commande);
+        // dump($commande);
         return $this->render('admin/user/user_list.html.twig', [
             'user' => $user,
             'commande' => $commande,

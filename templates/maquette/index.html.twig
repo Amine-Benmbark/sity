@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Maquette
+{% endblock %}
+
+{% block body %}
+	{% block header %}{% endblock %}
+
+<div class="row">
+  <div class="col-md-2">
+    {% include './maquette/inventaire.html.twig' %}
+  </div>
+  <div class="col-md-6">
+    <canvas id="designCanvas" class="ml-0" width="1300" height="1100">
+      Désolé, votre navigateur ne prend pas en charge &lt;canvas&gt;.
+    </canvas>
+  </div>
+</div>
+
+
+{% endblock %}

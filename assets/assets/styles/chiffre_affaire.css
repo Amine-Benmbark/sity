@@ -1,0 +1,48 @@
+.chiffre_affaire{
+    border: #B2A59F 0.5rem solid;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 25px;
+    color: #B2A59F;
+    /* background-image : url('../img/chiffre_affaire.jpg'); */
+}
+
+.custom-text {
+  left: 0;
+  right: auto;
+}
+
+/* Extra Small Devices (portrait phones, less than 576px) */
+@media only screen and (max-width: 575px) {
+    .merriweather {
+      font-size: 14px;
+    }
+  }
+
+  /* Small Devices (landscape phones, 576px and up) */
+  @media only screen and (min-width: 576px) {
+    .merriweather {
+      font-size: 16px;
+    }
+  }
+
+  /* Medium Devices (tablets, 768px and up) */
+  @media only screen and (min-width: 768px) {
+    .merriweather {
+      font-size: 18px;
+    }
+  }
+
+  /* Large Devices (desktops, 992px and up) */
+  @media only screen and (min-width: 992px) {
+    .merriweather {
+      font-size: 20px;
+    }
+  }
+
+  /* Extra Large Devices (large desktops, 1200px and up) */
+  @media only screen and (min-width: 1200px) {
+    .merriweather {
+      font-size: 22px;
+    }
+  }

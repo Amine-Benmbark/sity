@@ -1,0 +1,11 @@
+.carde {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.card.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+  

@@ -1,13 +1,11 @@
-
 .cc-navbar{
-
-   
     top: 0;
     background-color: #b2a59fe0;
     font-family: "Merriweather" serif;
     box-shadow: 1px 1px 3px #B2A59F;
     z-index: 99;
 }
+
 .cc-navbar, .nav-link.active{
   color: #023459 !important;
 }

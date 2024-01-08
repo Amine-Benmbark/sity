@@ -81,7 +81,7 @@ class ProduitController extends ControllerAbstractController
 
             $this->addFlash('success', 'Produit ajouté');
 
-            return $this->redirectToRoute('admin_produit');
+            return $this->redirectToRoute('app_produit');
         }
 
         return $this->render('admin/produit/add.html.twig',[
@@ -148,6 +148,6 @@ class ProduitController extends ControllerAbstractController
 
         $this->addFlash('success', 'Produit supprimé');
 
-        return $this->redirectToRoute('admin_produitadd');
+        return $this->redirectToRoute('app_produit');
     }
 }
